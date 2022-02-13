@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class DragController : MonoBehaviour
 {
+
+    public Draggable LastDragged => lastDragged;
+
     private bool isDragActive = false;
 
     private Vector2 screenPosition;
@@ -24,7 +27,7 @@ public class DragController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isDragActive && (Input.GetMouseButtonDown(0) || (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended)))
+        if (isDragActive && (Input.GetMouseButtonUp(0) || (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended)))
         {
             Drop();
             return;
@@ -68,7 +71,8 @@ public class DragController : MonoBehaviour
 
     void StartDrag()
     {
-        isDragActive = true;
+        lastDragged.lastPosition = lastDragged.transform.position;
+        UpdateDragStatus(true);
     }
 
     void Drag()
@@ -78,7 +82,13 @@ public class DragController : MonoBehaviour
 
     void Drop()
     {
-        isDragActive = false;
+        UpdateDragStatus(false);
+    }
+
+    void UpdateDragStatus(bool IsDragging)
+    {
+        isDragActive = lastDragged.isDragging = IsDragging;
+        lastDragged.gameObject.layer = IsDragging ? Layer.Dragging : Layer.Default;
     }
 
 }
