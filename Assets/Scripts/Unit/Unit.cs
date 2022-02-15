@@ -4,25 +4,12 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
-    [SerializeField] string unitName;
-    [SerializeField] string className;
-
-    [SerializeField] public int hitPoints;
-    [SerializeField] int maxHP;
-    [SerializeField] int attack;
-    [SerializeField] int defense;
-    [SerializeField] int movement;
-
-    //Generic weapon
-    [SerializeField] int weaponPower = 5;
-
-    [SerializeField] bool hasMoved;
-    [SerializeField] bool isDead;
-
-    [SerializeField] string unitSide;
-
-    [SerializeField] AudioClip getHit;
-    [SerializeField] AudioClip hit;
+    #region Stats and Constructor
+    [SerializeField] string unitName, className, unitSide;
+    [SerializeField] public int hitPoints, maxHP, attack, defense, movement;
+    [SerializeField] int weaponPower;
+    [SerializeField] bool hasMoved, isDead;
+    [SerializeField] AudioClip getHit, hit;
 
     public Unit(int hitPoints, int maxHP, int attack, int defense, int movement, int weaponPower)
     {
@@ -34,11 +21,15 @@ public class Unit : MonoBehaviour
         this.weaponPower = weaponPower;
     }
 
-    public void Attack(Unit attacker, Unit attacked)
+    #endregion
+
+    #region Combat Methods
+
+    public void Attack(Unit attacked)
     {
-        if (attacker.unitSide != attacked.unitSide)
+        if (this.unitSide != attacked.unitSide)
         {
-            attacked.hitPoints -= attacker.weaponPower + attacker.attack - attacked.defense;
+            attacked.hitPoints -= this.weaponPower + this.attack - attacked.defense;
         }
         else
         {
@@ -47,11 +38,11 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public void Heal(Unit healer, Unit healed)
+    public void Heal(Unit healed)
     {
-        if (healer.unitSide == healed.unitSide)
+        if (this.unitSide == healed.unitSide)
         {
-            healed.hitPoints += healer.weaponPower + healer.attack - healer.attack / 3;
+            healed.hitPoints += this.weaponPower + this.attack - this.attack / 3;
 
             if (healed.hitPoints > healed.maxHP)
             {
@@ -64,4 +55,6 @@ public class Unit : MonoBehaviour
             return;
         }
     }
+
+    #endregion
 }
