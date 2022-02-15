@@ -20,8 +20,6 @@ public class Unit : MonoBehaviour
     [SerializeField] bool isDead;
 
     [SerializeField] string unitSide;
-    [SerializeField] SpriteRenderer unitSprite;
-    [SerializeField] Animator Anim;
 
     [SerializeField] AudioClip getHit;
     [SerializeField] AudioClip hit;
