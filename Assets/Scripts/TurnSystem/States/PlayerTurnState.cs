@@ -12,6 +12,8 @@ public class PlayerTurnState : State
     {
         // !! Set "Player Turn" text. !!
 
+        Debug.Log("its playerss turnn");
+
         yield break;
     }
 

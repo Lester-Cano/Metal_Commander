@@ -25,4 +25,11 @@ public class State : MonoBehaviour
     {
         yield break;
     }
+
+    //From here: Grid System
+
+    public virtual IEnumerator GenerateMap()
+    {
+        yield break;
+    }
 }

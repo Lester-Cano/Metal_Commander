@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TurnSystem : StateMachine
 {
-    public Unit[] allyTeam, enemyteam;
+    public Unit[] allyTeam, enemyTeam;
     public Unit unit;
     [SerializeField] public Map map;
     public Sprite sprite;
