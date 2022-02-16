@@ -6,7 +6,7 @@ public class TurnSystem : StateMachine
 {
     public Unit[] allyTeam, enemyTeam;
     public Unit unit;
-    [SerializeField] public Map map;
+    [SerializeField] public SetMap map;
     public Sprite sprite;
 
     private void Start()
