@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6074522667540474972}
   - component: {fileID: 6074522667540474973}
-  - component: {fileID: 6074522667540474970}
   - component: {fileID: 6074522667540474975}
   - component: {fileID: 6074522667540474961}
   - component: {fileID: 6074522667540474974}
@@ -75,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: f3106cd17eaead840b5cc0eabfd2db5d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -87,20 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6074522667540474970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6074522667540474971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 818bab193c51d3b46b9e99d4acec633e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isDragging: 0
-  lastPosition: {x: 0, y: 0, z: 0}
 --- !u!61 &6074522667540474975
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -162,6 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: A
   className: Sniper
+  unitSide: Ally
   hitPoints: 20
   maxHP: 20
   attack: 8
@@ -170,7 +156,6 @@ MonoBehaviour:
   weaponPower: 7
   hasMoved: 0
   isDead: 0
-  unitSide: Ally
   getHit: {fileID: 0}
   hit: {fileID: 0}
 --- !u!95 &-9151684484739527446

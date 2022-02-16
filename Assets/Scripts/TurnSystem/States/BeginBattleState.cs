@@ -14,7 +14,7 @@ public class BeginBattleState : State
 
         // !! Create Grid Map. !!
 
-        TurnSystem.map.GenerateGrid();
+        TurnSystem.map.SpawnUnit();
 
 
         //Fill allyTeam & enemyteam.
