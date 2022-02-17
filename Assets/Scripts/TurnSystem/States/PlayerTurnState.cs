@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerTurnState : State
 {
-    public PlayerTurnState(TurnSystem turnSystem) : base(turnSystem)
+    public PlayerTurnState(TurnSystem.TurnSystem turnSystem) : base(turnSystem)
     {
     }
 
@@ -20,6 +20,7 @@ public class PlayerTurnState : State
     public override IEnumerator CheckState()
     {
         yield return new WaitForSeconds(2f);
+        
 
         // !! Check if there are alive enemies. !!
 

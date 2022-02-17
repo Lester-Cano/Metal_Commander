@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf627580cd791fe4c87bc65589667db0, type: 3}
+  m_Name: FloorTileData
+  m_EditorClassIdentifier: 
+  tiles:
+  - {fileID: 11400000, guid: 7b7521d102c00954f96380dd1bb48b4e, type: 2}
+  - {fileID: 11400000, guid: 931aa00e92b9c424abece036ae6d6311, type: 2}
+  isWalkable: 1
+  isCol: 0
+  isOccupied: 0
+  isStation: 0
+  isAirport: 0
+  position: {x: 0, y: 0, z: 0}

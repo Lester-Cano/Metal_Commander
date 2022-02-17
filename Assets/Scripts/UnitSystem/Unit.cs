@@ -5,11 +5,10 @@ using UnityEngine;
 public class Unit : MonoBehaviour
 {
     #region Stats and Constructor
-    [SerializeField] string unitName, className, unitSide;
-    [SerializeField] public int hitPoints, maxHP, attack, defense, movement;
-    [SerializeField] int weaponPower;
-    [SerializeField] bool hasMoved, isDead;
-    [SerializeField] AudioClip getHit, hit;
+    [SerializeField] public string unitName, className, unitSide;
+    [SerializeField] public int hitPoints, maxHP, movement, weaponPower, attack, defense;
+    [SerializeField] public bool hasMoved, isDead;
+    [SerializeField] public AudioClip getHit, hit;
 
     public Unit(int hitPoints, int maxHP, int attack, int defense, int movement, int weaponPower)
     {
@@ -33,7 +32,7 @@ public class Unit : MonoBehaviour
         }
         else
         {
-            Debug.Log("Can´t attack an ally");
+            Debug.Log("Canï¿½t attack an ally");
             return;
         }
     }
@@ -51,7 +50,7 @@ public class Unit : MonoBehaviour
         }
         else
         {
-            Debug.Log("Can´t heal an enemy");
+            Debug.Log("Canï¿½t heal an enemy");
             return;
         }
     }

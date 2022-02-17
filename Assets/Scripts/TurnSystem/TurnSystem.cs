@@ -1,22 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
+using MapSystem;
 using UnityEngine;
 
-public class TurnSystem : StateMachine
+namespace TurnSystem
 {
-    public Unit[] allyTeam, enemyTeam;
-    public Unit unit;
-    [SerializeField] public SetMap map;
-    public Sprite sprite;
-
-    private void Start()
+    public class TurnSystem : StateMachine
     {
-        // !! Initialize interface. !!
-        SetState(new BeginBattleState(this));
-    }
+        public Unit[] allyTeam, enemyTeam;
+        [SerializeField] public MapManager mapSystem;
 
-    public void OnEndTurnButton()
-    {
-        SetState(new PlayerTurnState(this));
+        private void Start()
+        {
+            // !! Initialize interface. !!
+            SetState(new BeginBattleState(this));
+        }
+
+        public void OnEndTurnButton()
+        {
+            SetState(new PlayerTurnState(this));
+        }
     }
 }
