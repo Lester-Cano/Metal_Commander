@@ -435,9 +435,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allyTeam: []
   enemyTeam: []
-  unit: {fileID: 0}
-  map: {fileID: 234949889}
-  sprite: {fileID: 0}
+  mapSystem: {fileID: 234949889}
 --- !u!1 &224155700
 GameObject:
   m_ObjectHideFlags: 0

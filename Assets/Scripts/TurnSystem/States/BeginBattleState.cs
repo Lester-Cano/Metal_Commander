@@ -14,8 +14,8 @@ public class BeginBattleState : State
 
         // !! Create Grid Map. !!
 
-        //TurnSystem.map.SpawnUnit();
-        //TurnSystem.map.SpawnEnemies();
+        TurnSystem.mapSystem.SpawnUnit();
+        TurnSystem.mapSystem.SpawnEnemies();
 
 
         //Fill allyTeam & enemyteam.
@@ -35,7 +35,7 @@ public class BeginBattleState : State
 
         #endregion
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
         TurnSystem.SetState(new PlayerTurnState(TurnSystem));
     }

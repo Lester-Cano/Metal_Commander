@@ -11,16 +11,17 @@ public class Movement : MonoBehaviour
     [SerializeField] private MapManager manager;
 
     public Unit selectedUnit;
+    private Vector3 center = new Vector3(0.5f , 0.5f , 0);
     
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))
         {
-            SelectUnit();
+            StartCoroutine(SelectUnit());
         }
     }
 
-    public void SelectUnit()
+    public IEnumerator SelectUnit()
     {
         Vector2 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3Int gridPosition = map.WorldToCell(worldPosition);
@@ -39,38 +40,48 @@ public class Movement : MonoBehaviour
             else if (selectedUnit.gameObject.CompareTag("Enemy"))
             {
                 // !! Update UI. !!
-                SelectUnit();
             }
         }
+
+        yield return new  WaitForSeconds(0.5f);
         
-        SelectNewSpace();
+        StartCoroutine(SelectNewSpace());
     }
 
-    public void SelectNewSpace()
+    public IEnumerator SelectNewSpace()
     {
+        yield return new WaitForSeconds(2f);
+        
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3Int gridPosition = map.WorldToCell(mousePosition);
+        
 
         TileBase clickedTile = map.GetTile(gridPosition);
+        
+        manager.dataFromTiles[clickedTile].position = gridPosition;
+        Debug.Log("Got new position" + manager.dataFromTiles[clickedTile].position);
+        MakeMove(selectedUnit, clickedTile);
 
-        if (manager.dataFromTiles[clickedTile].isOccupied == true)
-        {
-            Debug.Log("Cannot step in occupied tile");
-            SelectUnit();
-        }
-        else
-        {
-            manager.dataFromTiles[clickedTile].position = gridPosition;
-            Debug.Log("Got new position" + manager.dataFromTiles[clickedTile].position);
-        }
+        // if (manager.dataFromTiles[clickedTile].isOccupied == true)
+        // {
+        //     Debug.Log("Cannot step in occupied tile");
+        // }
+        // else
+        // {
+        //     manager.dataFromTiles[clickedTile].position = gridPosition;
+        //     Debug.Log("Got new position" + manager.dataFromTiles[clickedTile].position);
+        //     MakeMove(selectedUnit, clickedTile);
+        // }
+        
+        yield return new WaitForSeconds(1f);
     }
 
-    public void MakeMove(Unit selectedUnit, TileBase newPosition)
+    public void MakeMove(Unit unit, TileBase newPosition)
     {
-        if (selectedUnit.hasMoved != true)
+        if (unit.hasMoved != true)
         {
-            selectedUnit.transform.position = manager.dataFromTiles[newPosition].position;
-            selectedUnit.hasMoved = true;
+            unit.transform.position = manager.dataFromTiles[newPosition].position + center;
+            //unit.hasMoved = true;
         }
         else
         {

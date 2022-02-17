@@ -20,6 +20,7 @@ public class PlayerTurnState : State
     public override IEnumerator CheckState()
     {
         yield return new WaitForSeconds(2f);
+        
 
         // !! Check if there are alive enemies. !!
 

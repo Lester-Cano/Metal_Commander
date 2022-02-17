@@ -6,7 +6,7 @@ namespace TurnSystem
     public class TurnSystem : StateMachine
     {
         public Unit[] allyTeam, enemyTeam;
-        //[SerializeField] public MapManager map;
+        [SerializeField] public MapManager mapSystem;
 
         private void Start()
         {

@@ -73,8 +73,6 @@ namespace MapSystem
                 Instantiate(unitPrefab, allySpawns[i] + center, Quaternion.identity);
                 TileBase occupiedTile = allySpawners.GetTile(positions);
                 dataFromTiles[occupiedTile].isOccupied = true;
-            
-                Debug.Log("The tile" + occupiedTile + "is in the position" + allySpawns[i]);
             }
         }
 
@@ -85,7 +83,7 @@ namespace MapSystem
             {
                 Vector3Int positions = new  Vector3Int((int)enemySpawns[i].x ,(int)enemySpawns[i].y, 0);
                 Instantiate(enemyPrefab, enemySpawns[i] + center, Quaternion.identity);
-                TileBase occupiedTile = allySpawners.GetTile(positions);
+                TileBase occupiedTile = enemySpawners.GetTile(positions);
                 dataFromTiles[occupiedTile].isOccupied = true;
             }
         }
