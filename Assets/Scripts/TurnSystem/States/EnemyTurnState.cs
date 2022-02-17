@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyTurnState : State
 {
-    public EnemyTurnState(TurnSystem turnSystem) : base(turnSystem)
+    public EnemyTurnState(TurnSystem.TurnSystem turnSystem) : base(turnSystem)
     {
     }
 

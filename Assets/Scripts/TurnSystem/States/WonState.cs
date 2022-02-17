@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WonState : State
 {
-    public WonState(TurnSystem turnSystem) : base(turnSystem)
+    public WonState(TurnSystem.TurnSystem turnSystem) : base(turnSystem)
     {
     }
 

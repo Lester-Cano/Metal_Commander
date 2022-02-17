@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LostState : State
 {
-    public LostState(TurnSystem turnSystem) : base(turnSystem)
+    public LostState(TurnSystem.TurnSystem turnSystem) : base(turnSystem)
     {
     }
 

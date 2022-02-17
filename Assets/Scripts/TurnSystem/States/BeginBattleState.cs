@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BeginBattleState : State
 {
-    public BeginBattleState(TurnSystem turnSystem) : base(turnSystem)
+    public BeginBattleState(TurnSystem.TurnSystem turnSystem) : base(turnSystem)
     {
     }
 
@@ -14,8 +14,8 @@ public class BeginBattleState : State
 
         // !! Create Grid Map. !!
 
-        TurnSystem.map.SpawnUnit();
-        TurnSystem.map.SpawnEnemies();
+        //TurnSystem.map.SpawnUnit();
+        //TurnSystem.map.SpawnEnemies();
 
 
         //Fill allyTeam & enemyteam.

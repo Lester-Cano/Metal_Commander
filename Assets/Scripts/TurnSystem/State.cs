@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class State : MonoBehaviour
 {
-    protected TurnSystem TurnSystem;
+    protected TurnSystem.TurnSystem TurnSystem;
 
-    public State(TurnSystem turnSystem)
+    public State(TurnSystem.TurnSystem turnSystem)
     {
         TurnSystem = turnSystem;
     }
