@@ -6,8 +6,8 @@ namespace UnitSystem
     public class PathMovement : MonoBehaviour
     {
         [SerializeField] private Pathfinding2D _pathfinding2D;
-        [SerializeField] private GameObject seeker;
-        [SerializeField] private GameObject taget;
+        [SerializeField] public GameObject seeker;
+        [SerializeField] public GameObject taget;
         private Vector3 worldPosition;
 
         private void Start()

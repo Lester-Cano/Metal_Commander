@@ -5,11 +5,13 @@ using MapSystem;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using DG.Tweening;
+using UnitSystem;
 
 public class Movement : MonoBehaviour
 {
     [SerializeField] private Tilemap map;
     [SerializeField] private MapManager manager;
+    [SerializeField] public PathMovement pathMovement;
 
     public Ease myEase = Ease.Linear;
 
@@ -17,7 +19,12 @@ public class Movement : MonoBehaviour
 
     public Unit selectedUnit;
     private Vector3 center = new Vector3(0.5f , 0.5f , 0);
-    
+
+    private void Start()
+    {
+        pathMovement = FindObjectOfType<PathMovement>();
+    }
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(0) && !grabed)
@@ -44,6 +51,7 @@ public class Movement : MonoBehaviour
 
             if (selectedUnit.gameObject.CompareTag("Ally"))
             {
+                pathMovement.seeker = selectedUnit.gameObject;
                 grabed = true;
                 // !! Update UI. !!
             }
@@ -97,6 +105,18 @@ public class Movement : MonoBehaviour
         else
         {
             return;
+        }
+
+
+        void Move()
+        {
+
+
+           // Nada de lo que uso funciona aaaaaaaaaaa
+
+
+
+
         }
 
         // if (manager.dataFromTiles[clickedTile].isOccupied == true)

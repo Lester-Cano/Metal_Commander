@@ -99,7 +99,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0013499856, y: -0.025649756}
+  m_Offset: {x: -0.011911869, y: -0.015087843}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -110,7 +110,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.50590503, y: 0.8623014}
+  m_Size: {x: 0.9495044, y: 0.9467969}
   m_EdgeRadius: 0
 --- !u!50 &1687633172660371432
 Rigidbody2D:
@@ -150,10 +150,10 @@ MonoBehaviour:
   unitSide: Enemy
   hitPoints: 22
   maxHP: 22
-  attack: 8
-  defense: 1
   movement: 5
   weaponPower: 5
+  attack: 8
+  defense: 1
   hasMoved: 0
   isDead: 0
   getHit: {fileID: 0}
