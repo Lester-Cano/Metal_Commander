@@ -20,6 +20,11 @@ namespace PathFinding
         //From here, TurnSystem
 
         [SerializeField] private TurnSystem.TurnSystem turnSystem;
+        
+        //Test
+
+        [SerializeField] private GameObject testTarget;
+        
         private void Update()
         {
             if (Input.GetMouseButtonDown(0) && !grabed && !selectedNewSpace)
@@ -35,7 +40,7 @@ namespace PathFinding
         private void SelectUnit()
         {
             Vector2 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            RaycastHit2D hitData = Physics2D.Raycast(new Vector2(worldPosition.x, worldPosition.y), Vector2.zero, 0);
+            RaycastHit2D hitData = Physics2D.Raycast(worldPosition, Vector2.zero, 0);
 
             if (!hitData)
             {
@@ -62,9 +67,9 @@ namespace PathFinding
 
             var newTarget = Instantiate(target, gridPosition + new Vector3(0.5f, 0.5f, 0), quaternion.identity);
             selectedNewSpace = true;
-            
+
             pathMovement.FindPath(selectedUnit.transform.position, newTarget.transform.position);
-            
+
             Move(pathMovement);
 
             grabed = false;

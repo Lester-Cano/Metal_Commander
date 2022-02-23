@@ -69,30 +69,7 @@ namespace PathFinding
             //checks and adds left neighbor
             if (node.GridX - 1 >= 0 && node.GridX - 1 < gridSizeX && node.GridY >= 0 && node.GridY < gridSizeY)
                 neighbors.Add(Grid[node.GridX - 1, node.GridY]);
-
-
-
-            /* Uncomment this code to enable diagonal movement
-        
-        //checks and adds top right neighbor
-        if (node.GridX + 1 >= 0 && node.GridX + 1< gridSizeX && node.GridY + 1 >= 0 && node.GridY + 1 < gridSizeY)
-            neighbors.Add(Grid[node.GridX + 1, node.GridY + 1]);
-
-        //checks and adds bottom right neighbor
-        if (node.GridX + 1>= 0 && node.GridX + 1 < gridSizeX && node.GridY - 1 >= 0 && node.GridY - 1 < gridSizeY)
-            neighbors.Add(Grid[node.GridX + 1, node.GridY - 1]);
-
-        //checks and adds top left neighbor
-        if (node.GridX - 1 >= 0 && node.GridX - 1 < gridSizeX && node.GridY + 1>= 0 && node.GridY + 1 < gridSizeY)
-            neighbors.Add(Grid[node.GridX - 1, node.GridY + 1]);
-
-        //checks and adds bottom left neighbor
-        if (node.GridX - 1 >= 0 && node.GridX - 1 < gridSizeX && node.GridY  - 1>= 0 && node.GridY  - 1 < gridSizeY)
-            neighbors.Add(Grid[node.GridX - 1, node.GridY - 1]);
-        */
-
-
-
+            
             return neighbors;
         }
 
