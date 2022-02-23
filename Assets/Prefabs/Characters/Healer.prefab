@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8781895274828106719}
   - component: {fileID: 8781895274828106704}
   - component: {fileID: 529349744860720901}
+  - component: {fileID: -1306070181616780678}
   m_Layer: 0
   m_Name: Healer
   m_TagString: Ally
@@ -150,10 +151,10 @@ MonoBehaviour:
   unitSide: Ally
   hitPoints: 15
   maxHP: 15
-  attack: 5
-  defense: 2
   movement: 5
   weaponPower: 10
+  attack: 5
+  defense: 2
   hasMoved: 0
   isDead: 0
   getHit: {fileID: 0}
@@ -177,3 +178,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-1306070181616780678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8781895274828106709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a0e55048252fcb43afcaa6f76de271b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seeker: {fileID: 0}
+  target: {fileID: 0}
+  GridOwner: {fileID: 0}

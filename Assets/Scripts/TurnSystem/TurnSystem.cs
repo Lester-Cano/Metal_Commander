@@ -1,12 +1,15 @@
+using System.Collections.Generic;
 using MapSystem;
+using TurnSystem.States;
 using UnityEngine;
 
 namespace TurnSystem
 {
     public class TurnSystem : StateMachine
     {
-        public Unit[] allyTeam, enemyTeam;
+        public List<Unit> allyTeam, enemyTeam;
         [SerializeField] public MapManager mapSystem;
+        [SerializeField] public ButtonBehaviour screenSystem;
 
         private void Start()
         {

@@ -1,28 +1,73 @@
-using System;
+using System.Collections;
 using UnityEngine;
+using DG.Tweening;
+using Unity.Mathematics;
+using UnityEngine.Tilemaps;
 
-namespace UnitSystem
+namespace PathFinding
 {
     public class PathMovement : MonoBehaviour
     {
-        [SerializeField] private Pathfinding2D _pathfinding2D;
-        [SerializeField] public GameObject seeker;
-        [SerializeField] public GameObject taget;
-        private Vector3 worldPosition;
-
-        private void Start()
-        {
-            worldPosition = new Vector3(0,0,0);
-        }
+        [SerializeField] private Pathfinding2D pathMovement;
+        [SerializeField] private Unit selectedUnit;
+        [SerializeField] private GameObject target;
+        [SerializeField] private Tilemap map;
+        private Vector3 center = new Vector3(.5f , .5f  , 0);
+        private bool grabed;
+        private bool selectedNewSpace;
 
         private void Update()
         {
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetMouseButtonDown(0) && !grabed && !selectedNewSpace)
             {
-                 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                SelectUnit(); 
             }
+            else if (Input.GetMouseButtonDown(0) && grabed && !selectedNewSpace)
+            {
+                SelectNewSpace();
+            }
+        }
+
+        private void SelectUnit()
+        {
+            Vector2 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hitData = Physics2D.Raycast(new Vector2(worldPosition.x, worldPosition.y), Vector2.zero, 0);
+
+            if (!hitData)
+            {
+                return;
+            }
+            else
+            {
+                selectedUnit = hitData.transform.gameObject.GetComponent<Unit>();
+                pathMovement = selectedUnit.GetComponent<Pathfinding2D>();
+                grabed = true;
+            }
+        }
+
+        void SelectNewSpace()
+        {
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3Int gridPosition = map.WorldToCell(mousePosition);
+
+            var newTarget = Instantiate(target, gridPosition + center, quaternion.identity);
+            selectedNewSpace = true;
             
-            _pathfinding2D.FindPath(seeker.transform.position, worldPosition);
+            pathMovement.FindPath(selectedUnit.transform.position, newTarget.transform.position);
+            
+            Move(pathMovement);
+
+            grabed = false;
+            selectedNewSpace = false;
+            Destroy(newTarget);
+        }
+
+        private void Move(Pathfinding2D unitPath)
+        {
+            foreach (var t in unitPath.path)
+            {
+                selectedUnit.transform.DOMove(t.worldPosition, 5f, false);
+            }
         }
     }
 }

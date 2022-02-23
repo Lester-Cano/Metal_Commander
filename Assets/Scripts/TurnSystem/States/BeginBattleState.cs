@@ -1,42 +1,24 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class BeginBattleState : State
+namespace TurnSystem.States
 {
-    public BeginBattleState(TurnSystem.TurnSystem turnSystem) : base(turnSystem)
+    public class BeginBattleState : State
     {
-    }
+        public BeginBattleState(global::TurnSystem.TurnSystem turnSystem) : base(turnSystem)
+        {
+        }
 
-    public override IEnumerator Start()
-    {
-        // !! Set "tittle level" text. !!
+        public override IEnumerator Start()
+        {
+            // !! Set "tittle level" text. !!
+        
+            TurnSystem.mapSystem.SpawnUnit();
+            TurnSystem.mapSystem.SpawnEnemies();
 
-        // !! Create Grid Map. !!
+            yield return new WaitForSeconds(0);
 
-        TurnSystem.mapSystem.SpawnUnit();
-        TurnSystem.mapSystem.SpawnEnemies();
-
-
-        //Fill allyTeam & enemyteam.
-
-        #region filling
-
-        //for (int x = 0; x < TurnSystem.map.mapXLength; x++)
-        //{
-        //    for (int y = 0; y < TurnSystem.map.mapYLength; y++)
-        //    {
-        //        TurnSystem.sprite = TurnSystem.map.map[x, y];
-
-        //        // !! Check if there is an enemy or an ally and fill the fields. !!
-        //    }
-        //}
-
-
-        #endregion
-
-        yield return new WaitForSeconds(1f);
-
-        TurnSystem.SetState(new PlayerTurnState(TurnSystem));
+            TurnSystem.SetState(new PlayerTurnState(TurnSystem));
+        }
     }
 }
