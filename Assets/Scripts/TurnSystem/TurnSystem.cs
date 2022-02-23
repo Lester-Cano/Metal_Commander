@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using MapSystem;
 using TurnSystem.States;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace TurnSystem
 {
@@ -19,7 +21,7 @@ namespace TurnSystem
 
         public void OnEndTurnButton()
         {
-            SetState(new PlayerTurnState(this));
+            StartCoroutine(State.CheckState());
         }
     }
 }

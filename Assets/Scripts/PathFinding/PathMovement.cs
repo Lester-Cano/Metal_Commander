@@ -3,6 +3,7 @@ using UnityEngine;
 using DG.Tweening;
 using Unity.Mathematics;
 using UnityEngine.Tilemaps;
+using Random = UnityEngine.Random;
 
 namespace PathFinding
 {
@@ -15,6 +16,10 @@ namespace PathFinding
         private Vector3 center = new Vector3(.5f , .5f  , 0);
         private bool grabed;
         private bool selectedNewSpace;
+        
+        //From here, TurnSystem
+
+        [SerializeField] private TurnSystem.TurnSystem turnSystem;
 
         private void Update()
         {
@@ -42,6 +47,12 @@ namespace PathFinding
                 selectedUnit = hitData.transform.gameObject.GetComponent<Unit>();
                 pathMovement = selectedUnit.GetComponent<Pathfinding2D>();
                 grabed = true;
+
+                if (selectedUnit.hasMoved == true)
+                {
+                    grabed = false;
+                    Debug.Log("Unit already acted");
+                }
             }
         }
 
@@ -67,6 +78,7 @@ namespace PathFinding
             foreach (var t in unitPath.path)
             {
                 selectedUnit.transform.DOMove(t.worldPosition, 5f, false);
+                selectedUnit.hasMoved = true;
             }
         }
     }

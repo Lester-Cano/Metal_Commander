@@ -15,6 +15,7 @@ namespace TurnSystem.States
         
             TurnSystem.mapSystem.SpawnUnit();
             TurnSystem.mapSystem.SpawnEnemies();
+            
 
             yield return new WaitForSeconds(0);
 

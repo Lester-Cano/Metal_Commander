@@ -12,6 +12,8 @@ namespace TurnSystem.States
         public override IEnumerator Start()
         {
             // !! Set "Enemy Turn" text. !!
+            
+            Debug.Log("Enemy turn began");
 
             yield break;
         }
@@ -25,7 +27,9 @@ namespace TurnSystem.States
 
         public override IEnumerator CheckState()
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
+            
+            // !! Checks if there are alive allies, sends Player Turn state or Lost state. !!
             
             for (int i = 0; i < TurnSystem.allyTeam.Count; i++)
             {
