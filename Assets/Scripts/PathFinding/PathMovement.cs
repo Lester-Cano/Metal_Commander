@@ -13,7 +13,6 @@ namespace PathFinding
         [SerializeField] private Unit selectedUnit;
         [SerializeField] private GameObject target;
         [SerializeField] private Tilemap map;
-        private Vector3 center = new Vector3(0 , 0  , 0);
         private bool grabed;
         private bool selectedNewSpace;
         
@@ -70,15 +69,15 @@ namespace PathFinding
 
             grabed = false;
             selectedNewSpace = false;
-            //Destroy(newTarget);
+            Destroy(newTarget);
         }
 
         private void Move(Pathfinding2D unitPath)
         {
              foreach (var t in unitPath.path)
              {
-                 Debug.Log(t.worldPosition + center);
-                 selectedUnit.transform.DOMove(t.worldPosition + center, 3f, true);
+                 Debug.Log(t.worldPosition);
+                 selectedUnit.transform.DOMove(t.worldPosition, 3f, true);
                  selectedUnit.hasMoved = true;
              }
         }
