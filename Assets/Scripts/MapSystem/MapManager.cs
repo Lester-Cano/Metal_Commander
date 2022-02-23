@@ -74,7 +74,7 @@ namespace MapSystem
             GetSpawners(allySpawners, allySpawns);
             for(var i = 0; i < allySpawns.Count; i++)
             {
-                var newAllyUnit = Instantiate(unitPrefab, allySpawns[i], Quaternion.identity);
+                var newAllyUnit = Instantiate(unitPrefab, allySpawns[i] + center, Quaternion.identity);
                 turnSystem.allyTeam.Add(newAllyUnit);
             }
         }
@@ -84,7 +84,7 @@ namespace MapSystem
             GetSpawners(enemySpawners, enemySpawns);
             for(var i = 0; i < enemySpawns.Count; i++)
             {
-                var newEnemyUnit = Instantiate(enemyPrefab, enemySpawns[i], Quaternion.identity);
+                var newEnemyUnit = Instantiate(enemyPrefab, enemySpawns[i] + center, Quaternion.identity);
                 turnSystem.enemyTeam.Add(newEnemyUnit);
             }
         }

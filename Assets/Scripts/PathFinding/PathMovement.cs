@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using DG.Tweening;
@@ -15,11 +16,10 @@ namespace PathFinding
         [SerializeField] private Tilemap map;
         private bool grabed;
         private bool selectedNewSpace;
-        
+
         //From here, TurnSystem
 
         [SerializeField] private TurnSystem.TurnSystem turnSystem;
-
         private void Update()
         {
             if (Input.GetMouseButtonDown(0) && !grabed && !selectedNewSpace)
@@ -60,7 +60,7 @@ namespace PathFinding
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector3 gridPosition = map.WorldToCell(mousePosition);
 
-            var newTarget = Instantiate(target, gridPosition, quaternion.identity);
+            var newTarget = Instantiate(target, gridPosition + new Vector3(0.5f, 0.5f, 0), quaternion.identity);
             selectedNewSpace = true;
             
             pathMovement.FindPath(selectedUnit.transform.position, newTarget.transform.position);
@@ -69,7 +69,7 @@ namespace PathFinding
 
             grabed = false;
             selectedNewSpace = false;
-            Destroy(newTarget);
+            //Destroy(newTarget);
         }
 
         private void Move(Pathfinding2D unitPath)
@@ -77,8 +77,10 @@ namespace PathFinding
              foreach (var t in unitPath.path)
              {
                  Debug.Log(t.worldPosition);
-                 selectedUnit.transform.DOMove(t.worldPosition, 3f, true);
+                 selectedUnit.transform.DOMove(t.worldPosition, 2f, true);
                  selectedUnit.hasMoved = true;
+
+                 StartCoroutine(selectedUnit.SearchCombat());
              }
         }
     }

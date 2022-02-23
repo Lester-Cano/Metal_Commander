@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,12 @@ public class Unit : MonoBehaviour
     [SerializeField] public int hitPoints, maxHP, movement, weaponPower, attack, defense;
     [SerializeField] public bool hasMoved, isDead;
     [SerializeField] public AudioClip getHit, hit;
+    
+    //from here combat system
+
+    [SerializeField] private List<GameObject> combatColliders;
+    [SerializeField] private List<SpriteRenderer> combatRenderers;
+    [SerializeField] private Color color; 
 
     public Unit(int hitPoints, int maxHP, int attack, int defense, int movement, int weaponPower)
     {
@@ -56,4 +63,26 @@ public class Unit : MonoBehaviour
     }
 
     #endregion
+
+    public IEnumerator SearchCombat()
+    {
+        yield return new WaitForSeconds(2f);
+        
+        foreach (var t in combatRenderers)
+        {
+            color = Color.red;
+            color.a = 0.3f;
+            t.color = color;
+        }
+
+        foreach (var t in combatColliders)
+        {
+            RaycastHit2D hitData = Physics2D.Raycast(t.transform.position, Vector2.zero, 0);
+
+            if (hitData)
+            {
+                Debug.Log("Hola encontre alguien");
+            }
+        }
+    }
 }
