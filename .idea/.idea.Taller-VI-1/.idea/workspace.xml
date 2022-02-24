@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f28edbc9-f60c-4763-a6cb-b0a8424ca198" name="Changes" comment="" />
+    <list default="true" id="f28edbc9-f60c-4763-a6cb-b0a8424ca198" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Taller-VI-1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Taller-VI-1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -80,6 +83,7 @@
       <workItem from="1645620893539" duration="126000" />
       <workItem from="1645642687840" duration="1831000" />
       <workItem from="1645659332019" duration="4993000" />
+      <workItem from="1645720332486" duration="615000" />
     </task>
     <servers />
   </component>
