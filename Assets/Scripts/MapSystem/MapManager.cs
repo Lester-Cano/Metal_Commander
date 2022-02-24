@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -22,6 +23,10 @@ namespace MapSystem
         [SerializeField] public List<TileData> tileDatas;
 
         public Dictionary<TileBase, TileData> dataFromTiles;
+        
+        //TurnSystem Data
+
+        [SerializeField] private TurnSystem.TurnSystem turnSystem;
 
         private void Awake()
         {
@@ -69,10 +74,8 @@ namespace MapSystem
             GetSpawners(allySpawners, allySpawns);
             for(var i = 0; i < allySpawns.Count; i++)
             {
-                Vector3Int positions = new  Vector3Int((int)allySpawns[i].x ,(int)allySpawns[i].y, 0);
-                Instantiate(unitPrefab, allySpawns[i] + center, Quaternion.identity);
-                TileBase occupiedTile = allySpawners.GetTile(positions);
-                dataFromTiles[occupiedTile].isOccupied = true;
+                var newAllyUnit = Instantiate(unitPrefab, allySpawns[i], Quaternion.identity);
+                turnSystem.allyTeam.Add(newAllyUnit);
             }
         }
 
@@ -81,10 +84,8 @@ namespace MapSystem
             GetSpawners(enemySpawners, enemySpawns);
             for(var i = 0; i < enemySpawns.Count; i++)
             {
-                Vector3Int positions = new  Vector3Int((int)enemySpawns[i].x ,(int)enemySpawns[i].y, 0);
-                Instantiate(enemyPrefab, enemySpawns[i] + center, Quaternion.identity);
-                TileBase occupiedTile = enemySpawners.GetTile(positions);
-                dataFromTiles[occupiedTile].isOccupied = true;
+                var newEnemyUnit = Instantiate(enemyPrefab, enemySpawns[i], Quaternion.identity);
+                turnSystem.enemyTeam.Add(newEnemyUnit);
             }
         }
     }

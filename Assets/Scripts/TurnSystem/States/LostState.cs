@@ -1,17 +1,18 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-public class LostState : State
+namespace TurnSystem.States
 {
-    public LostState(TurnSystem.TurnSystem turnSystem) : base(turnSystem)
+    public class LostState : State
     {
-    }
+        public LostState(global::TurnSystem.TurnSystem turnSystem) : base(turnSystem)
+        {
+        }
 
-    public override IEnumerator Start()
-    {
-        // !! Set Lost Screen. !!
+        public override IEnumerator Start()
+        {
+            TurnSystem.screenSystem.LoadScene("Lost");
 
-        yield break;
+            yield break;
+        }
     }
 }

@@ -1,37 +1,38 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Node2D
+namespace PathFinding
 {
-    public int gCost, hCost;
-    public bool obstacle;
-    public Vector3 worldPosition;
-
-    public int GridX, GridY;
-    public Node2D parent;
-
-
-    public Node2D(bool _obstacle, Vector3 _worldPos, int _gridX, int _gridY)
+    public class Node2D
     {
-        obstacle = _obstacle;
-        worldPosition = _worldPos;
-        GridX = _gridX;
-        GridY = _gridY;
-    }
+        public float gCost, hCost;
+        public bool obstacle;
+        public Vector3 worldPosition;
 
-    public int FCost
-    {
-        get
+        public float GridX, GridY;
+        public Node2D parent;
+
+
+        public Node2D(bool _obstacle, Vector3 _worldPos, float _gridX, float _gridY)
         {
-            return gCost + hCost;
+            obstacle = _obstacle;
+            worldPosition = _worldPos;
+            GridX = _gridX;
+            GridY = _gridY;
         }
 
-    }
+        public float FCost
+        {
+            get
+            {
+                return gCost + hCost;
+            }
+
+        }
     
 
-    public void SetObstacle(bool isOb)
-    {
-        obstacle = isOb;
+        public void SetObstacle(bool isOb)
+        {
+            obstacle = isOb;
+        }
     }
 }

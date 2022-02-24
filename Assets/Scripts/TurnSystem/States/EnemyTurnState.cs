@@ -1,30 +1,49 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyTurnState : State
+namespace TurnSystem.States
 {
-    public EnemyTurnState(TurnSystem.TurnSystem turnSystem) : base(turnSystem)
+    public class EnemyTurnState : State
     {
-    }
+        public EnemyTurnState(global::TurnSystem.TurnSystem turnSystem) : base(turnSystem)
+        {
+        }
 
-    public override IEnumerator Start()
-    {
-        // !! Set "Enemy Turn" text. !!
+        public override IEnumerator Start()
+        {
+            // !! Set "Enemy Turn" text. !!
+            
+            TurnSystem.titleSystem.SetTitle(TurnSystem.enemyTitle);
 
-        yield break;
-    }
+            yield return new WaitForSeconds(2f);
+            
+            TurnSystem.titleSystem.RemoveTitle(TurnSystem.enemyTitle);
+        }
 
-    public override IEnumerator Think()
-    {
-        // !! Set AI function. !!
+        public override IEnumerator Think()
+        {
+            // !! Set AI function. !!
 
-        yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(2f);
+        }
 
-        // !! Check if there are alive allies. !!
-
-        // !! send a ally turn state or a lost state. !!
-        TurnSystem.SetState(new LostState(TurnSystem));
-        TurnSystem.SetState(new PlayerTurnState(TurnSystem));
+        public override IEnumerator CheckState()
+        {
+            yield return new WaitForSeconds(1f);
+            
+            // !! Checks if there are alive allies, sends Player Turn state or Lost state. !!
+            
+            for (int i = 0; i < TurnSystem.allyTeam.Count; i++)
+            {
+                if (TurnSystem.allyTeam[i].isDead != true)
+                {
+                    TurnSystem.SetState(new PlayerTurnState(TurnSystem));
+                }
+                else
+                {
+                    TurnSystem.SetState(new LostState(TurnSystem));
+                }
+            }
+        }
     }
 }

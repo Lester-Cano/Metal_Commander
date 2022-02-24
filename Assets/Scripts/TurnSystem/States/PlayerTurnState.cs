@@ -1,30 +1,46 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerTurnState : State
+namespace TurnSystem.States
 {
-    public PlayerTurnState(TurnSystem.TurnSystem turnSystem) : base(turnSystem)
+    public class PlayerTurnState : State
     {
-    }
+        public PlayerTurnState(global::TurnSystem.TurnSystem turnSystem) : base(turnSystem)
+        {
+        }
 
-    public override IEnumerator Start()
-    {
-        // !! Set "Player Turn" text. !!
+        public override IEnumerator Start()
+        {
+            // !! Set "Player Turn" text. !!
 
-        Debug.Log("its playerss turnn");
+            TurnSystem.titleSystem.SetTitle(TurnSystem.playerTitle);
 
-        yield break;
-    }
+            yield return new WaitForSeconds(2f);
+            
+            TurnSystem.titleSystem.RemoveTitle(TurnSystem.playerTitle);
+        }
 
-    public override IEnumerator CheckState()
-    {
-        yield return new WaitForSeconds(2f);
-        
+        public override IEnumerator CheckState()
+        {
+            yield return new WaitForSeconds(1f);
+            
+            // !! Checks if there are alive enemies, sends Enemy Turn state or Win state. !!
 
-        // !! Check if there are alive enemies. !!
-
-        // !! send a win state !!
-        //TurnSystem.SetState(new WonState(TurnSystem));
+            for (int i = 0; i < TurnSystem.enemyTeam.Count; i++)
+            {
+                if (TurnSystem.enemyTeam[i].isDead != true)
+                {
+                    //Uncheck when AI ready.
+                    //TurnSystem.SetState(new EnemyTurnState(TurnSystem));
+                    
+                    Debug.Log("Enemy turn passed");
+                    TurnSystem.SetState(new PlayerTurnState(TurnSystem));
+                }
+                else
+                {
+                    TurnSystem.SetState(new WonState(TurnSystem));
+                }
+            }
+        }
     }
 }

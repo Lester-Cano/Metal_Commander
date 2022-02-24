@@ -1,17 +1,18 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-public class WonState : State
+namespace TurnSystem.States
 {
-    public WonState(TurnSystem.TurnSystem turnSystem) : base(turnSystem)
+    public class WonState : State
     {
-    }
+        public WonState(global::TurnSystem.TurnSystem turnSystem) : base(turnSystem)
+        {
+        }
 
-    public override IEnumerator Start()
-    {
-        // !! Set Won Screen. !!
+        public override IEnumerator Start()
+        {
+            TurnSystem.screenSystem.LoadScene("Win");
 
-        yield break;
+            yield break;
+        }
     }
 }

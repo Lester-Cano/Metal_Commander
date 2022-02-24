@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class State : MonoBehaviour
+public abstract class State : MonoBehaviour
 {
     protected TurnSystem.TurnSystem TurnSystem;
 
@@ -22,13 +22,6 @@ public class State : MonoBehaviour
     }
 
     public virtual IEnumerator Think()
-    {
-        yield break;
-    }
-
-    //From here: Grid System
-
-    public virtual IEnumerator GenerateMap()
     {
         yield break;
     }
