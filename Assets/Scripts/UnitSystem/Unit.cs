@@ -15,7 +15,8 @@ public class Unit : MonoBehaviour
 
     [SerializeField] private List<GameObject> combatColliders;
     [SerializeField] private List<SpriteRenderer> combatRenderers;
-    [SerializeField] private Color color; 
+    [SerializeField] private Color color;
+    [SerializeField] public GameObject attackRange;
 
     public Unit(int hitPoints, int maxHP, int attack, int defense, int movement, int weaponPower)
     {
@@ -30,6 +31,25 @@ public class Unit : MonoBehaviour
     #endregion
 
     #region Combat Methods
+
+
+    private void Start()
+    {
+        attackRange.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (hasMoved)
+        {
+            attackRange.SetActive(true);
+        }
+        else if (!hasMoved)
+        {
+            attackRange.SetActive(false);
+        }
+    }
+
 
     public void Attack(Unit attacked)
     {

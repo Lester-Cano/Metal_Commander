@@ -34,7 +34,13 @@ namespace TurnSystem.States
                     //TurnSystem.SetState(new EnemyTurnState(TurnSystem));
                     
                     Debug.Log("Enemy turn passed");
-                    TurnSystem.SetState(new PlayerTurnState(TurnSystem));
+
+                    for (int j = 0; j < TurnSystem.enemyTeam.Count; j++)
+                    {
+                        TurnSystem.allyTeam[i].hasMoved = false;
+                    }
+
+                    
                 }
                 else
                 {
