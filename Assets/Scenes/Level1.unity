@@ -3049,7 +3049,7 @@ MonoBehaviour:
   enemySpawners: {fileID: 1230505809}
   allySpawns: []
   enemySpawns: []
-  unitPrefab: {fileID: 6074522667540474974, guid: 311a618681454cf47924ea7315ee50fb, type: 3}
+  unitPrefab: {fileID: 987571919943208407, guid: 63c5e115c12d4a14e9f806ed3b8bf7eb, type: 3}
   enemyPrefab: {fileID: 1687633172660371431, guid: c13c64687f7c0f645bbd8878db2e110a, type: 3}
   map: {fileID: 224155703}
   tileDatas:
@@ -7372,7 +7372,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4
+  orthographic size: 3.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -7396,7 +7396,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1962850670}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.61, y: 0.64, z: -10}
+  m_LocalPosition: {x: -3.25, y: 0.39, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
