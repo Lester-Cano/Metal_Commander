@@ -20,11 +20,7 @@ namespace PathFinding
         //From here, TurnSystem
 
         [SerializeField] private TurnSystem.TurnSystem turnSystem;
-        
-        //Test
 
-        [SerializeField] private GameObject testTarget;
-        
         private void Update()
         {
             if (Input.GetMouseButtonDown(0) && !grabed && !selectedNewSpace)
@@ -65,9 +61,12 @@ namespace PathFinding
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector3 gridPosition = map.WorldToCell(mousePosition);
 
-            var newTarget = Instantiate(target, gridPosition + new Vector3(0.5f, 0.5f, 0), quaternion.identity);
+            var newTarget = Instantiate(target, gridPosition, quaternion.identity);
             selectedNewSpace = true;
-
+            
+            Debug.Log("Unit pos:" + selectedUnit.transform.position);
+            Debug.Log("Target pos:" + newTarget.transform.position);
+            
             pathMovement.FindPath(selectedUnit.transform.position, newTarget.transform.position);
 
             Move(pathMovement);

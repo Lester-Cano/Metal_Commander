@@ -65,7 +65,7 @@ namespace PathFinding
                         continue;
                     }
 
-                    int newCostToNeighbour = node.gCost + GetDistance(node, neighbour);
+                    float newCostToNeighbour = node.gCost + GetDistance(node, neighbour);
                     if (newCostToNeighbour < neighbour.gCost || !openSet.Contains(neighbour))
                     {
                         neighbour.gCost = newCostToNeighbour;
@@ -96,10 +96,10 @@ namespace PathFinding
         }
 
         //gets distance between 2 nodes for calculating cost
-        int GetDistance(Node2D nodeA, Node2D nodeB)
+        float GetDistance(Node2D nodeA, Node2D nodeB)
         {
-            int dstX = Mathf.Abs(nodeA.GridX - nodeB.GridX);
-            int dstY = Mathf.Abs(nodeA.GridY - nodeB.GridY);
+            float dstX = nodeA.GridX - nodeB.GridX;
+            float dstY = nodeA.GridY - nodeB.GridY;
 
             if (dstX > dstY)
                 return 14 * dstY + 10 * (dstX - dstY);

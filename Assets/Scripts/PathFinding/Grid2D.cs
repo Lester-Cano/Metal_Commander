@@ -56,19 +56,19 @@ namespace PathFinding
 
             //checks and adds top neighbor
             if (node.GridX >= 0 && node.GridX < gridSizeX && node.GridY + 1 >= 0 && node.GridY + 1 < gridSizeY)
-                neighbors.Add(Grid[node.GridX, node.GridY + 1]);
+                neighbors.Add(Grid[(int) node.GridX, (int) (node.GridY + 1)]);
 
             //checks and adds bottom neighbor
             if (node.GridX >= 0 && node.GridX < gridSizeX && node.GridY - 1 >= 0 && node.GridY - 1 < gridSizeY)
-                neighbors.Add(Grid[node.GridX, node.GridY - 1]);
+                neighbors.Add(Grid[(int) node.GridX, (int) (node.GridY - 1)]);
 
             //checks and adds right neighbor
             if (node.GridX + 1 >= 0 && node.GridX + 1 < gridSizeX && node.GridY >= 0 && node.GridY < gridSizeY)
-                neighbors.Add(Grid[node.GridX + 1, node.GridY]);
+                neighbors.Add(Grid[(int) (node.GridX + 1), (int) node.GridY]);
 
             //checks and adds left neighbor
             if (node.GridX - 1 >= 0 && node.GridX - 1 < gridSizeX && node.GridY >= 0 && node.GridY < gridSizeY)
-                neighbors.Add(Grid[node.GridX - 1, node.GridY]);
+                neighbors.Add(Grid[(int) (node.GridX - 1), (int) node.GridY]);
             
             return neighbors;
         }
@@ -79,6 +79,7 @@ namespace PathFinding
 
             int x = Mathf.RoundToInt(worldPosition.x - 1 + (gridSizeX / 2));
             int y = Mathf.RoundToInt(worldPosition.y + (gridSizeY / 2));
+
             return Grid[x, y];
         }
 
