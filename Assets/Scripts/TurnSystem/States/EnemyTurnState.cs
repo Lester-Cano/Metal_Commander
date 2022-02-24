@@ -13,9 +13,11 @@ namespace TurnSystem.States
         {
             // !! Set "Enemy Turn" text. !!
             
-            Debug.Log("Enemy turn began");
+            TurnSystem.titleSystem.SetTitle(TurnSystem.enemyTitle);
 
-            yield break;
+            yield return new WaitForSeconds(2f);
+            
+            TurnSystem.titleSystem.RemoveTitle(TurnSystem.enemyTitle);
         }
 
         public override IEnumerator Think()

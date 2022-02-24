@@ -63,17 +63,17 @@ namespace PathFinding
 
             var newTarget = Instantiate(target, gridPosition, quaternion.identity);
             selectedNewSpace = true;
-            
-            Debug.Log("Unit pos:" + selectedUnit.transform.position);
-            Debug.Log("Target pos:" + newTarget.transform.position);
-            
-            pathMovement.FindPath(selectedUnit.transform.position, newTarget.transform.position);
+
+            Vector3Int unitGridPos = map.WorldToCell(selectedUnit.transform.position);
+            Vector3Int targetGridPos = map.WorldToCell(newTarget.transform.position);
+
+            pathMovement.FindPath(unitGridPos, targetGridPos);
 
             Move(pathMovement);
 
             grabed = false;
             selectedNewSpace = false;
-            //Destroy(newTarget);
+            Destroy(newTarget);
         }
 
         private void Move(Pathfinding2D unitPath)
@@ -83,8 +83,6 @@ namespace PathFinding
                  Debug.Log(t.worldPosition);
                  selectedUnit.transform.DOMove(t.worldPosition, 2f, true);
                  selectedUnit.hasMoved = true;
-
-                 StartCoroutine(selectedUnit.SearchCombat());
              }
         }
     }

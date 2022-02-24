@@ -12,10 +12,12 @@ namespace TurnSystem.States
         public override IEnumerator Start()
         {
             // !! Set "Player Turn" text. !!
-            
-            Debug.Log("Player turn began");
 
-            yield break;
+            TurnSystem.titleSystem.SetTitle(TurnSystem.playerTitle);
+
+            yield return new WaitForSeconds(2f);
+            
+            TurnSystem.titleSystem.RemoveTitle(TurnSystem.playerTitle);
         }
 
         public override IEnumerator CheckState()

@@ -63,26 +63,4 @@ public class Unit : MonoBehaviour
     }
 
     #endregion
-
-    public IEnumerator SearchCombat()
-    {
-        yield return new WaitForSeconds(2f);
-        
-        foreach (var t in combatRenderers)
-        {
-            color = Color.red;
-            color.a = 0.3f;
-            t.color = color;
-        }
-
-        foreach (var t in combatColliders)
-        {
-            RaycastHit2D hitData = Physics2D.Raycast(t.transform.position, Vector2.zero, 0);
-
-            if (hitData)
-            {
-                Debug.Log("Hola encontre alguien");
-            }
-        }
-    }
 }
