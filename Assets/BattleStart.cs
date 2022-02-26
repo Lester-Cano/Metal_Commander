@@ -1,51 +1,38 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BattleStart : MonoBehaviour
 {
+    [SerializeField] private Unit unit1, unit2;
+    [SerializeField] private Collider2D unitInspector;
+    [SerializeField] private Button button;
 
-    SpriteRenderer spriteRenderer;
-    Color tmpColor = new Color();
-    Unit unit;
-
-
-    // Start is called before the first frame update
     void Start()
     {
-
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        unit = GetComponentInParent<Unit>();
-        tmpColor = spriteRenderer.color;
-
+        unit1 = GetComponentInParent<Unit>();
+        button = GetComponentInChildren<Button>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-
-        if (unit.hasMoved)
+        if (other.CompareTag("Ally"))
         {
-            spriteRenderer.color = tmpColor;
+            unit2 = other.GetComponent<Unit>();
         }
-       
-
-
-
-
     }
-
-
-    void OnTriggerEnter2D(Collider2D collision)
+    
+    public void Combat()
     {
-       
+        Debug.Log(("te pego"));
+        
+        unit2.Attack(unit1);
 
-        if (collision.tag == "Enemy" && Input.GetKeyDown(KeyCode.Space))
+        if (unit1.hitPoints > 0)
         {
-                unit.Attack(collision.gameObject.GetComponent<Unit>());
-            
+            unit1.Attack(unit2);
         }
-
     }
-
 }
