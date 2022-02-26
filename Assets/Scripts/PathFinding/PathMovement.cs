@@ -73,7 +73,7 @@ namespace PathFinding
 
             grabed = false;
             selectedNewSpace = false;
-            Destroy(newTarget);
+            //Destroy(newTarget);
         }
 
         private void Move(Pathfinding2D unitPath)
