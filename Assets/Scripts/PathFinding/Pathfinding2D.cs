@@ -90,9 +90,17 @@ namespace PathFinding
                 path.Add(currentNode);
                 currentNode = currentNode.parent;
             }
+
             path.Reverse();
 
             grid.path = path;
+
+            for (int i = 0; i < path.Count; i++)
+            {
+                path[i].worldPosition = new Vector3(Mathf.Ceil(path[i].worldPosition.x),
+                    Mathf.Floor(path[i].worldPosition.y), path[i].worldPosition.z);
+            }
+
         }
 
         //gets distance between 2 nodes for calculating cost

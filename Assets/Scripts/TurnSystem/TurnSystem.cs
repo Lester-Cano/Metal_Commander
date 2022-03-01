@@ -18,10 +18,26 @@ namespace TurnSystem
         [SerializeField] public GameObject playerTitle;
         [SerializeField] public GameObject enemyTitle;
 
+        [SerializeField] public int enemyCount;
+        [SerializeField] public int playerCount;
+
         private void Start()
         {
             // !! Initialize interface. !!
             SetState(new BeginBattleState(this));
+        }
+
+        private void Update()
+        {
+            if (playerCount >= allyTeam.Count)
+            {
+                SetState(new LostState(this));
+            }
+
+            if (enemyCount >= enemyTeam.Count)
+            {
+                SetState(new WonState(this));
+            }
         }
 
         public void OnEndTurnButton()

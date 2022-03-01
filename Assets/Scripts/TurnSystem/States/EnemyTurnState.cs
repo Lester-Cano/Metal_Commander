@@ -11,8 +11,6 @@ namespace TurnSystem.States
 
         public override IEnumerator Start()
         {
-            // !! Set "Enemy Turn" text. !!
-            
             TurnSystem.titleSystem.SetTitle(TurnSystem.enemyTitle);
 
             yield return new WaitForSeconds(2f);

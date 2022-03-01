@@ -8,15 +8,12 @@ public class Unit : MonoBehaviour
     #region Stats and Constructor
     [SerializeField] public string unitName, className, unitSide;
     [SerializeField] public int hitPoints, maxHP, movement, weaponPower, attack, defense;
-    [SerializeField] public bool hasMoved, isDead;
+    [SerializeField] public bool hasMoved, isDead, hasAttacked;
     [SerializeField] public AudioClip getHit, hit;
-    
-    //from here combat system
 
-    [SerializeField] private List<GameObject> combatColliders;
-    [SerializeField] private List<SpriteRenderer> combatRenderers;
-    [SerializeField] private Color color;
-    [SerializeField] public GameObject attackRange;
+    [SerializeField] private GameObject parent;
+
+    [SerializeField] public GameObject path;
 
     public Unit(int hitPoints, int maxHP, int attack, int defense, int movement, int weaponPower)
     {
@@ -30,26 +27,16 @@ public class Unit : MonoBehaviour
 
     #endregion
 
-    #region Combat Methods
-
-
-    private void Start()
-    {
-        attackRange.SetActive(false);
-    }
-
     private void Update()
     {
-        if (hasMoved)
+        if (isDead)
         {
-            attackRange.SetActive(true);
-        }
-        else if (!hasMoved)
-        {
-            attackRange.SetActive(false);
+            parent.SetActive(false);
         }
     }
+    
 
+    #region Combat Methods
 
     public void Attack(Unit attacked)
     {
@@ -81,6 +68,5 @@ public class Unit : MonoBehaviour
             return;
         }
     }
-
     #endregion
 }

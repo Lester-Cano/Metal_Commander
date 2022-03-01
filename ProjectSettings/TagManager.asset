@@ -7,11 +7,12 @@ TagManager:
   - Ally
   - Enemy
   - GridOwner
+  - Mov
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Unit
   - Water
   - UI
   - 
