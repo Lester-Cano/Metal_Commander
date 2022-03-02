@@ -41,7 +41,7 @@ namespace PathFinding
                 grabed = false;
                 return;
             }
-            else
+            else if (hitData.transform.gameObject.CompareTag("Ally"))
             {
                 selectedUnit = hitData.transform.gameObject.GetComponent<Unit>();
                 selectedUnit.path.SetActive(true);
