@@ -36,14 +36,14 @@ namespace PathFinding
 
         void Update()
         {
-           
+
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 currentEnemy = selectedEnemies[0];
                 enemyMovement = currentEnemy.GetComponent<Pathfinding2D>();
                 SearchForAllies();
             }
-            
+
 
         }
 
@@ -70,7 +70,7 @@ namespace PathFinding
         void SearchForAllies()
         {
             float distanciaMinima = 4f;
-            
+
             float distanciaTmp = distanciaMinima;
 
             for (int i = 0; i < allies.Length; i++)
@@ -101,10 +101,40 @@ namespace PathFinding
                 currentEnemy.transform.DOMove(t.worldPosition, 1f, true);
                 currentEnemy.hasMoved = true;
             }
-            currentEnemy.Attack(currentTarget.GetComponent<Unit>());
-            currentTarget = null;
+
+            Unit currentUnit = currentEnemy.GetComponent<Unit>();
+            Unit currentTargetUnit = currentTarget.GetComponent<Unit>();
+
+            if (currentUnit == null || currentTargetUnit == null)
+            {
+                return;
+            }
+            else
+            {
+                if (currentTargetUnit.hasAttacked == false)
+                {
+                    currentTargetUnit.Attack(currentUnit);
+
+                    if (currentUnit.hitPoints > 0)
+                    {
+                        currentUnit.Attack(currentTargetUnit);
+                    }
+                    else
+                    {
+                        currentUnit.isDead = true;
+                        turnSystem.enemyCount--;
+                    }
+
+                    currentTargetUnit.hasAttacked = true;
+                }
+                else
+                {
+                    Debug.Log("Unit already attacked");
+                }
+                currentTarget = null;
+            }
+
         }
 
     }
-
 }
