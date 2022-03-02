@@ -35,26 +35,18 @@ namespace TurnSystem.States
         public override IEnumerator CheckState()
         {
             yield return new WaitForSeconds(1f);
-            
-            // !! Puts all states in true !!
 
             for (int i = 0; i < TurnSystem.allyTeam.Count; i++)
             {
                 TurnSystem.allyTeam[i].hasMoved = true;
                 TurnSystem.allyTeam[i].hasAttacked = true;
             }
-            
-            // !! Checks if there are alive enemies, sends Enemy Turn state or Win state. !!
 
             for (int i = 0; i < TurnSystem.enemyTeam.Count; i++)
             {
                 if (TurnSystem.enemyTeam[i].isDead != true)
                 {
-                    //TurnSystem.SetState(new EnemyTurnState(TurnSystem));
-                    
-                    Debug.Log("Enemy turn passed");
-                    
-                    TurnSystem.SetState(new PlayerTurnState(TurnSystem));
+                    TurnSystem.SetState(new EnemyTurnState(TurnSystem));
                 }
             }
         }

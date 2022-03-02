@@ -11,6 +11,16 @@ namespace TurnSystem.States
 
         public override IEnumerator Start()
         {
+            for (int j = 0; j < TurnSystem.enemyTeam.Count; j++)
+            {
+                TurnSystem.enemyTeam[j].hasMoved = false;
+            }
+                    
+            for (int j = 0; j < TurnSystem.enemyTeam.Count; j++)
+            {
+                TurnSystem.enemyTeam[j].hasAttacked = false;
+            }
+            
             TurnSystem.titleSystem.SetTitle(TurnSystem.enemyTitle);
 
             yield return new WaitForSeconds(2f);
@@ -20,8 +30,6 @@ namespace TurnSystem.States
 
         public override IEnumerator Think()
         {
-            // !! Set AI function. !!
-
             yield return new WaitForSeconds(2f);
         }
 
@@ -29,17 +37,17 @@ namespace TurnSystem.States
         {
             yield return new WaitForSeconds(1f);
             
-            // !! Checks if there are alive allies, sends Player Turn state or Lost state. !!
+            for (int i = 0; i < TurnSystem.enemyTeam.Count; i++)
+            {
+                TurnSystem.enemyTeam[i].hasMoved = true;
+                TurnSystem.enemyTeam[i].hasAttacked = true;
+            }
             
             for (int i = 0; i < TurnSystem.allyTeam.Count; i++)
             {
                 if (TurnSystem.allyTeam[i].isDead != true)
                 {
                     TurnSystem.SetState(new PlayerTurnState(TurnSystem));
-                }
-                else
-                {
-                    TurnSystem.SetState(new LostState(TurnSystem));
                 }
             }
         }

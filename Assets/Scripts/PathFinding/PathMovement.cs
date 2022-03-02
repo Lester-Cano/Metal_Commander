@@ -41,21 +41,24 @@ namespace PathFinding
                 grabed = false;
                 return;
             }
-            else if (hitData.transform.gameObject.CompareTag("Ally"))
+            if (hitData.transform.gameObject.CompareTag("Enemy"))
+            {
+                Debug.Log("Cant pick an enemy");
+                grabed = false;
+            }
+            if (hitData.transform.gameObject.CompareTag("Ally"))
             {
                 selectedUnit = hitData.transform.gameObject.GetComponent<Unit>();
-                selectedUnit.path.SetActive(true);
                 pathMovement = selectedUnit.GetComponent<Pathfinding2D>();
+                
+                selectedUnit.path.SetActive(true);
+                
                 grabed = true;
-
-                if (selectedUnit.CompareTag("Enemy"))
-                {
-                    grabed = false;
-                }
-
+                
                 if (selectedUnit.hasMoved == true)
                 {
                     grabed = false;
+                    selectedUnit.path.SetActive(false);
                     Debug.Log("Unit already acted");
                 }
             }
@@ -103,7 +106,7 @@ namespace PathFinding
             selectedUnit.path.SetActive(false);
              foreach (var t in unitPath.path)
              {
-                 selectedUnit.transform.DOMove(t.worldPosition, 1f, true);
+                 selectedUnit.transform.DOMove(t.worldPosition, 1.5f, true);
                  selectedUnit.hasMoved = true;
              }
         }
