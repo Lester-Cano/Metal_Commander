@@ -21,31 +21,21 @@ namespace PathFinding
         [SerializeField] public List<Unit> selectedEnemies;
         [SerializeField] Unit currentEnemy;
         [SerializeField] private Tilemap map;
-        private bool grabed;
-        private bool selectedNewSpace;
         GameObject[] allies;
 
         [SerializeField] private TurnSystem.TurnSystem turnSystem;
 
         void Start()
         {
-           
-           
+
+            FindEntities();
 
         }
 
 
         void Update()
         {
-
-            if (enemies.Length == 0)
-            {
-                enemies = GameObject.FindGameObjectsWithTag("Enemy");
-                allies = GameObject.FindGameObjectsWithTag("Ally");
-
-                ConvertUnits();
-            }
-
+           
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 currentEnemy = selectedEnemies[0];
@@ -54,6 +44,15 @@ namespace PathFinding
             }
             
 
+        }
+
+
+        void FindEntities()
+        {
+            enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            allies = GameObject.FindGameObjectsWithTag("Ally");
+
+            ConvertUnits();
         }
 
 
@@ -69,7 +68,7 @@ namespace PathFinding
 
         void SearchForAllies()
         {
-            float distanciaMinima = 5f;
+            float distanciaMinima = 4f;
             GameObject currentTarget = null;
             float distanciaTmp = distanciaMinima;
 
