@@ -20,6 +20,7 @@ namespace PathFinding
         public GameObject[] enemies;
         [SerializeField] public List<Unit> selectedEnemies;
         [SerializeField] Unit currentEnemy;
+        GameObject currentTarget = null;
         [SerializeField] private Tilemap map;
         GameObject[] allies;
 
@@ -69,7 +70,7 @@ namespace PathFinding
         void SearchForAllies()
         {
             float distanciaMinima = 4f;
-            GameObject currentTarget = null;
+            
             float distanciaTmp = distanciaMinima;
 
             for (int i = 0; i < allies.Length; i++)
@@ -86,7 +87,6 @@ namespace PathFinding
             if (currentTarget != null)
             {
                 enemyMovement.FindPath(currentEnemy.transform.position, currentTarget.transform.position);
-                currentTarget = null;
                 Move(enemyMovement);
             }
 
@@ -101,6 +101,8 @@ namespace PathFinding
                 currentEnemy.transform.DOMove(t.worldPosition, 1f, true);
                 currentEnemy.hasMoved = true;
             }
+            currentEnemy.Attack(currentTarget.GetComponent<Unit>());
+            currentTarget = null;
         }
 
     }
