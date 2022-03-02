@@ -8,38 +8,18 @@ namespace MapSystem
     public class MapManager : MonoBehaviour
     {
         //Spawning Units.
+        
         [SerializeField] public Tilemap allySpawners;
         [SerializeField] public Tilemap enemySpawners;
         public List<Vector3> allySpawns;
         public List<Vector3> enemySpawns;
         [SerializeField] private Unit unitPrefab;
         [SerializeField] private Unit enemyPrefab;
-
-        private Vector3 center = new Vector3(0.5f , 0.5f , 0);
-    
-        //Tiles logic system.
-    
-        [SerializeField] public Tilemap map;
-        [SerializeField] public List<TileData> tileDatas;
-
-        public Dictionary<TileBase, TileData> dataFromTiles;
         
         //TurnSystem Data
 
         [SerializeField] private TurnSystem.TurnSystem turnSystem;
 
-        private void Awake()
-        {
-            dataFromTiles = new Dictionary<TileBase, TileData>();
-            foreach (var tileData in tileDatas)
-            {
-                foreach (var tile in tileData.tiles)
-                {
-                    dataFromTiles.Add(tile, tileData);
-                }
-            }
-        }
-    
         private void Start()
         {
             allySpawners = GetComponent<Tilemap>();

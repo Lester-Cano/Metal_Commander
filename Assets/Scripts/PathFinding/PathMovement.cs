@@ -13,6 +13,7 @@ namespace PathFinding
         [SerializeField] private Unit selectedUnit;
         [SerializeField] private GameObject target;
         [SerializeField] private Tilemap map;
+        [SerializeField] private Camera mainCamera;
         private bool grabed;
         private bool selectedNewSpace;
 
@@ -33,7 +34,7 @@ namespace PathFinding
 
         private void SelectUnit()
         {
-            Vector2 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 worldPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D hitData = Physics2D.Raycast(worldPosition, Vector2.zero, 0);
 
             if (!hitData)
@@ -68,7 +69,7 @@ namespace PathFinding
         {
             if (grabed == true)
             {
-                Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Vector2 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
                 Vector3 gridPosition = map.WorldToCell(mousePosition);
 
                 var newTarget = Instantiate(target, gridPosition, quaternion.identity);
