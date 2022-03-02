@@ -2,30 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f28edbc9-f60c-4763-a6cb-b0a8424ca198" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Taller-VI-1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Taller-VI-1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/BattleButton.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/BattleButton.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/BattleStart.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/BattleStart.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Characters/Enemy 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Characters/Enemy 1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Characters/Sniper 1.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Characters/Sniper 1.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Characters/Warrior.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Characters/Warrior.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menu &amp; UI/TitleBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menu &amp; UI/TitleBehaviour.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PathFinding/PathMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PathFinding/PathMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TurnSystem/States/EnemyTurnState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TurnSystem/States/EnemyTurnState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TurnSystem/States/PlayerTurnState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TurnSystem/States/PlayerTurnState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TurnSystem/TurnSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TurnSystem/TurnSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UnitSystem/Unit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UnitSystem/Unit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Map.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Map/Piso place holder 32x32.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Map/Piso place holder 32x32.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Map/PlaceHolderFloor.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Map/PlaceHolderFloor.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Map/TileSetProvisional.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Map/TileSetProvisional.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/AndroidLogcatSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/AndroidLogcatSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -112,6 +90,7 @@
       <workItem from="1645891263453" duration="2416000" />
       <workItem from="1645902431651" duration="14985000" />
       <workItem from="1646079344486" duration="7160000" />
+      <workItem from="1646097326348" duration="417000" />
     </task>
     <servers />
   </component>

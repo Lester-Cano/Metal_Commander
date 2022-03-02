@@ -103,7 +103,7 @@ namespace PathFinding
             selectedUnit.path.SetActive(false);
              foreach (var t in unitPath.path)
              {
-                 selectedUnit.transform.DOMove(t.worldPosition, 2f, true);
+                 selectedUnit.transform.DOMove(t.worldPosition, 1f, true);
                  selectedUnit.hasMoved = true;
              }
         }
