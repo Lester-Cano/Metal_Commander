@@ -31,12 +31,12 @@ namespace TurnSystem
 
         private void Update()
         {
-            if (playerCount > allyTeam.Count)
+            if (playerCount == allyTeam.Count)
             {
                 SetState(new LostState(this));
             }
 
-            if (enemyCount > enemyTeam.Count)
+            if (enemyCount == enemyTeam.Count)
             {
                 SetState(new WonState(this));
             }
