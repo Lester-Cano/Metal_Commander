@@ -4,7 +4,6 @@ using MapSystem;
 using Menu___UI;
 using TurnSystem.States;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace TurnSystem
 {

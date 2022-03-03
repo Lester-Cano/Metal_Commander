@@ -9,22 +9,17 @@ using System.Linq;
 namespace PathFinding
 {
 
-
-
-
-
     public class EnemyMovement : MonoBehaviour
     {
 
         [SerializeField] private Pathfinding2D enemyMovement;
-        public GameObject[] enemies;
-        [SerializeField] public List<Unit> selectedEnemies;
+        [SerializeField] public List<Unit> enemies;
+        [SerializeField] public List<Unit> allies;
         [SerializeField] Unit currentEnemy;
         GameObject currentTarget = null;
         [SerializeField] private Tilemap map;
-        GameObject[] allies;
 
-        [SerializeField] private TurnSystem.TurnSystem turnSystem;
+        [SerializeField] public TurnSystem.TurnSystem turnSystem;
 
         void Start()
         {
@@ -37,35 +32,37 @@ namespace PathFinding
         void Update()
         {
 
-            if (Input.GetKeyDown(KeyCode.Space))
+           /* if ()
             {
-                currentEnemy = selectedEnemies[0];
-                enemyMovement = currentEnemy.GetComponent<Pathfinding2D>();
-                SearchForAllies();
+                StartCoroutine(StartEnemy());
             }
 
+    */
+        }
 
+
+        IEnumerator StartEnemy()
+        {
+            for (int i = 0; i < enemies.Count; i++)
+            {
+                currentEnemy = enemies[i];
+
+                enemyMovement = currentEnemy.GetComponent<Pathfinding2D>();
+                //SearchForAllies();
+                SearchForAllies();
+
+                yield return new WaitForSeconds(2f);
+
+            }
         }
 
 
         void FindEntities()
         {
-            enemies = GameObject.FindGameObjectsWithTag("Enemy");
-            allies = GameObject.FindGameObjectsWithTag("Ally");
-
-            ConvertUnits();
+            enemies = turnSystem.enemyTeam;
+            allies = turnSystem.allyTeam;
         }
-
-
-        void ConvertUnits()
-        {
-
-            foreach (GameObject unit in enemies)
-            {
-                selectedEnemies.Add(unit.GetComponent<Unit>());
-            }
-
-        }
+        
 
         void SearchForAllies()
         {
@@ -73,14 +70,14 @@ namespace PathFinding
 
             float distanciaTmp = distanciaMinima;
 
-            for (int i = 0; i < allies.Length; i++)
+            for (int i = 0; i < allies.Count; i++)
             {
                 float distanciaMinimaActual = Vector3.Distance(currentEnemy.transform.position, allies[i].transform.position);
 
                 if (distanciaMinimaActual <= distanciaTmp)
                 {
                     distanciaTmp = distanciaMinimaActual;
-                    currentTarget = allies[i];
+                    currentTarget = allies[i].gameObject;
                 }
             }
 
@@ -88,8 +85,15 @@ namespace PathFinding
             {
                 enemyMovement.FindPath(currentEnemy.transform.position, currentTarget.transform.position);
                 Move(enemyMovement);
-            }
+                
 
+            }
+            else
+            {
+                currentEnemy.hasMoved = true;
+                currentEnemy.hasAttacked = true;
+            }
+            
         }
 
 
@@ -101,7 +105,16 @@ namespace PathFinding
                 currentEnemy.transform.DOMove(t.worldPosition, 1f, true);
                 currentEnemy.hasMoved = true;
             }
+            currentEnemy.hasMoved = true;
 
+            EnemyCombat();
+
+          //  yield return new WaitForSeconds(2f);
+
+        }
+
+        void EnemyCombat()
+        {
             Unit currentUnit = currentEnemy.GetComponent<Unit>();
             Unit currentTargetUnit = currentTarget.GetComponent<Unit>();
 
@@ -111,21 +124,21 @@ namespace PathFinding
             }
             else
             {
-                if (currentTargetUnit.hasAttacked == false)
+                if (currentUnit.hasAttacked == false)
                 {
-                    currentTargetUnit.Attack(currentUnit);
+                    currentUnit.Attack(currentTargetUnit);
 
-                    if (currentUnit.hitPoints > 0)
+                    if (currentTargetUnit.hitPoints > 0)
                     {
-                        currentUnit.Attack(currentTargetUnit);
+                        currentTargetUnit.Attack(currentUnit);
                     }
                     else
                     {
-                        currentUnit.isDead = true;
-                        turnSystem.enemyCount--;
+                        currentTargetUnit.isDead = true;
+                        turnSystem.playerCount++;
                     }
 
-                    currentTargetUnit.hasAttacked = true;
+                    currentUnit.hasAttacked = true;
                 }
                 else
                 {
