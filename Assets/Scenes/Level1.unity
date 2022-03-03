@@ -644,6 +644,7 @@ MonoBehaviour:
   enemyTitle: {fileID: 498426807}
   enemyCount: 0
   playerCount: 0
+  enemyMovement: {fileID: 785611018}
 --- !u!1 &224155700
 GameObject:
   m_ObjectHideFlags: 0
@@ -3968,6 +3969,7 @@ MonoBehaviour:
   currentEnemy: {fileID: 0}
   map: {fileID: 224155703}
   turnSystem: {fileID: 212247447}
+  StartCombat: 0
 --- !u!114 &785611020
 MonoBehaviour:
   m_ObjectHideFlags: 0

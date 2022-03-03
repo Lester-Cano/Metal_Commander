@@ -5,6 +5,7 @@ using DG.Tweening;
 using Unity.Mathematics;
 using UnityEngine.Tilemaps;
 using System.Linq;
+using TurnSystem.States;
 
 namespace PathFinding
 {
@@ -21,6 +22,8 @@ namespace PathFinding
 
         [SerializeField] public TurnSystem.TurnSystem turnSystem;
 
+        [SerializeField] public bool StartCombat = false;
+
         void Start()
         {
 
@@ -32,28 +35,33 @@ namespace PathFinding
         void Update()
         {
 
-           /* if ()
+            if (StartCombat)
             {
                 StartCoroutine(StartEnemy());
             }
 
-    */
+    
         }
 
 
         IEnumerator StartEnemy()
         {
+
+            StartCombat = false;
+
             for (int i = 0; i < enemies.Count; i++)
             {
                 currentEnemy = enemies[i];
 
                 enemyMovement = currentEnemy.GetComponent<Pathfinding2D>();
-                //SearchForAllies();
                 SearchForAllies();
 
                 yield return new WaitForSeconds(2f);
 
             }
+
+            turnSystem.SetState(new PlayerTurnState(turnSystem));
+
         }
 
 
@@ -88,11 +96,7 @@ namespace PathFinding
                 
 
             }
-            else
-            {
-                currentEnemy.hasMoved = true;
-                currentEnemy.hasAttacked = true;
-            }
+            
             
         }
 
@@ -103,9 +107,7 @@ namespace PathFinding
             foreach (var t in unitPath.path.Take(unitPath.path.Count - 1))
             {
                 currentEnemy.transform.DOMove(t.worldPosition, 1f, true);
-                currentEnemy.hasMoved = true;
             }
-            currentEnemy.hasMoved = true;
 
             EnemyCombat();
 
@@ -124,26 +126,18 @@ namespace PathFinding
             }
             else
             {
-                if (currentUnit.hasAttacked == false)
+                currentUnit.Attack(currentTargetUnit);
+
+                if (currentTargetUnit.hitPoints > 0)
                 {
-                    currentUnit.Attack(currentTargetUnit);
-
-                    if (currentTargetUnit.hitPoints > 0)
-                    {
-                        currentTargetUnit.Attack(currentUnit);
-                    }
-                    else
-                    {
-                        currentTargetUnit.isDead = true;
-                        turnSystem.playerCount++;
-                    }
-
-                    currentUnit.hasAttacked = true;
+                    currentTargetUnit.Attack(currentUnit);
                 }
                 else
                 {
-                    Debug.Log("Unit already attacked");
+                    currentTargetUnit.isDead = true;
+                    turnSystem.playerCount++;
                 }
+
                 currentTarget = null;
             }
 
