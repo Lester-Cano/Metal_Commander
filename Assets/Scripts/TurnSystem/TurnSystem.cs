@@ -4,6 +4,7 @@ using MapSystem;
 using Menu___UI;
 using TurnSystem.States;
 using UnityEngine;
+using PathFinding;
 
 namespace TurnSystem
 {
@@ -20,6 +21,8 @@ namespace TurnSystem
         [SerializeField] public int enemyCount;
         [SerializeField] public int playerCount;
 
+        [SerializeField] public EnemyMovement enemyMovement;
+
         private void Start()
         {
             // !! Initialize interface. !!
@@ -28,12 +31,12 @@ namespace TurnSystem
 
         private void Update()
         {
-            if (playerCount >= allyTeam.Count)
+            if (playerCount > allyTeam.Count)
             {
                 SetState(new LostState(this));
             }
 
-            if (enemyCount >= enemyTeam.Count)
+            if (enemyCount > enemyTeam.Count)
             {
                 SetState(new WonState(this));
             }
