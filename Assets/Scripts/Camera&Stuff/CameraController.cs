@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.Tilemaps;
+using DG.Tweening;
 
 namespace Camera_Stuff
 {
@@ -7,9 +7,6 @@ namespace Camera_Stuff
     {
         [SerializeField] public Camera cam;
         [SerializeField] public Vector3 newDirection;
-
-        [SerializeField] private Tilemap mapLimit;
-
         public void PanCamera(string direction)
         {
             if (direction == "Up")

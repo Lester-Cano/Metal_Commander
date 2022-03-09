@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "KPSDU18831023941",
         "name": "com.DefaultCompany.com.unity.template.mobile2D",
-        "processId": 7675,
+        "processId": 25969,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -18,6 +18,12 @@
             "deviceId": "KPSDU18831023941",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 7675,
+            "exited": false
+        },
+        {
+            "deviceId": "KPSDU18831023941",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 25969,
             "exited": false
         }
     ],
