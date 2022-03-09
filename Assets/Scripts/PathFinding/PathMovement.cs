@@ -20,6 +20,11 @@ namespace PathFinding
         //From here, TurnSystem
 
         [SerializeField] private TurnSystem.TurnSystem turnSystem;
+        
+        //From here, SoundSystem
+
+        [SerializeField] private AudioManager source;
+        
         private void Update()
         {
             if (Input.GetMouseButtonDown(0) && !grabed && !selectedNewSpace)
@@ -49,6 +54,8 @@ namespace PathFinding
             }
             if (hitData.transform.gameObject.CompareTag("Ally"))
             {
+                source.Play("SelectedUnit");
+                
                 selectedUnit = hitData.transform.gameObject.GetComponent<Unit>();
                 pathMovement = selectedUnit.GetComponent<Pathfinding2D>();
                 
@@ -69,6 +76,8 @@ namespace PathFinding
         {
             if (grabed == true)
             {
+                source.Play("SelectedSpace");
+                
                 Vector2 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
                 Vector3 gridPosition = map.WorldToCell(mousePosition);
 
