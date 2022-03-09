@@ -15,6 +15,10 @@ public class Unit : MonoBehaviour
 
     [SerializeField] public GameObject path;
 
+    //UI for healthbar
+
+    [SerializeField] public HealthBarBehaviour healthBarBehaviour;
+
     public Unit(int hitPoints, int maxHP, int attack, int defense, int movement, int weaponPower)
     {
         this.hitPoints = hitPoints;
@@ -24,6 +28,8 @@ public class Unit : MonoBehaviour
         this.movement = movement;
         this.weaponPower = weaponPower;
     }
+
+    
 
     #endregion
 
