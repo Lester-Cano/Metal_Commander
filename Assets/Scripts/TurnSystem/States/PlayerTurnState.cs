@@ -26,6 +26,7 @@ namespace TurnSystem.States
             // !! Set "Player Turn" text. !!
 
             TurnSystem.titleSystem.SetTitle(TurnSystem.playerTitle);
+            TurnSystem.playerUI.SetActive(true);
 
             yield return new WaitForSeconds(2f);
             

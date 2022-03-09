@@ -93,11 +93,7 @@ namespace PathFinding
             {
                 enemyMovement.FindPath(currentEnemy.transform.position, currentTarget.transform.position);
                 Move(enemyMovement);
-                
-
             }
-            
-            
         }
 
 
@@ -108,11 +104,7 @@ namespace PathFinding
             {
                 currentEnemy.transform.DOMove(t.worldPosition, 1f, true);
             }
-
             EnemyCombat();
-
-          //  yield return new WaitForSeconds(2f);
-
         }
 
         void EnemyCombat()

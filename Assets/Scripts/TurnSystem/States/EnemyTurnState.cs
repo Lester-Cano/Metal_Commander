@@ -16,6 +16,7 @@ namespace TurnSystem.States
         public override IEnumerator Start()
         {
             TurnSystem.titleSystem.SetTitle(TurnSystem.enemyTitle);
+            TurnSystem.playerUI.SetActive(false);
 
             yield return new WaitForSeconds(2f);
             

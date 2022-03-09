@@ -14,6 +14,7 @@ namespace TurnSystem
         [SerializeField] public MapManager mapSystem;
         [SerializeField] public ButtonBehaviour screenSystem;
         [SerializeField] public TitleBehaviour titleSystem;
+        [SerializeField] public GameObject playerUI;
         
         [SerializeField] public GameObject playerTitle;
         [SerializeField] public GameObject enemyTitle;

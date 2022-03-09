@@ -9,7 +9,7 @@ public class Unit : MonoBehaviour
     [SerializeField] public string unitName, className, unitSide;
     [SerializeField] public int hitPoints, maxHP, movement, weaponPower, attack, defense;
     [SerializeField] public bool hasMoved, isDead, hasAttacked;
-    [SerializeField] public AudioClip getHit, hit;
+    [SerializeField] public AudioClip getHit, hit, selected, spaceSelected;
 
     [SerializeField] private GameObject parent;
 
@@ -18,6 +18,10 @@ public class Unit : MonoBehaviour
     //UI for healthbar
 
     [SerializeField] public HealthBarBehaviour healthBarBehaviour;
+    
+    //From here audio System
+
+    [SerializeField] private AudioManager source;
 
     public Unit(int hitPoints, int maxHP, int attack, int defense, int movement, int weaponPower)
     {
@@ -28,10 +32,12 @@ public class Unit : MonoBehaviour
         this.movement = movement;
         this.weaponPower = weaponPower;
     }
-
-    
-
     #endregion
+
+    private void Start()
+    {
+        source = FindObjectOfType<AudioManager>();
+    }
 
     private void Update()
     {
@@ -46,32 +52,19 @@ public class Unit : MonoBehaviour
 
     public void Attack(Unit attacked)
     {
-        if (this.unitSide != attacked.unitSide)
-        {
-            attacked.hitPoints -= this.weaponPower + this.attack - attacked.defense;
-        }
-        else
-        {
-            Debug.Log("Can�t attack an ally");
-            return;
-        }
+        source.Play("Hit");
+        source.Play("GetHit");
+
+        attacked.hitPoints -= weaponPower + attack - attacked.defense;
     }
 
     public void Heal(Unit healed)
     {
-        if (this.unitSide == healed.unitSide)
+        healed.hitPoints += weaponPower + attack - attack / 3;
+        
+        if (healed.hitPoints > healed.maxHP)
         {
-            healed.hitPoints += this.weaponPower + this.attack - this.attack / 3;
-
-            if (healed.hitPoints > healed.maxHP)
-            {
-                healed.hitPoints = healed.maxHP;
-            }
-        }
-        else
-        {
-            Debug.Log("Can�t heal an enemy");
-            return;
+            healed.hitPoints = healed.maxHP;
         }
     }
     #endregion
