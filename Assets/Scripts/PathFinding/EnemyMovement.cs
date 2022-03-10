@@ -17,7 +17,7 @@ namespace PathFinding
         [SerializeField] public List<Unit> enemies;
         [SerializeField] public List<Unit> allies;
         [SerializeField] Unit currentEnemy;
-        GameObject currentTarget = null;
+        [SerializeField] GameObject currentTarget = null;
         [SerializeField] private Tilemap map;
 
         [SerializeField] public TurnSystem.TurnSystem turnSystem;
@@ -75,18 +75,18 @@ namespace PathFinding
         void SearchForAllies()
         {
             float distanciaMinima = 4f;
-
-            float distanciaTmp = distanciaMinima;
+;
 
             for (int i = 0; i < allies.Count; i++)
             {
                 float distanciaMinimaActual = Vector3.Distance(currentEnemy.transform.position, allies[i].transform.position);
 
-                if (distanciaMinimaActual <= distanciaTmp)
+                if (distanciaMinimaActual <= distanciaMinima)
                 {
-                    distanciaTmp = distanciaMinimaActual;
+                    distanciaMinima = distanciaMinimaActual;
                     currentTarget = allies[i].gameObject;
                 }
+                
             }
 
             if (currentTarget != null)
@@ -111,6 +111,7 @@ namespace PathFinding
         {
             Unit currentUnit = currentEnemy.GetComponent<Unit>();
             Unit currentTargetUnit = currentTarget.GetComponent<Unit>();
+            currentTarget = null;
 
             if (currentUnit == null || currentTargetUnit == null)
             {
@@ -118,10 +119,11 @@ namespace PathFinding
             }
             else
             {
-                currentUnit.Attack(currentTargetUnit);
+                
 
                 if (currentTargetUnit.hitPoints > 0)
                 {
+                    currentUnit.Attack(currentTargetUnit);
                     currentTargetUnit.Attack(currentUnit);
                 }
                 else
@@ -130,7 +132,7 @@ namespace PathFinding
                     turnSystem.playerCount++;
                 }
 
-                currentTarget = null;
+               
             }
 
         }
