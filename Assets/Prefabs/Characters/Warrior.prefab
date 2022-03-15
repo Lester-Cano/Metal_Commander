@@ -222,7 +222,8 @@ MonoBehaviour:
   parent: {fileID: 987571919943208402}
   path: {fileID: 7745854566709218334}
   healthBarBehaviour: {fileID: 3756915774074777390}
-  audioSystem: {fileID: 6424123691857572085, guid: 6057b184017561644ae35b1730f32473, type: 3}
+  source: {fileID: 0}
+  anim: {fileID: 9091316174416116191}
 --- !u!95 &9091316174416116191
 Animator:
   serializedVersion: 3

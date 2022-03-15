@@ -56,11 +56,11 @@ public class BattleSystem : MonoBehaviour
         {
             if (unit2.hasAttacked == false)
             {
-                unit2.Attack(unit1);
+                StartCoroutine(unit2.Attack(unit1));
                 
                 if (unit1.hitPoints > 0)
                 {
-                    unit1.Attack(unit2);
+                    StartCoroutine(unit1.Attack(unit2));
                 }
                 else
                 {
