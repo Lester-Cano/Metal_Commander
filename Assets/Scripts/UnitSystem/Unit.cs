@@ -68,6 +68,26 @@ public class Unit : MonoBehaviour
         source.Play("GetHit");
 
         attacked.hitPoints -= weaponPower + attack - attacked.defense;
+
+        if (attacked.hitPoints > 0)
+        {
+            attacked.anim.SetBool("Attack", true);
+
+            yield return new WaitForSeconds(1f);
+            
+            attacked.source.Play("Hit");
+            attacked.anim.SetBool("Attack", false);
+            
+            yield return new WaitForSeconds(0.2f);
+        
+            attacked.source.Play("GetHit");
+            
+            hitPoints -= attacked.weaponPower + attacked.attack - defense;
+        }
+        else
+        {
+            attacked.isDead = true;
+        }
     }
 
     public void Heal(Unit healed)

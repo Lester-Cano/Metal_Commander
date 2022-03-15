@@ -126,11 +126,10 @@ namespace PathFinding
 
                     StartCoroutine(currentUnit.Attack(currentTargetUnit));
 
-                    StartCoroutine(currentTargetUnit.Attack(currentUnit));
+                    //StartCoroutine(currentTargetUnit.Attack(currentUnit));
                 }
                 else
                 {
-                    currentTargetUnit.isDead = true;
                     turnSystem.playerCount++;
                 }
 

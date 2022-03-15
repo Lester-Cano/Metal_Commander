@@ -58,18 +58,12 @@ public class BattleSystem : MonoBehaviour
             {
                 StartCoroutine(unit2.Attack(unit1));
                 
-                if (unit1.hitPoints > 0)
+                if (unit1.hitPoints <= 0)
                 {
-                    StartCoroutine(unit1.Attack(unit2));
-                }
-                else
-                {
-                    unit1.isDead = true;
                     turnSystem.enemyCount++;
                 }
 
                 unit2.hasAttacked = true;
-                
                 buttonContainer.SetActive(false);
             }
             else
