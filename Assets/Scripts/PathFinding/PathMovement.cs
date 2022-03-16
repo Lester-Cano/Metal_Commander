@@ -62,7 +62,7 @@ namespace PathFinding
                 
                 grabed = true;
                 
-                if (selectedUnit.hasMoved == true)
+                if (selectedUnit.hasMoved)
                 {
                     grabed = false;
                     selectedUnit.path.SetActive(false);
@@ -72,7 +72,7 @@ namespace PathFinding
 
         void SelectNewSpace()
         {
-            if (grabed == true)
+            if (grabed)
             {
                 source.Play("SelectedSpace");
                 
@@ -115,7 +115,7 @@ namespace PathFinding
             selectedUnit.anim.SetBool("Walk1", true);
              foreach (var t in unitPath.path)
              {
-                 selectedUnit.transform.DOMove(t.worldPosition, 1.5f, true);
+                 selectedUnit.transform.DOMove(t.worldPosition, 0.5f, true);
                  selectedUnit.hasMoved = true;
              }
              

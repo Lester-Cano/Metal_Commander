@@ -89,7 +89,7 @@ namespace PathFinding
             currentEnemy.path.SetActive(false);
             foreach (var t in unitPath.path.Take(unitPath.path.Count - 1))
             {
-                currentEnemy.transform.DOMove(t.worldPosition, 1f, true);
+                currentEnemy.transform.DOMove(t.worldPosition, 0.5f, true);
             }
 
             if (currentEnemy.hitPoints > 0 && currentPlayer.hitPoints > 0)
