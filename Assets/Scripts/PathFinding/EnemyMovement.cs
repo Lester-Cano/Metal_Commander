@@ -119,9 +119,7 @@ namespace PathFinding
             }
             else
             {
-                
-
-                if (currentTargetUnit.hitPoints > 0)
+                if (currentTargetUnit.hitPoints > 0 || currentUnit.hitPoints > 0)
                 {
 
                     StartCoroutine(currentUnit.Attack(currentTargetUnit));

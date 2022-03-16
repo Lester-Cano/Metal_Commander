@@ -61,6 +61,7 @@ public class BattleSystem : MonoBehaviour
                 if (unit1.hitPoints <= 0)
                 {
                     turnSystem.enemyCount++;
+                    Debug.Log("Enemy defeated");
                 }
 
                 unit2.hasAttacked = true;

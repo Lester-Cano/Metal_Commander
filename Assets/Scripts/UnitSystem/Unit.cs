@@ -86,7 +86,18 @@ public class Unit : MonoBehaviour
         }
         else
         {
+            attacked.anim.SetBool("Death", true);
+
+            yield return new WaitForSeconds(1.2f);
             attacked.isDead = true;
+        }
+
+        if (hitPoints <= 0)
+        {
+            anim.SetBool("Death", true);
+
+            yield return new WaitForSeconds(1.2f);
+            isDead = true;
         }
     }
 
