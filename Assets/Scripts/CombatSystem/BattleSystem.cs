@@ -10,13 +10,10 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] private Collider2D unitInspector;
     [SerializeField] private GameObject buttonContainer;
 
-    [SerializeField] private TurnSystem.TurnSystem turnSystem;
-
     void Start()
     {
         unit1 = GetComponentInParent<Unit>();
         buttonContainer.SetActive(false);
-        turnSystem = FindObjectOfType<TurnSystem.TurnSystem>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -48,29 +45,12 @@ public class BattleSystem : MonoBehaviour
 
     public void Combat()
     {
-        if (unit1 == null || unit2 == null)
+        if (unit2.hasAttacked == false)
         {
-            return;
-        }
-        else
-        {
-            if (unit2.hasAttacked == false)
-            {
-                StartCoroutine(unit2.Attack(unit1));
-                
-                if (unit1.hitPoints <= 0)
-                {
-                    turnSystem.enemyCount++;
-                    Debug.Log("Enemy defeated");
-                }
+            StartCoroutine(unit2.Attack(unit1));
 
-                unit2.hasAttacked = true;
-                buttonContainer.SetActive(false);
-            }
-            else
-            {
-                Debug.Log("Unit already attacked");
-            }
+            unit2.hasAttacked = true;
+            buttonContainer.SetActive(false);
         }
     }
 }
