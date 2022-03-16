@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Unit : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Unit : MonoBehaviour
     [SerializeField] public int hitPoints, maxHP, movement, weaponPower, attack, defense;
     [SerializeField] public bool hasMoved, isDead, hasAttacked;
     [SerializeField] public AudioClip getHit, hit, selected, spaceSelected;
+    [SerializeField] public Sprite portrait;
 
     [SerializeField] private GameObject parent;
 

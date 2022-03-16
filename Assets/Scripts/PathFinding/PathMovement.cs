@@ -114,11 +114,14 @@ namespace PathFinding
         private void Move(Pathfinding2D unitPath)
         {
             selectedUnit.path.SetActive(false);
+            selectedUnit.anim.SetBool("Walk1", true);
              foreach (var t in unitPath.path)
              {
                  selectedUnit.transform.DOMove(t.worldPosition, 1.5f, true);
                  selectedUnit.hasMoved = true;
              }
+             
+             selectedUnit.anim.SetBool("Walk1", false);
         }
     }
 }
