@@ -18,11 +18,11 @@ namespace TurnSystem.States
             TurnSystem.titleSystem.SetTitle(TurnSystem.enemyTitle);
             TurnSystem.playerUI.SetActive(false);
 
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
             
             TurnSystem.titleSystem.RemoveTitle(TurnSystem.enemyTitle);
 
-            this.enemyMovement = TurnSystem.enemyMovement;
+            enemyMovement = TurnSystem.enemyMovement;
             enemyMovement.StartCombat = true;
 
             
@@ -30,7 +30,7 @@ namespace TurnSystem.States
         
         public override IEnumerator CheckState()
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
             
             for (int i = 0; i < TurnSystem.allyTeam.Count; i++)
             {

@@ -12,10 +12,10 @@ namespace TurnSystem
     {
         public List<Unit> allyTeam, enemyTeam;
         [SerializeField] public MapManager mapSystem;
+        
         [SerializeField] public ButtonBehaviour screenSystem;
         [SerializeField] public TitleBehaviour titleSystem;
         [SerializeField] public GameObject playerUI;
-        
         [SerializeField] public GameObject playerTitle;
         [SerializeField] public GameObject enemyTitle;
 
@@ -23,6 +23,7 @@ namespace TurnSystem
         [SerializeField] public int playerCount;
 
         [SerializeField] public EnemyMovement enemyMovement;
+        
 
         private void Start()
         {

@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using Unity.Mathematics;
 using UnityEngine.Tilemaps;
 using System.Linq;
 using TurnSystem.States;
@@ -16,9 +15,9 @@ namespace PathFinding
         [SerializeField] private Pathfinding2D enemyMovement;
         [SerializeField] public List<Unit> enemies;
         [SerializeField] public List<Unit> allies;
-        [SerializeField] Unit currentEnemy;
-        [SerializeField] GameObject currentTarget = null;
-        [SerializeField] private Tilemap map;
+        [SerializeField] private Unit currentEnemy;
+        [SerializeField] private GameObject currentTarget = null;
+        [SerializeField] private Unit currentPlayer;
 
         [SerializeField] public TurnSystem.TurnSystem turnSystem;
 
@@ -26,77 +25,65 @@ namespace PathFinding
 
         void Start()
         {
-
             FindEntities();
-
         }
-
 
         void Update()
         {
-
             if (StartCombat)
             {
                 StartCoroutine(StartEnemy());
             }
-
-    
         }
-
-
+        
         IEnumerator StartEnemy()
         {
-
             StartCombat = false;
-
+            
             for (int i = 0; i < enemies.Count; i++)
             {
                 currentEnemy = enemies[i];
 
-                enemyMovement = currentEnemy.GetComponent<Pathfinding2D>();
-                SearchForAllies();
+                if (currentEnemy.hitPoints > 0)
+                {
+                    enemyMovement = currentEnemy.GetComponent<Pathfinding2D>();
+                    SearchForAllies();
 
-                yield return new WaitForSeconds(2f);
-
+                    yield return new WaitForSeconds(2f);
+                }
             }
-
+            
             turnSystem.SetState(new PlayerTurnState(turnSystem));
-
         }
-
-
+        
         void FindEntities()
         {
             enemies = turnSystem.enemyTeam;
             allies = turnSystem.allyTeam;
         }
         
-
         void SearchForAllies()
         {
-            float distanciaMinima = 4f;
+            var minDistance = 4f;
 ;
-
-            for (int i = 0; i < allies.Count; i++)
+            foreach (var t in allies)
             {
-                float distanciaMinimaActual = Vector3.Distance(currentEnemy.transform.position, allies[i].transform.position);
+                var actualMinDistance = Vector3.Distance(currentEnemy.transform.position, t.transform.position);
 
-                if (distanciaMinimaActual <= distanciaMinima)
+                if (actualMinDistance <= minDistance && t.hitPoints > 0)
                 {
-                    distanciaMinima = distanciaMinimaActual;
-                    currentTarget = allies[i].gameObject;
+                    minDistance = actualMinDistance;
+                    currentTarget = t.gameObject;
+                    currentPlayer = currentTarget.GetComponent<Unit>();
                 }
-                
             }
-
             if (currentTarget != null)
             {
                 enemyMovement.FindPath(currentEnemy.transform.position, currentTarget.transform.position);
                 Move(enemyMovement);
             }
         }
-
-
+        
         void Move(Pathfinding2D unitPath)
         {
             currentEnemy.path.SetActive(false);
@@ -104,39 +91,21 @@ namespace PathFinding
             {
                 currentEnemy.transform.DOMove(t.worldPosition, 1f, true);
             }
-            EnemyCombat();
+
+            if (currentEnemy.hitPoints > 0 && currentPlayer.hitPoints > 0)
+            {
+                EnemyCombat();
+            }
         }
 
         void EnemyCombat()
         {
-            Unit currentUnit = currentEnemy.GetComponent<Unit>();
-            Unit currentTargetUnit = currentTarget.GetComponent<Unit>();
             currentTarget = null;
-
-            if (currentUnit == null || currentTargetUnit == null)
+            
+            if (currentPlayer != null)
             {
-                return;
+                StartCoroutine(currentEnemy.Attack(currentPlayer));
             }
-            else
-            {
-                
-
-                if (currentTargetUnit.hitPoints > 0)
-                {
-
-                    StartCoroutine(currentUnit.Attack(currentTargetUnit));
-
-                    //StartCoroutine(currentTargetUnit.Attack(currentUnit));
-                }
-                else
-                {
-                    turnSystem.playerCount++;
-                }
-
-               
-            }
-
         }
-
     }
 }

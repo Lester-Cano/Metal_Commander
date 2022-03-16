@@ -10,23 +10,20 @@ public class HealthBarBehaviour : MonoBehaviour
     public Vector3 offset;
     public Unit unit;
 
+    private void Start()
+    {
+        unit = GetComponentInParent<Unit>();
+    }
+    
+    private void Update()
+    {
+        slider.transform.position = Camera.main.WorldToScreenPoint(transform.parent.position + offset);
+        SetHealth(unit.hitPoints, unit.maxHP);
+    }
+    
     public void SetHealth(float health, float maxHealth)
     {
         slider.value = health;
         slider.maxValue = maxHealth;
-    }
-
-    void Start()
-    {
-        unit = GetComponentInParent<Unit>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-        slider.transform.position = Camera.main.WorldToScreenPoint(transform.parent.position + offset);
-        SetHealth(unit.hitPoints, unit.maxHP);
-
     }
 }

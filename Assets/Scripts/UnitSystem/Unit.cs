@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Unit : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Unit : MonoBehaviour
     [SerializeField] public int hitPoints, maxHP, movement, weaponPower, attack, defense;
     [SerializeField] public bool hasMoved, isDead, hasAttacked;
     [SerializeField] public AudioClip getHit, hit, selected, spaceSelected;
+    [SerializeField] public Sprite portrait;
 
     [SerializeField] private GameObject parent;
 
@@ -26,6 +28,8 @@ public class Unit : MonoBehaviour
     //Animator
 
     [SerializeField] public Animator anim;
+    
+    [SerializeField] private TurnSystem.TurnSystem turnSystem;
 
     public Unit(int hitPoints, int maxHP, int attack, int defense, int movement, int weaponPower)
     {
@@ -41,6 +45,7 @@ public class Unit : MonoBehaviour
     private void Start()
     {
         source = FindObjectOfType<AudioManager>();
+        turnSystem = FindObjectOfType<TurnSystem.TurnSystem>();
     }
 
     private void Update()
@@ -84,9 +89,45 @@ public class Unit : MonoBehaviour
             
             hitPoints -= attacked.weaponPower + attacked.attack - defense;
         }
-        else
+        
+        if (attacked.hitPoints <= 0)
         {
+            attacked.anim.SetBool("Death", true);
+
+            yield return new WaitForSeconds(1.2f);
+            
+            if (attacked.CompareTag("Ally"))
+            {
+                turnSystem.playerCount++;
+                Debug.Log("Player defeated");
+            }
+            if (attacked.CompareTag("Enemy"))
+            {
+                turnSystem.enemyCount++;
+                Debug.Log("Enemy defeated");
+            }
+            
             attacked.isDead = true;
+        }
+
+        if (hitPoints <= 0)
+        {
+            anim.SetBool("Death", true);
+
+            yield return new WaitForSeconds(1.2f);
+            
+            if (CompareTag("Ally"))
+            {
+                turnSystem.playerCount++;
+                Debug.Log("Player defeated");
+            }
+            if (CompareTag("Enemy"))
+            {
+                turnSystem.enemyCount++;
+                Debug.Log("Enemy defeated");
+            }
+            
+            isDead = true;
         }
     }
 
