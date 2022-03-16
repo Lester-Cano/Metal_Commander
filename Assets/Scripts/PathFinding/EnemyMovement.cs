@@ -123,12 +123,13 @@ namespace PathFinding
 
                 if (currentTargetUnit.hitPoints > 0)
                 {
-                    currentUnit.Attack(currentTargetUnit);
-                    currentTargetUnit.Attack(currentUnit);
+
+                    StartCoroutine(currentUnit.Attack(currentTargetUnit));
+
+                    //StartCoroutine(currentTargetUnit.Attack(currentUnit));
                 }
                 else
                 {
-                    currentTargetUnit.isDead = true;
                     turnSystem.playerCount++;
                 }
 
