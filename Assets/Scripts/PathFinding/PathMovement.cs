@@ -49,7 +49,6 @@ namespace PathFinding
             }
             if (hitData.transform.gameObject.CompareTag("Enemy"))
             {
-                Debug.Log("Cant pick an enemy");
                 grabed = false;
             }
             if (hitData.transform.gameObject.CompareTag("Ally"))
@@ -67,7 +66,6 @@ namespace PathFinding
                 {
                     grabed = false;
                     selectedUnit.path.SetActive(false);
-                    Debug.Log("Unit already acted");
                 }
             }
         }
