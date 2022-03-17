@@ -40,8 +40,6 @@ namespace Camera_Stuff
 
         public void ReBound()
         {
-            Debug.Log("rebounding");
-            
             Vector3 targetPosition = cam.transform.position;
             Vector3 boundPosition = new Vector3(Mathf.Clamp(targetPosition.x, minValue.x, maxValue.x)
                 , Mathf.Clamp(targetPosition.y, minValue.y, maxValue.y)
