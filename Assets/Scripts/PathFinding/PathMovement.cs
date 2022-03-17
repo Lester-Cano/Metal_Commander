@@ -13,7 +13,6 @@ namespace PathFinding
         [SerializeField] private Unit selectedUnit;
         [SerializeField] private GameObject target;
         [SerializeField] private Tilemap map;
-        [SerializeField] private Camera mainCamera;
         private bool grabed;
         private bool selectedNewSpace;
 
@@ -39,7 +38,7 @@ namespace PathFinding
 
         private void SelectUnit()
         {
-            Vector2 worldPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 worldPosition = turnSystem.mainCamera.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D hitData = Physics2D.Raycast(worldPosition, Vector2.zero, 0);
 
             if (!hitData)
@@ -62,6 +61,8 @@ namespace PathFinding
                 
                 grabed = true;
                 
+                turnSystem.mainCamera.transform.DOMove(new Vector3(0, 0, -10) + selectedUnit.transform.position, 0.2f, false);
+                
                 if (selectedUnit.hasMoved)
                 {
                     grabed = false;
@@ -76,7 +77,7 @@ namespace PathFinding
             {
                 source.Play("SelectedSpace");
                 
-                Vector2 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+                Vector2 mousePosition = turnSystem.mainCamera.ScreenToWorldPoint(Input.mousePosition);
                 Vector3 gridPosition = map.WorldToCell(mousePosition);
 
                 var newTarget = Instantiate(target, gridPosition, quaternion.identity);
@@ -113,13 +114,15 @@ namespace PathFinding
         {
             selectedUnit.path.SetActive(false);
             selectedUnit.anim.SetBool("Walk1", true);
+            
              foreach (var t in unitPath.path)
              {
                  selectedUnit.transform.DOMove(t.worldPosition, 0.5f, true);
-                 selectedUnit.hasMoved = true;
              }
-             
+
              selectedUnit.anim.SetBool("Walk1", false);
+             
+             selectedUnit.hasMoved = true;
         }
     }
 }

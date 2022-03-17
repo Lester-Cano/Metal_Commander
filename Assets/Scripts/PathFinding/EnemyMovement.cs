@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using UnityEngine.Tilemaps;
 using System.Linq;
 using TurnSystem.States;
 
@@ -86,11 +85,12 @@ namespace PathFinding
         
         void Move(Pathfinding2D unitPath)
         {
-            currentEnemy.path.SetActive(false);
             foreach (var t in unitPath.path.Take(unitPath.path.Count - 1))
             {
                 currentEnemy.transform.DOMove(t.worldPosition, 0.5f, true);
             }
+            
+            turnSystem.mainCamera.transform.DOMove(new Vector3(0, 0, -10) + currentEnemy.transform.position, 0.2f, false);
 
             if (currentEnemy.hitPoints > 0 && currentPlayer.hitPoints > 0)
             {

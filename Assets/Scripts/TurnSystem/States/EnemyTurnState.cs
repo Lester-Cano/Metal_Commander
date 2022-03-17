@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using PathFinding;
+using DG.Tweening;
 
 namespace TurnSystem.States
 {
@@ -21,11 +22,22 @@ namespace TurnSystem.States
             yield return new WaitForSeconds(1f);
             
             TurnSystem.titleSystem.RemoveTitle(TurnSystem.enemyTitle);
+            
+            bool cameraSet = false;
+
+            // foreach (var unit in TurnSystem.enemyTeam)
+            // {
+            //     if (unit.hitPoints > 0)
+            //     {
+            //         TurnSystem.mainCamera.transform.DOMove(new Vector3(0, 0, -10) + unit.transform.position, 0.5f, false);
+            //         cameraSet = true;
+            //     }
+            // }
+            //
+            // cameraSet = false;
 
             enemyMovement = TurnSystem.enemyMovement;
             enemyMovement.StartCombat = true;
-
-            
         }
         
         public override IEnumerator CheckState()
