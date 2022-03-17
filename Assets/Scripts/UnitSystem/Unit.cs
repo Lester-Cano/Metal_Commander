@@ -31,6 +31,12 @@ public class Unit : MonoBehaviour
     
     [SerializeField] private TurnSystem.TurnSystem turnSystem;
 
+    [SerializeField] private SpriteRenderer renderer;
+    
+    //enemy range
+
+    [SerializeField] public GameObject range;
+
     public Unit(int hitPoints, int maxHP, int attack, int defense, int movement, int weaponPower)
     {
         this.hitPoints = hitPoints;
@@ -44,6 +50,7 @@ public class Unit : MonoBehaviour
 
     private void Start()
     {
+        renderer = GetComponentInParent<SpriteRenderer>();
         source = FindObjectOfType<AudioManager>();
         turnSystem = FindObjectOfType<TurnSystem.TurnSystem>();
     }
@@ -53,6 +60,16 @@ public class Unit : MonoBehaviour
         if (isDead)
         {
             parent.SetActive(false);
+        }
+
+        if (hasMoved)
+        {
+            renderer.color = Color.gray;
+        }
+
+        if (!hasMoved)
+        {
+            renderer.color = Color.white;
         }
     }
     

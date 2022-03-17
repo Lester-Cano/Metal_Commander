@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -19.96188, y: -4.9349995}
-  m_SizeDelta: {x: 25.923758, y: -3.929999}
+  m_SizeDelta: {x: 0, y: -3.929999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3891598123469138161
 CanvasRenderer:
@@ -225,6 +225,7 @@ MonoBehaviour:
   healthBarBehaviour: {fileID: 3756915774074777390}
   source: {fileID: 0}
   anim: {fileID: 9091316174416116191}
+  turnSystem: {fileID: 0}
 --- !u!95 &9091316174416116191
 Animator:
   serializedVersion: 3
@@ -500,7 +501,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 0, y: 0.25}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 62.5, y: 12.5}
+  m_SizeDelta: {x: 33.66, y: 12.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9086634677563044041
 CanvasRenderer:

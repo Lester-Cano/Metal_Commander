@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using DG.Tweening;
 
@@ -7,6 +8,13 @@ namespace Camera_Stuff
     {
         [SerializeField] public Camera cam;
         [SerializeField] public Vector3 newDirection;
+        [SerializeField] public Vector3 maxValue, minValue;
+
+        private void Update()
+        {
+            //ReBound();
+        }
+
         public void PanCamera(string direction)
         {
             if (direction == "Up")
@@ -29,6 +37,16 @@ namespace Camera_Stuff
                 newDirection = Vector3.left;
                 cam.transform.position += newDirection;
             }
+        }
+
+        void ReBound()
+        {
+            Vector3 targetPosition = cam.transform.position;
+            Vector3 boundPosition = new Vector3(Mathf.Clamp(targetPosition.x, minValue.x, maxValue.x)
+                , Mathf.Clamp(targetPosition.y, minValue.y, maxValue.y)
+                , Mathf.Clamp(targetPosition.z, minValue.z, maxValue.z));
+
+            cam.transform.position = boundPosition;
         }
     }
 }

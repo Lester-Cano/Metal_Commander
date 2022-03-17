@@ -22,6 +22,8 @@ namespace TurnSystem
         [SerializeField] public int enemyCount;
         [SerializeField] public int playerCount;
 
+        [SerializeField] public Camera mainCamera;
+
         [SerializeField] public EnemyMovement enemyMovement;
         
 
