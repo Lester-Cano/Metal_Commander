@@ -99,12 +99,10 @@ public class Unit : MonoBehaviour
             if (attacked.CompareTag("Ally"))
             {
                 turnSystem.playerCount++;
-                Debug.Log("Player defeated");
             }
             if (attacked.CompareTag("Enemy"))
             {
                 turnSystem.enemyCount++;
-                Debug.Log("Enemy defeated");
             }
             
             attacked.isDead = true;
@@ -119,12 +117,10 @@ public class Unit : MonoBehaviour
             if (CompareTag("Ally"))
             {
                 turnSystem.playerCount++;
-                Debug.Log("Player defeated");
             }
             if (CompareTag("Enemy"))
             {
                 turnSystem.enemyCount++;
-                Debug.Log("Enemy defeated");
             }
             
             isDead = true;

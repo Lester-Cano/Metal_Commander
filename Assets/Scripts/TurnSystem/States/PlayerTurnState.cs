@@ -28,14 +28,14 @@ namespace TurnSystem.States
             TurnSystem.titleSystem.SetTitle(TurnSystem.playerTitle);
             TurnSystem.playerUI.SetActive(true);
 
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
             
             TurnSystem.titleSystem.RemoveTitle(TurnSystem.playerTitle);
         }
 
         public override IEnumerator CheckState()
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
 
             for (int i = 0; i < TurnSystem.allyTeam.Count; i++)
             {
