@@ -40,7 +40,7 @@ namespace TurnSystem.States
                 if (unit.hitPoints > 0)
                 {
                     TurnSystem.mainCamera.transform.DOMove(new Vector3(0, 0, -10) + unit.transform.position, 0.5f, false);
-                    TurnSystem.cameraController.ReBound();
+                    //TurnSystem.cameraController.ReBound();
                     
                     cameraSet = true;
                 }
