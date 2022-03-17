@@ -21,6 +21,7 @@ namespace PathFinding
         [SerializeField] public TurnSystem.TurnSystem turnSystem;
 
         [SerializeField] public bool StartCombat = false;
+        
 
         void Start()
         {
@@ -91,6 +92,8 @@ namespace PathFinding
             }
             
             turnSystem.mainCamera.transform.DOMove(new Vector3(0, 0, -10) + currentEnemy.transform.position, 0.2f, false);
+            turnSystem.cameraController.ReBound();
+
 
             if (currentEnemy.hitPoints > 0 && currentPlayer.hitPoints > 0)
             {

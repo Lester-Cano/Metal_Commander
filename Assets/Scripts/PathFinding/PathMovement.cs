@@ -23,7 +23,7 @@ namespace PathFinding
         //From here, SoundSystem
 
         [SerializeField] private AudioManager source;
-        
+
         private void Update()
         {
             if (Input.GetMouseButtonDown(0) && !grabed && !selectedNewSpace)
@@ -62,6 +62,7 @@ namespace PathFinding
                 grabed = true;
                 
                 turnSystem.mainCamera.transform.DOMove(new Vector3(0, 0, -10) + selectedUnit.transform.position, 0.2f, false);
+                turnSystem.cameraController.ReBound();
                 
                 if (selectedUnit.hasMoved)
                 {
