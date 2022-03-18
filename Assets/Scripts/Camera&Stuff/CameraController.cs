@@ -10,36 +10,35 @@ namespace Camera_Stuff
         [SerializeField] public Vector3 newDirection;
         [SerializeField] public Vector3 maxValue, minValue;
 
-        private void Update()
-        {
-            //ReBound();
-        }
-
         public void PanCamera(string direction)
         {
             if (direction == "Up")
             {
                 newDirection = Vector3.up;
                 cam.transform.position += newDirection;
+                ReBound();
             }
             else if (direction == "Down")
             {
                 newDirection = Vector3.down;
                 cam.transform.position += newDirection;
+                ReBound();
             }
             else if (direction == "Right")
             {
                 newDirection = Vector3.right;
                 cam.transform.position += newDirection;
+                ReBound();
             }
             else if (direction == "Left")
             {
                 newDirection = Vector3.left;
                 cam.transform.position += newDirection;
+                ReBound();
             }
         }
 
-        void ReBound()
+        public void ReBound()
         {
             Vector3 targetPosition = cam.transform.position;
             Vector3 boundPosition = new Vector3(Mathf.Clamp(targetPosition.x, minValue.x, maxValue.x)

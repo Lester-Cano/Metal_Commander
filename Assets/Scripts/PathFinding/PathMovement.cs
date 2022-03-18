@@ -23,7 +23,7 @@ namespace PathFinding
         //From here, SoundSystem
 
         [SerializeField] private AudioManager source;
-        
+
         private void Update()
         {
             if (Input.GetMouseButtonDown(0) && !grabed && !selectedNewSpace)
@@ -62,6 +62,7 @@ namespace PathFinding
                 grabed = true;
                 
                 turnSystem.mainCamera.transform.DOMove(new Vector3(0, 0, -10) + selectedUnit.transform.position, 0.2f, false);
+                //turnSystem.cameraController.ReBound();
                 
                 if (selectedUnit.hasMoved)
                 {
@@ -75,38 +76,49 @@ namespace PathFinding
         {
             if (grabed)
             {
-                source.Play("SelectedSpace");
+                Vector2 worldPosition = turnSystem.mainCamera.ScreenToWorldPoint(Input.mousePosition);
+                RaycastHit2D hitData = Physics2D.Raycast(worldPosition, Vector2.zero, 0);
                 
-                Vector2 mousePosition = turnSystem.mainCamera.ScreenToWorldPoint(Input.mousePosition);
-                Vector3 gridPosition = map.WorldToCell(mousePosition);
-
-                var newTarget = Instantiate(target, gridPosition, quaternion.identity);
-                selectedNewSpace = true;
-            
-                Vector3Int unitGridPos = map.WorldToCell(selectedUnit.transform.position);
-                Vector3Int targetGridPos = map.WorldToCell(newTarget.transform.position);
-
-                pathMovement.FindPath(unitGridPos, targetGridPos);
-
-                if (pathMovement.path.Count > selectedUnit.movement)
+                if (!hitData)
                 {
+                    Debug.Log("Movement");
+                    source.Play("SelectedSpace");
+                
+                    Vector2 mousePosition = turnSystem.mainCamera.ScreenToWorldPoint(Input.mousePosition);
+                    Vector3 gridPosition = map.WorldToCell(mousePosition);
+
+                    var newTarget = Instantiate(target, gridPosition, quaternion.identity);
+                    selectedNewSpace = true;
+            
+                    Vector3Int unitGridPos = map.WorldToCell(selectedUnit.transform.position);
+                    Vector3Int targetGridPos = map.WorldToCell(newTarget.transform.position);
+
+                    pathMovement.FindPath(unitGridPos, targetGridPos);
+
+                    if (pathMovement.path.Count > selectedUnit.movement)
+                    {
+                        grabed = false;
+                        selectedNewSpace = false;
+                        selectedUnit.path.SetActive(false);
+                        Destroy(newTarget);
+                        return;
+                    }
+            
+                    Move(pathMovement);
+
                     grabed = false;
                     selectedNewSpace = false;
-                    selectedUnit.path.SetActive(false);
                     Destroy(newTarget);
-                    return;
                 }
-            
-                Move(pathMovement);
-
-                grabed = false;
-                selectedNewSpace = false;
-                Destroy(newTarget);
+                else
+                {
+                    grabed = false;
+                    selectedUnit.path.SetActive(false);
+                }
             }
             else
             {
                 grabed = false;
-                return;
             }
         }
 

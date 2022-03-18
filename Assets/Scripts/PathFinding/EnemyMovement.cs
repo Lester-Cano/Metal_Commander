@@ -21,6 +21,7 @@ namespace PathFinding
         [SerializeField] public TurnSystem.TurnSystem turnSystem;
 
         [SerializeField] public bool StartCombat = false;
+        
 
         void Start()
         {
@@ -48,7 +49,7 @@ namespace PathFinding
                     enemyMovement = currentEnemy.GetComponent<Pathfinding2D>();
                     SearchForAllies();
 
-                    yield return new WaitForSeconds(2f);
+                    yield return new WaitForSeconds(0.4f);
                 }
             }
             
@@ -89,11 +90,10 @@ namespace PathFinding
             {
                 currentEnemy.transform.DOMove(t.worldPosition, 0.5f, true);
             }
-            
-            turnSystem.mainCamera.transform.DOMove(new Vector3(0, 0, -10) + currentEnemy.transform.position, 0.2f, false);
 
             if (currentEnemy.hitPoints > 0 && currentPlayer.hitPoints > 0)
             {
+                turnSystem.mainCamera.transform.DOMove(new Vector3(0, 0, -10) + currentEnemy.transform.position, 0.1f, true);
                 EnemyCombat();
             }
         }

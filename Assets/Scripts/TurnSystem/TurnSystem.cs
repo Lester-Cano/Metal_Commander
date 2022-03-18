@@ -5,6 +5,7 @@ using Menu___UI;
 using TurnSystem.States;
 using UnityEngine;
 using PathFinding;
+using Camera_Stuff;
 
 namespace TurnSystem
 {
@@ -23,6 +24,7 @@ namespace TurnSystem
         [SerializeField] public int playerCount;
 
         [SerializeField] public Camera mainCamera;
+        [SerializeField] public CameraController cameraController;
 
         [SerializeField] public EnemyMovement enemyMovement;
         

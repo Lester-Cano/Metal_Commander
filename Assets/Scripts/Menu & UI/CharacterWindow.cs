@@ -19,6 +19,7 @@ public class CharacterWindow : MonoBehaviour
     [SerializeField] private TMP_Text health;
     [SerializeField] private TMP_Text attack;
     [SerializeField] private TMP_Text defense;
+    [SerializeField] private TMP_Text unitClass;
 
     private void Update()
     {
@@ -37,6 +38,7 @@ public class CharacterWindow : MonoBehaviour
         attack.text = (selectedUnit.attack + selectedUnit.weaponPower).ToString();
         defense.text = selectedUnit.defense.ToString();
         portrait.sprite = selectedUnit.portrait;
+        unitClass.text = selectedUnit.className;
     }
 
     private void SelectUnit()
