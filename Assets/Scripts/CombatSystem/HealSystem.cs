@@ -1,10 +1,9 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BattleSystem : MonoBehaviour
+public class HealSystem : MonoBehaviour
 {
     [SerializeField] private Unit unit1, unit2;
     [SerializeField] private GameObject buttonContainer;
@@ -20,11 +19,15 @@ public class BattleSystem : MonoBehaviour
         if (other.CompareTag("Ally"))
         {
             unit2 = other.GetComponent<Unit>();
-            buttonContainer.SetActive(true);
 
-            if (unit2.hasAttacked == true)
+            if (unit2.className == "Healer")
             {
-                buttonContainer.SetActive(false);
+                buttonContainer.SetActive(true);
+
+                if (unit2.hasAttacked == true)
+                {
+                    buttonContainer.SetActive(false);
+                }
             }
         }
     }
@@ -37,16 +40,11 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        buttonContainer.SetActive(true);
-    }
-
     public void Combat()
     {
         if (unit2.hasAttacked == false)
         {
-            StartCoroutine(unit2.Attack(unit1));
+            StartCoroutine(unit2.Heal(unit1));
 
             unit2.hasAttacked = true;
             buttonContainer.SetActive(false);

@@ -13,8 +13,8 @@ namespace MapSystem
         [SerializeField] public Tilemap enemySpawners;
         public List<Vector3> allySpawns;
         public List<Vector3> enemySpawns;
-        [SerializeField] private Unit unitPrefab;
-        [SerializeField] private Unit enemyPrefab;
+        [SerializeField] public List<Unit> unitPrefab;
+        [SerializeField] public Unit enemyPrefab;
         
         //TurnSystem Data
 
@@ -54,7 +54,7 @@ namespace MapSystem
             GetSpawners(allySpawners, allySpawns);
             for(var i = 0; i < allySpawns.Count; i++)
             {
-                var newAllyUnit = Instantiate(unitPrefab, allySpawns[i], Quaternion.identity);
+                var newAllyUnit = Instantiate(unitPrefab[i], allySpawns[i], Quaternion.identity);
                 turnSystem.allyTeam.Add(newAllyUnit);
             }
         }

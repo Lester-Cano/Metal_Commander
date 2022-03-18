@@ -144,14 +144,18 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public void Heal(Unit healed)
+    public IEnumerator Heal(Unit healed)
     {
-        healed.hitPoints += weaponPower + attack - attack / 3;
-        
-        if (healed.hitPoints > healed.maxHP)
+        if (healed.hitPoints > 0)
         {
-            healed.hitPoints = healed.maxHP;
+            healed.hitPoints += weaponPower + attack - attack / 3;
+        
+            if (healed.hitPoints > healed.maxHP)
+            {
+                healed.hitPoints = healed.maxHP;
+            }
         }
+        yield return new WaitForSeconds(0.2f);
     }
     #endregion
 }
