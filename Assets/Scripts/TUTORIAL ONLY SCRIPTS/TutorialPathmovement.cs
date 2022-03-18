@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using Unity.Mathematics;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 namespace PathFinding
 {
@@ -13,7 +14,6 @@ namespace PathFinding
         [SerializeField] private Unit selectedUnit;
         [SerializeField] private GameObject target;
         [SerializeField] private Tilemap map;
-        [SerializeField] private Camera mainCamera;
         private bool grabed;
         private bool selectedNewSpace;
 
@@ -25,6 +25,14 @@ namespace PathFinding
 
         [SerializeField] private AudioManager source;
 
+
+        //tutorial
+        public Canvas imageMove;
+        public Canvas imageattack;
+
+        public int tutorialMove = 0;
+        public int tutorialattack = 0;
+
         private void Update()
         {
             if (Input.GetMouseButtonDown(0) && !grabed && !selectedNewSpace)
@@ -35,11 +43,17 @@ namespace PathFinding
             {
                 SelectNewSpace();
             }
+            else if (tutorialattack > 1)
+            {
+                imageattack.gameObject.SetActive(false);
+            }
         }
 
         private void SelectUnit()
         {
-            Vector2 worldPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            
+
+            Vector2 worldPosition = turnSystem.mainCamera.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D hitData = Physics2D.Raycast(worldPosition, Vector2.zero, 0);
 
             if (!hitData)
@@ -49,11 +63,11 @@ namespace PathFinding
             }
             if (hitData.transform.gameObject.CompareTag("Enemy"))
             {
-                Debug.Log("Cant pick an enemy");
                 grabed = false;
             }
             if (hitData.transform.gameObject.CompareTag("Ally"))
             {
+                tutorialMove++;
                 source.Play("SelectedUnit");
 
                 selectedUnit = hitData.transform.gameObject.GetComponent<Unit>();
@@ -63,22 +77,28 @@ namespace PathFinding
 
                 grabed = true;
 
-                if (selectedUnit.hasMoved == true)
+                turnSystem.mainCamera.transform.DOMove(new Vector3(0, 0, -10) + selectedUnit.transform.position, 0.2f, false);
+
+                if (selectedUnit.hasMoved)
                 {
                     grabed = false;
                     selectedUnit.path.SetActive(false);
-                    Debug.Log("Unit already acted");
                 }
             }
+            if (tutorialMove == 1)
+            {
+                imageMove.gameObject.SetActive(true);
+            }
+
         }
 
         void SelectNewSpace()
         {
-            if (grabed == true)
+            if (grabed)
             {
                 source.Play("SelectedSpace");
 
-                Vector2 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+                Vector2 mousePosition = turnSystem.mainCamera.ScreenToWorldPoint(Input.mousePosition);
                 Vector3 gridPosition = map.WorldToCell(mousePosition);
 
                 var newTarget = Instantiate(target, gridPosition, quaternion.identity);
@@ -113,12 +133,26 @@ namespace PathFinding
 
         private void Move(Pathfinding2D unitPath)
         {
+            tutorialattack++;
+
+            imageMove.gameObject.SetActive(false);
+            if (tutorialattack == 1)
+            {
+                imageattack.gameObject.SetActive(true);
+            }
+
+
             selectedUnit.path.SetActive(false);
+            selectedUnit.anim.SetBool("Walk1", true);
+
             foreach (var t in unitPath.path)
             {
-                selectedUnit.transform.DOMove(t.worldPosition, 1.5f, true);
-                selectedUnit.hasMoved = true;
+                selectedUnit.transform.DOMove(t.worldPosition, 0.5f, true);
             }
+
+            selectedUnit.anim.SetBool("Walk1", false);
+
+            selectedUnit.hasMoved = true;
         }
     }
 }
