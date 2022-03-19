@@ -62,12 +62,14 @@ namespace PathFinding
                 grabed = true;
                 
                 turnSystem.mainCamera.transform.DOMove(new Vector3(0, 0, -10) + selectedUnit.transform.position, 0.2f, false);
-                //turnSystem.cameraController.ReBound();
-                
+                selectedUnit.anim.SetBool("Walk2", true);
+
                 if (selectedUnit.hasMoved)
                 {
                     grabed = false;
                     selectedUnit.path.SetActive(false);
+                    
+                    selectedUnit.anim.SetBool("Walk2", false);
                 }
             }
         }
@@ -81,7 +83,6 @@ namespace PathFinding
                 
                 if (!hitData)
                 {
-                    Debug.Log("Movement");
                     source.Play("SelectedSpace");
                 
                     Vector2 mousePosition = turnSystem.mainCamera.ScreenToWorldPoint(Input.mousePosition);
@@ -114,6 +115,8 @@ namespace PathFinding
                 {
                     grabed = false;
                     selectedUnit.path.SetActive(false);
+                    
+                    selectedUnit.anim.SetBool("Walk2", false);
                 }
             }
             else
@@ -125,14 +128,14 @@ namespace PathFinding
         private void Move(Pathfinding2D unitPath)
         {
             selectedUnit.path.SetActive(false);
-            selectedUnit.anim.SetBool("Walk1", true);
+            //selectedUnit.anim.SetBool("Walk1", true);
             
              foreach (var t in unitPath.path)
              {
                  selectedUnit.transform.DOMove(t.worldPosition, 0.5f, true);
              }
 
-             selectedUnit.anim.SetBool("Walk1", false);
+             selectedUnit.anim.SetBool("Walk2", false);
              
              selectedUnit.hasMoved = true;
         }

@@ -4135,6 +4135,99 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 526438486}
   m_CullTransparentMesh: 1
+--- !u!1001 &599622218
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3705914836514311756, guid: 6057b184017561644ae35b1730f32473, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3705914836514311756, guid: 6057b184017561644ae35b1730f32473, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5091326166117662736, guid: 6057b184017561644ae35b1730f32473, type: 3}
+      propertyPath: maxHP
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 5091326166117662736, guid: 6057b184017561644ae35b1730f32473, type: 3}
+      propertyPath: attack
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5091326166117662736, guid: 6057b184017561644ae35b1730f32473, type: 3}
+      propertyPath: defense
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5091326166117662736, guid: 6057b184017561644ae35b1730f32473, type: 3}
+      propertyPath: movement
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5091326166117662736, guid: 6057b184017561644ae35b1730f32473, type: 3}
+      propertyPath: className
+      value: Tank
+      objectReference: {fileID: 0}
+    - target: {fileID: 5091326166117662736, guid: 6057b184017561644ae35b1730f32473, type: 3}
+      propertyPath: hitPoints
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 5091326166117662736, guid: 6057b184017561644ae35b1730f32473, type: 3}
+      propertyPath: weaponPower
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5091326166117662738, guid: 6057b184017561644ae35b1730f32473, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5091326166117662738, guid: 6057b184017561644ae35b1730f32473, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5091326166117662738, guid: 6057b184017561644ae35b1730f32473, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5091326166117662738, guid: 6057b184017561644ae35b1730f32473, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5091326166117662738, guid: 6057b184017561644ae35b1730f32473, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5091326166117662738, guid: 6057b184017561644ae35b1730f32473, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5091326166117662738, guid: 6057b184017561644ae35b1730f32473, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5091326166117662738, guid: 6057b184017561644ae35b1730f32473, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5091326166117662738, guid: 6057b184017561644ae35b1730f32473, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5091326166117662738, guid: 6057b184017561644ae35b1730f32473, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5091326166117662738, guid: 6057b184017561644ae35b1730f32473, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5091326166117662741, guid: 6057b184017561644ae35b1730f32473, type: 3}
+      propertyPath: m_Name
+      value: Enemy 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6057b184017561644ae35b1730f32473, type: 3}
 --- !u!1 &613077058
 GameObject:
   m_ObjectHideFlags: 0
@@ -4661,21 +4754,21 @@ Tilemap:
   m_GameObject: {fileID: 763436323}
   m_Enabled: 1
   m_Tiles:
-  - first: {x: -6, y: -2, z: 0}
+  - first: {x: -4, y: -4, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: -8, y: 0, z: 0}
+  - first: {x: -6, y: -2, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -4683,15 +4776,15 @@ Tilemap:
       m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 2
-    m_Data: {fileID: 11400000, guid: 7b7521d102c00954f96380dd1bb48b4e, type: 2}
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 2
+    m_Data: {fileID: 11400000, guid: f32672ccf7780d448ac1d8c0b0b96538, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 2
-    m_Data: {fileID: 21300000, guid: c4a7b9def55128144b947b6ec167c783, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 2
+    m_Data: {fileID: 21300000, guid: c347ae3e6ba481f4892a52c8df3e18cd, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 2
     m_Data:
@@ -4717,8 +4810,8 @@ Tilemap:
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 0.4377358, g: 0.96025866, b: 1, a: 0}
-  m_Origin: {x: -11, y: -2, z: 0}
-  m_Size: {x: 11, y: 10, z: 1}
+  m_Origin: {x: -11, y: -4, z: 0}
+  m_Size: {x: 11, y: 12, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -15564,8 +15657,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1962850672}
   newDirection: {x: 0, y: 0, z: 0}
-  maxValue: {x: 5, y: 7, z: -11}
-  minValue: {x: -5, y: -7, z: -9}
+  maxValue: {x: 6, y: 7, z: -11}
+  minValue: {x: -6, y: -7, z: -9}
+  mainCamera: {fileID: 0}
 --- !u!1 &1964205041
 GameObject:
   m_ObjectHideFlags: 0
