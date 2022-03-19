@@ -8434,6 +8434,7 @@ MonoBehaviour:
   newDirection: {x: 0, y: 0, z: 0}
   maxValue: {x: 9, y: 6, z: -11}
   minValue: {x: -9, y: -8, z: -9}
+  mainCamera: {fileID: 0}
 --- !u!20 &1553611082
 Camera:
   m_ObjectHideFlags: 0

@@ -9,6 +9,45 @@ namespace Camera_Stuff
         [SerializeField] public Camera cam;
         [SerializeField] public Vector3 newDirection;
         [SerializeField] public Vector3 maxValue, minValue;
+        
+        //From here another try
+
+        private Vector3 origin, difference, resetCamera;
+        private bool drag;
+        [SerializeField] private Camera mainCamera;
+
+        private void Start()
+        {
+            resetCamera = cam.transform.position;
+        }
+
+        private void LateUpdate()
+        {
+            if (Input.GetMouseButton(0))
+            {
+                difference = (cam.ScreenToWorldPoint(Input.mousePosition) - cam.transform.position);
+                if (drag == false)
+                {
+                    drag = true;
+                    origin = cam.ScreenToWorldPoint(Input.mousePosition);
+                }
+            }
+            else
+            {
+                drag = false;
+            }
+
+            if (drag)
+            {
+                cam.transform.position = origin - difference;
+                ReBound();
+            }
+
+            if (Input.GetMouseButton(1))
+            {
+                cam.transform.position = resetCamera;
+            }
+        }
 
         public void PanCamera(string direction)
         {

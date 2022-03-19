@@ -49,7 +49,7 @@ namespace PathFinding
                     enemyMovement = currentEnemy.GetComponent<Pathfinding2D>();
                     SearchForAllies();
 
-                    yield return new WaitForSeconds(0.4f);
+                    yield return new WaitForSeconds(2f);
                 }
             }
             
