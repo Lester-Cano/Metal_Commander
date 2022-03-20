@@ -115,6 +115,17 @@ namespace PathFinding
                 var newTarget = Instantiate(target, gridPosition, quaternion.identity);
                 selectedNewSpace = true;
 
+                Vector3Int tilePosition = map.WorldToCell(mousePosition);
+                if (map.GetTile(tilePosition) == null)
+                {
+                    grabed = false;
+                    selectedNewSpace = false;
+                    selectedUnit.path.SetActive(false);
+                    selectedUnit.anim.SetBool("Walk2", false);
+                    Destroy(newTarget);
+                    return;
+                }
+
                 Vector3Int unitGridPos = map.WorldToCell(selectedUnit.transform.position);
                 Vector3Int targetGridPos = map.WorldToCell(newTarget.transform.position);
 
