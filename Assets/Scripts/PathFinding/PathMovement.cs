@@ -94,7 +94,6 @@ namespace PathFinding
                     selectedNewSpace = true;
 
                     Vector3Int tilePosition = map.WorldToCell(mousePosition);
-
                     if (map.GetTile(tilePosition) == null)
                     {
                         grabed = false;
@@ -145,13 +144,13 @@ namespace PathFinding
             selectedUnit.path.SetActive(false);
             
             foreach (var t in unitPath.path)
-             {
-                 selectedUnit.transform.DOMove(t.worldPosition, 0.5f, true);
-             }
+            { 
+                selectedUnit.transform.DOMove(t.worldPosition, 0.5f, true);
+            }
 
-             selectedUnit.anim.SetBool("Walk2", false);
+            selectedUnit.anim.SetBool("Walk2", false);
              
-             selectedUnit.hasMoved = true;
+            selectedUnit.hasMoved = true;
         }
     }
 }

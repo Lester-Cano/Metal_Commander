@@ -69,7 +69,6 @@ namespace MapSystem
             for(var i = 0; i < enemySpawns.Count; i++)
             {
                 int number = rnd.Next(0, 3);
-                Debug.Log(number);
                 var newEnemyUnit = Instantiate(enemyPrefab[number], enemySpawns[i], Quaternion.identity);
                 turnSystem.enemyTeam.Add(newEnemyUnit);
             }
