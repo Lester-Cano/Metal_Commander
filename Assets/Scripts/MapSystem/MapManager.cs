@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Random = System.Random;
 
 namespace MapSystem
 {
@@ -10,21 +12,23 @@ namespace MapSystem
         //Spawning Units.
         
         [SerializeField] public Tilemap allySpawners;
-        [SerializeField] public Tilemap enemySpawners;
-        public List<Vector3> allySpawns;
+        [SerializeField] public Tilemap enemySpawners; 
+        public List<Vector3> allySpawns; 
         public List<Vector3> enemySpawns;
         [SerializeField] public List<Unit> unitPrefab;
-        [SerializeField] public Unit enemyPrefab;
+        [SerializeField] public List<Unit> enemyPrefab;
+        private Random rnd = new Random();
         
         //TurnSystem Data
 
         [SerializeField] private TurnSystem.TurnSystem turnSystem;
+        
 
         private void Start()
-        {
+        { 
             allySpawners = GetComponent<Tilemap>();
-            enemySpawners = GetComponent<Tilemap>();
-            allySpawns = new List<Vector3>();
+            enemySpawners = GetComponent<Tilemap>(); 
+            allySpawns = new List<Vector3>(); 
             enemySpawns = new List<Vector3>();
         }
 
@@ -64,7 +68,8 @@ namespace MapSystem
             GetSpawners(enemySpawners, enemySpawns);
             for(var i = 0; i < enemySpawns.Count; i++)
             {
-                var newEnemyUnit = Instantiate(enemyPrefab, enemySpawns[i], Quaternion.identity);
+                int number = rnd.Next(0, 3);
+                var newEnemyUnit = Instantiate(enemyPrefab[number], enemySpawns[i], Quaternion.identity);
                 turnSystem.enemyTeam.Add(newEnemyUnit);
             }
         }

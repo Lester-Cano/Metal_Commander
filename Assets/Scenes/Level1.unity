@@ -671,6 +671,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3710636489275211418, guid: 8f0b954b6d55cdd40915267fa8eff02b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710636489275211418, guid: 8f0b954b6d55cdd40915267fa8eff02b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710636489275211418, guid: 8f0b954b6d55cdd40915267fa8eff02b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710636489275211418, guid: 8f0b954b6d55cdd40915267fa8eff02b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -725,6 +737,14 @@ PrefabInstance:
     - target: {fileID: 3710636489275211419, guid: 8f0b954b6d55cdd40915267fa8eff02b, type: 3}
       propertyPath: m_SortingOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710636489275211420, guid: 8f0b954b6d55cdd40915267fa8eff02b, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710636489275211420, guid: 8f0b954b6d55cdd40915267fa8eff02b, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 993.66
       objectReference: {fileID: 0}
     - target: {fileID: 3710636489275211422, guid: 8f0b954b6d55cdd40915267fa8eff02b, type: 3}
       propertyPath: m_Name
@@ -2435,7 +2455,10 @@ MonoBehaviour:
   unitPrefab:
   - {fileID: 8781895274828106704, guid: fd51fab57b0820f429167de7f76eaaeb, type: 3}
   - {fileID: 987571919943208407, guid: 63c5e115c12d4a14e9f806ed3b8bf7eb, type: 3}
-  enemyPrefab: {fileID: 5091326166117662736, guid: 6057b184017561644ae35b1730f32473, type: 3}
+  enemyPrefab:
+  - {fileID: 5091326166117662736, guid: 6057b184017561644ae35b1730f32473, type: 3}
+  - {fileID: 5091326166117662736, guid: 6057b184017561644ae35b1730f32473, type: 3}
+  - {fileID: 5091326166117662736, guid: 6057b184017561644ae35b1730f32473, type: 3}
   turnSystem: {fileID: 212247447}
 --- !u!1 &245404443
 GameObject:
@@ -5444,6 +5467,7 @@ MonoBehaviour:
   currentPlayer: {fileID: 0}
   turnSystem: {fileID: 212247447}
   StartCombat: 0
+  rivalFound: 0
 --- !u!114 &785611019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5483,6 +5507,7 @@ MonoBehaviour:
   selectedUnit: {fileID: 0}
   target: {fileID: 3873878253777374194, guid: 5724b02fc8cde4743930571be3f82f5d, type: 3}
   map: {fileID: 224155703}
+  tile: {fileID: 0}
   turnSystem: {fileID: 212247447}
   source: {fileID: 1425673255}
 --- !u!1 &786212344
@@ -7206,6 +7231,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4975421174014812452, guid: f820099a86cd34049a048636eb2c2016, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4975421174014812453, guid: f820099a86cd34049a048636eb2c2016, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4975421174014812453, guid: f820099a86cd34049a048636eb2c2016, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 993.66
+      objectReference: {fileID: 0}
     - target: {fileID: 4975421174014812455, guid: f820099a86cd34049a048636eb2c2016, type: 3}
       propertyPath: m_Name
       value: Canvas tutorial movimiento
@@ -8337,6 +8374,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4023151865549601706, guid: 3d9cb085ff1413a45b557d1797bb29ca, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4023151865549601708, guid: 3d9cb085ff1413a45b557d1797bb29ca, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4023151865549601708, guid: 3d9cb085ff1413a45b557d1797bb29ca, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 993.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 4023151865549601709, guid: 3d9cb085ff1413a45b557d1797bb29ca, type: 3}
+      propertyPath: m_RenderMode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4023151865549601710, guid: 3d9cb085ff1413a45b557d1797bb29ca, type: 3}

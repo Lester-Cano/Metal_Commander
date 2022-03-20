@@ -36,6 +36,10 @@ public class Unit : MonoBehaviour
     //enemy range
 
     [SerializeField] public GameObject range;
+    
+    //Other
+
+    [SerializeField] public bool foundRival;
 
     public Unit(int hitPoints, int maxHP, int attack, int defense, int movement, int weaponPower)
     {

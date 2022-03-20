@@ -16,6 +16,8 @@ namespace PathFinding
         private bool grabed;
         private bool selectedNewSpace;
 
+        [SerializeField] private TileBase tile;
+
         //From here, TurnSystem
 
         [SerializeField] private TurnSystem.TurnSystem turnSystem;
@@ -90,7 +92,18 @@ namespace PathFinding
 
                     var newTarget = Instantiate(target, gridPosition, quaternion.identity);
                     selectedNewSpace = true;
-            
+
+                    Vector3Int tilePosition = map.WorldToCell(mousePosition);
+                    if (map.GetTile(tilePosition) == null)
+                    {
+                        grabed = false;
+                        selectedNewSpace = false;
+                        selectedUnit.path.SetActive(false);
+                        selectedUnit.anim.SetBool("Walk2", false);
+                        Destroy(newTarget);
+                        return;
+                    }
+
                     Vector3Int unitGridPos = map.WorldToCell(selectedUnit.transform.position);
                     Vector3Int targetGridPos = map.WorldToCell(newTarget.transform.position);
 
@@ -101,6 +114,7 @@ namespace PathFinding
                         grabed = false;
                         selectedNewSpace = false;
                         selectedUnit.path.SetActive(false);
+                        selectedUnit.anim.SetBool("Walk2", false);
                         Destroy(newTarget);
                         return;
                     }
@@ -130,13 +144,13 @@ namespace PathFinding
             selectedUnit.path.SetActive(false);
             
             foreach (var t in unitPath.path)
-             {
-                 selectedUnit.transform.DOMove(t.worldPosition, 0.5f, true);
-             }
+            { 
+                selectedUnit.transform.DOMove(t.worldPosition, 0.5f, true);
+            }
 
-             selectedUnit.anim.SetBool("Walk2", false);
+            selectedUnit.anim.SetBool("Walk2", false);
              
-             selectedUnit.hasMoved = true;
+            selectedUnit.hasMoved = true;
         }
     }
 }
