@@ -16,6 +16,9 @@ namespace TurnSystem.States
             TurnSystem.mapSystem.SpawnUnit();
             TurnSystem.mapSystem.SpawnEnemies();
             
+            TurnSystem.source.Play("CombatMusic");
+            TurnSystem.source.Loop("CombatMusic");
+            
 
             yield return new WaitForSeconds(0.2f);
 
