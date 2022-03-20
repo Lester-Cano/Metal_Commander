@@ -718,6 +718,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3710636489275211419, guid: 8f0b954b6d55cdd40915267fa8eff02b, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710636489275211419, guid: 8f0b954b6d55cdd40915267fa8eff02b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3710636489275211422, guid: 8f0b954b6d55cdd40915267fa8eff02b, type: 3}
       propertyPath: m_Name
       value: Canvas Tutorial
@@ -750,6 +758,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3710636490633499930, guid: 8f0b954b6d55cdd40915267fa8eff02b, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 8a2b9e2a607dd2143b58c44bc32410b4, type: 3}
     - target: {fileID: 3710636490633499931, guid: 8f0b954b6d55cdd40915267fa8eff02b, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 8
@@ -7106,6 +7118,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -123.69027
       objectReference: {fileID: 0}
+    - target: {fileID: 4975421173502117953, guid: f820099a86cd34049a048636eb2c2016, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 8a2b9e2a607dd2143b58c44bc32410b4, type: 3}
     - target: {fileID: 4975421174014812451, guid: f820099a86cd34049a048636eb2c2016, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -8289,7 +8305,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4023151864918464359, guid: 3d9cb085ff1413a45b557d1797bb29ca, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4023151864918464360, guid: 3d9cb085ff1413a45b557d1797bb29ca, type: 3}
       propertyPath: m_SizeDelta.y
@@ -8407,6 +8423,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4023151865873370049, guid: 3d9cb085ff1413a45b557d1797bb29ca, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 8a2b9e2a607dd2143b58c44bc32410b4, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d9cb085ff1413a45b557d1797bb29ca, type: 3}
 --- !u!1 &1538886560
@@ -8678,6 +8698,21 @@ PrefabInstance:
       propertyPath: canvasTutorial
       value: 
       objectReference: {fileID: 1450561767}
+    - target: {fileID: 1362851832684904595, guid: 5836a3c81a7ce514d8ed3b1581f3617a, type: 3}
+      propertyPath: dialogue.sentences.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1362851832684904595, guid: 5836a3c81a7ce514d8ed3b1581f3617a, type: 3}
+      propertyPath: dialogue.sentences.Array.data[1]
+      value: The left down button will help you know where the enemy units can move
+        and attack you, the left up button will open the options menu.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1362851832684904595, guid: 5836a3c81a7ce514d8ed3b1581f3617a, type: 3}
+      propertyPath: dialogue.sentences.Array.data[2]
+      value: To move your units select one of them and blue squares will appear in
+        your screen, these squares will mark the spaces you can move. Try selecting
+        a unit from your faction.
+      objectReference: {fileID: 0}
     - target: {fileID: 1362851832684904597, guid: 5836a3c81a7ce514d8ed3b1581f3617a, type: 3}
       propertyPath: m_RootOrder
       value: 5
