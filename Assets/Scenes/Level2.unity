@@ -9808,7 +9808,10 @@ MonoBehaviour:
   - {fileID: 6074522667540474974, guid: 311a618681454cf47924ea7315ee50fb, type: 3}
   - {fileID: 8781895274828106704, guid: fd51fab57b0820f429167de7f76eaaeb, type: 3}
   - {fileID: 638545646537746657, guid: 74fbab7a02cdac64c82a41c84280996c, type: 3}
-  enemyPrefab: {fileID: 5091326166117662736, guid: 6057b184017561644ae35b1730f32473, type: 3}
+  enemyPrefab:
+  - {fileID: 5091326166117662736, guid: 6057b184017561644ae35b1730f32473, type: 3}
+  - {fileID: 8500508323015490527, guid: 2d38d07b7ac401e408c6a0a738222657, type: 3}
+  - {fileID: 324373537201210807, guid: 0e3a9a1f7b381c647a80be4e08d552cf, type: 3}
   turnSystem: {fileID: 970342159}
 --- !u!156049354 &1689870672
 Grid:
@@ -18217,6 +18220,7 @@ MonoBehaviour:
   currentPlayer: {fileID: 0}
   turnSystem: {fileID: 970342159}
   StartCombat: 0
+  rivalFound: 0
 --- !u!114 &1790922966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18233,6 +18237,7 @@ MonoBehaviour:
   selectedUnit: {fileID: 0}
   target: {fileID: 3873878253777374194, guid: 5724b02fc8cde4743930571be3f82f5d, type: 3}
   map: {fileID: 905770997}
+  tile: {fileID: 0}
   turnSystem: {fileID: 970342159}
   source: {fileID: 2108808320}
 --- !u!4 &1790922967

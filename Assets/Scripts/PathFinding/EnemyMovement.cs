@@ -51,7 +51,7 @@ namespace PathFinding
                     enemyMovement = currentEnemy.GetComponent<Pathfinding2D>();
                     SearchForAllies();
 
-                    if (rivalFound)
+                    if (currentEnemy.foundRival)
                     {
                         turnSystem.mainCamera.transform.DOMove(new Vector3(0, 0, -10) + currentEnemy.transform.position, 0.1f, true);
                         yield return new WaitForSeconds(2f);
@@ -90,7 +90,7 @@ namespace PathFinding
                 enemyMovement.FindPath(currentEnemy.transform.position, currentTarget.transform.position);
                 Move(enemyMovement);
 
-                rivalFound = true;
+                currentEnemy.foundRival = true;
             }
         }
         
@@ -105,8 +105,6 @@ namespace PathFinding
             {
                 turnSystem.mainCamera.transform.DOMove(new Vector3(0, 0, -10) + currentEnemy.transform.position, 0.1f, true);
                 EnemyCombat();
-
-                rivalFound = false;
             }
         }
 
@@ -118,6 +116,8 @@ namespace PathFinding
             {
                 StartCoroutine(currentEnemy.Attack(currentPlayer));
             }
+
+            currentEnemy.foundRival = false;
         }
     }
 }
