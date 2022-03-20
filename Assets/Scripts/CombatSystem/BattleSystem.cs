@@ -39,7 +39,10 @@ public class BattleSystem : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        buttonContainer.SetActive(true);
+        if (other.CompareTag("Ally"))
+        {
+            buttonContainer.SetActive(true);
+        }
     }
 
     public void Combat()
