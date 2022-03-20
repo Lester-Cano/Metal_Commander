@@ -25,11 +25,21 @@ namespace Camera_Stuff
         {
             if (Input.GetMouseButton(0))
             {
-                difference = (cam.ScreenToWorldPoint(Input.mousePosition) - cam.transform.position);
-                if (drag == false)
+                Vector2 worldPosition = cam.ScreenToWorldPoint(Input.mousePosition);
+                RaycastHit2D hitData = Physics2D.Raycast(worldPosition, Vector2.zero, 0);
+
+                if (hitData)
                 {
-                    drag = true;
-                    origin = cam.ScreenToWorldPoint(Input.mousePosition);
+                    return;
+                }
+                else
+                {
+                    difference = (cam.ScreenToWorldPoint(Input.mousePosition) - cam.transform.position);
+                    if (drag == false)
+                    {
+                        drag = true;
+                        origin = cam.ScreenToWorldPoint(Input.mousePosition);
+                    }
                 }
             }
             else

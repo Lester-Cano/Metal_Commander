@@ -26,6 +26,11 @@ namespace PathFinding
         [SerializeField] private AudioManager source;
 
 
+        //movimiento
+        bool tap;
+        float timer = 0;
+
+
         //tutorial
         public Canvas imageMove;
         public Canvas imageattack;
@@ -48,7 +53,10 @@ namespace PathFinding
             else if (tutorialattack > 1)
             {
                 imageattack.gameObject.SetActive(false);
+                selectedUnit = null;
+                pathMovement = null;
             }
+
         }
 
         private void SelectUnit()
