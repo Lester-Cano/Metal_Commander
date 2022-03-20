@@ -49,34 +49,6 @@ namespace Camera_Stuff
             }
         }
 
-        public void PanCamera(string direction)
-        {
-            if (direction == "Up")
-            {
-                newDirection = Vector3.up;
-                cam.transform.position += newDirection;
-                ReBound();
-            }
-            else if (direction == "Down")
-            {
-                newDirection = Vector3.down;
-                cam.transform.position += newDirection;
-                ReBound();
-            }
-            else if (direction == "Right")
-            {
-                newDirection = Vector3.right;
-                cam.transform.position += newDirection;
-                ReBound();
-            }
-            else if (direction == "Left")
-            {
-                newDirection = Vector3.left;
-                cam.transform.position += newDirection;
-                ReBound();
-            }
-        }
-
         public void ReBound()
         {
             Vector3 targetPosition = cam.transform.position;

@@ -24,9 +24,9 @@ namespace TurnSystem
         [SerializeField] public int playerCount;
 
         [SerializeField] public Camera mainCamera;
-        [SerializeField] public CameraController cameraController;
 
         [SerializeField] public EnemyMovement enemyMovement;
+        [SerializeField] public AudioManager source;
         
 
         private void Start()
