@@ -736,7 +736,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.22, y: -0.29}
+  m_AnchoredPosition: {x: 0.22, y: -0.008}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1315949655745046003
@@ -2255,6 +2255,7 @@ MonoBehaviour:
   turnSystem: {fileID: 0}
   renderer: {fileID: 0}
   range: {fileID: 2003109605259253965}
+  foundRival: 0
 --- !u!95 &7325738464273450689
 Animator:
   serializedVersion: 3
