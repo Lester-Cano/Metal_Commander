@@ -94,6 +94,7 @@ namespace PathFinding
                     selectedNewSpace = true;
 
                     Vector3Int tilePosition = map.WorldToCell(mousePosition);
+                    Debug.Log(tilePosition);
                     if (map.GetTile(tilePosition) == null)
                     {
                         grabed = false;
