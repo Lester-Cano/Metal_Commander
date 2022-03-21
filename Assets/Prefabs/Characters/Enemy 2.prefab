@@ -1747,7 +1747,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.22, y: -0.32}
+  m_AnchoredPosition: {x: 0.22, y: -0.023}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &7844201602301063994
@@ -2968,8 +2968,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BattleStart, Assembly-CSharp
+      - m_Target: {fileID: 8695814323793462363}
+        m_TargetAssemblyTypeName: BattleSystem, Assembly-CSharp
         m_MethodName: Combat
         m_Mode: 1
         m_Arguments:
@@ -4059,7 +4059,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8500508323015490522}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.317, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4033566680417002147}
@@ -4182,6 +4182,7 @@ MonoBehaviour:
   turnSystem: {fileID: 0}
   renderer: {fileID: 0}
   range: {fileID: 2923857564857279234}
+  foundRival: 0
 --- !u!95 &6266082911966067982
 Animator:
   serializedVersion: 3

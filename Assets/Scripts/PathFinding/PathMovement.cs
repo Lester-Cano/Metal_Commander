@@ -63,7 +63,7 @@ namespace PathFinding
                 
                 grabed = true;
                 
-                turnSystem.mainCamera.transform.DOMove(new Vector3(0, 0, -10) + selectedUnit.transform.position, 0.2f, false);
+                //turnSystem.mainCamera.transform.DOMove(new Vector3(0, 0, -10) + selectedUnit.transform.position, 0.2f, false);
                 selectedUnit.anim.SetBool("Walk2", true);
 
                 if (selectedUnit.hasMoved)
