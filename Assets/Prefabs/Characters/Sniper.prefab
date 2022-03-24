@@ -3920,7 +3920,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2, y: 1.2}
+  m_Size: {x: 2.4, y: 2.4}
   m_EdgeRadius: 0
 --- !u!114 &6074522667540474974
 MonoBehaviour:
@@ -3959,6 +3959,7 @@ MonoBehaviour:
   turnSystem: {fileID: 0}
   renderer: {fileID: 0}
   range: {fileID: 0}
+  foundRival: 0
 --- !u!95 &-9151684484739527446
 Animator:
   serializedVersion: 3
