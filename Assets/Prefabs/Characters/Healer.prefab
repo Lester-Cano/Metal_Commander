@@ -3977,6 +3977,7 @@ MonoBehaviour:
   turnSystem: {fileID: 0}
   renderer: {fileID: 0}
   range: {fileID: 0}
+  foundRival: 0
 --- !u!95 &529349744860720901
 Animator:
   serializedVersion: 3

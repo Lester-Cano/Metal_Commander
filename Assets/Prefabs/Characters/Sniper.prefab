@@ -195,7 +195,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: -7666118812659290502}
         m_TargetAssemblyTypeName: HealSystem, Assembly-CSharp
         m_MethodName: Combat
         m_Mode: 1
@@ -3920,7 +3920,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.4, y: 2.4}
+  m_Size: {x: 1.2, y: 1.2}
   m_EdgeRadius: 0
 --- !u!114 &6074522667540474974
 MonoBehaviour:

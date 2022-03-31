@@ -3,8 +3,69 @@
   <component name="ChangeListManager">
     <list default="true" id="f28edbc9-f60c-4763-a6cb-b0a8424ca198" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Taller-VI-1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Taller-VI-1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PathFinding/PathMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PathFinding/PathMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/Enemy1Attack.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/Enemy1Attack.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/Enemy1Attack.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/Enemy1Attack.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/Enemy1Death.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/Enemy1Death.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/Enemy1Death.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/Enemy1Death.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/Enemy1Iddle.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/Enemy1Iddle.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/Enemy1Iddle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/Enemy1Iddle.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/Enemy1Run1.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/Enemy1Run1.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/Enemy1Run1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/Enemy1Run1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/Enemy1Run2.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/Enemy1Run2.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/Enemy1Run2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/Enemy1Run2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/Enemy1Run3.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/Enemy1Run3.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/Enemy1Run3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/Enemy1Run3.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/WarriorAttack.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/WarriorAttack.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/WarriorAttack.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/WarriorAttack.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/WarriorDeath.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/WarriorDeath.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/WarriorDeath.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/WarriorDeath.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/WarriorIddle.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/WarriorIddle.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/WarriorIddle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/WarriorIddle.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/WarriorRun1.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/WarriorRun1.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/WarriorRun1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/WarriorRun1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/WarriorRun2.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/WarriorRun2.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/WarriorRun2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/WarriorRun2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/WarriorRun3.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/WarriorRun3.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/WarriorRun3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animation/WarriorRun3.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animator/HealerController.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/Animator/HealerController.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animator/SniperController.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/Animator/SniperController.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animator/TankController.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/Animator/TankController.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Characters/Healer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Characters/Healer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Characters/Sniper.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Characters/Sniper.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Characters/Tank.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Characters/Tank.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level2.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Menu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UnitSystem/Unit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UnitSystem/Unit.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Characters/Originals/Enemy1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Characters/Originals/Enemy1.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Characters/Originals/Healer.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Characters/Originals/Healer.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Characters/Originals/Sniper.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Characters/Originals/Sniper.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Characters/Originals/Tank.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Characters/Originals/Tank.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,6 +169,7 @@
       <workItem from="1647808748300" duration="790000" />
       <workItem from="1647822886344" duration="562000" />
       <workItem from="1647824714718" duration="568000" />
+      <workItem from="1648693100529" duration="2369000" />
     </task>
     <servers />
   </component>
