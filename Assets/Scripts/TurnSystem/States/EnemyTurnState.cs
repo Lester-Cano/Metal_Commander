@@ -37,7 +37,7 @@ namespace TurnSystem.States
             // cameraSet = false;
 
             enemyMovement = TurnSystem.enemyMovement;
-            enemyMovement.StartCombat = true;
+            enemyMovement.startCombat = true;
         }
         
         public override IEnumerator CheckState()

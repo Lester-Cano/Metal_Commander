@@ -210,10 +210,10 @@ MonoBehaviour:
   unitSide: Ally
   hitPoints: 27
   maxHP: 27
-  movement: 4
   weaponPower: 8
   attack: 10
   defense: 2
+  movement: 4
   hasMoved: 0
   isDead: 0
   hasAttacked: 0
@@ -230,6 +230,10 @@ MonoBehaviour:
   turnSystem: {fileID: 0}
   renderer: {fileID: 0}
   range: {fileID: 0}
+  foundRival: 0
+  aggressive: 0
+  inRange: 0
+  passive: 0
 --- !u!95 &9091316174416116191
 Animator:
   serializedVersion: 3

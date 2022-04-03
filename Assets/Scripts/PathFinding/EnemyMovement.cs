@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using System.Linq;
 using TurnSystem.States;
+using UnityEngine.Serialization;
 
 namespace PathFinding
 {
@@ -20,27 +21,27 @@ namespace PathFinding
 
         [SerializeField] public TurnSystem.TurnSystem turnSystem;
 
-        [SerializeField] public bool StartCombat = false;
+        public bool startCombat = false;
 
         [SerializeField] private bool rivalFound;
         
 
-        void Start()
+        private void Start()
         {
             FindEntities();
         }
 
-        void Update()
+        private void Update()
         {
-            if (StartCombat)
+            if (startCombat)
             {
                 StartCoroutine(StartEnemy());
             }
         }
         
-        IEnumerator StartEnemy()
+        private IEnumerator StartEnemy()
         {
-            StartCombat = false;
+            startCombat = false;
             
             for (int i = 0; i < enemies.Count; i++)
             {
@@ -64,37 +65,58 @@ namespace PathFinding
             turnSystem.SetState(new PlayerTurnState(turnSystem));
         }
         
-        void FindEntities()
+        private void FindEntities()
         {
             enemies = turnSystem.enemyTeam;
             allies = turnSystem.allyTeam;
         }
         
-        void SearchForAllies()
+        private void SearchForAllies()
         {
-            var minDistance = 4f;
+            float nearest = 10000;
 ;
             foreach (var t in allies)
             {
                 var actualMinDistance = Vector3.Distance(currentEnemy.transform.position, t.transform.position);
 
-                if (actualMinDistance <= minDistance && t.hitPoints > 0)
+                if (actualMinDistance < nearest && t.hitPoints > 0)
                 {
-                    minDistance = actualMinDistance;
+                    nearest = actualMinDistance;
                     currentTarget = t.gameObject;
                     currentPlayer = currentTarget.GetComponent<Unit>();
+                    
                 }
             }
-            if (currentTarget != null)
+
+            if (currentTarget != null && currentEnemy.inRange == true)
             {
                 enemyMovement.FindPath(currentEnemy.transform.position, currentTarget.transform.position);
-                Move(enemyMovement);
+                
+                if (enemyMovement.path.Count <= currentEnemy.movement)
+                {
+                    MoveInRange(enemyMovement);
+                    
+                    currentEnemy.foundRival = true;
+                }
+            }
+            
+            if (currentTarget != null && currentEnemy.passive == true)
+            {
+                //Do nothing.
+                
+                currentEnemy.foundRival = true;
+            }
+            
+            if (currentTarget != null && currentEnemy.aggressive == true)
+            {
+                enemyMovement.FindPath(currentEnemy.transform.position, currentTarget.transform.position);
+                MoveAggressive(enemyMovement);
 
                 currentEnemy.foundRival = true;
             }
         }
         
-        void Move(Pathfinding2D unitPath)
+        private void MoveInRange(Pathfinding2D unitPath)
         {
             foreach (var t in unitPath.path.Take(unitPath.path.Count - 1))
             {
@@ -107,8 +129,42 @@ namespace PathFinding
                 EnemyCombat();
             }
         }
+        
+        private void MoveAggressive(Pathfinding2D unitPath)
+        {
+            var count = 0;
+            
+            if (unitPath.path.Count <= currentEnemy.movement)
+            {
+                while (count < currentEnemy.movement - 1)
+                {
+                    currentEnemy.transform.DOMove(unitPath.path[count].worldPosition, 0.6f, true);
+                
+                    count++;
+                }
+                
+                count = 0;
+            }
+            else
+            {
+                while (count < currentEnemy.movement)
+                {
+                    currentEnemy.transform.DOMove(unitPath.path[count].worldPosition, 0.6f, true);
+                
+                    count++;
+                }
+                
+                count = 0;
+            }
 
-        void EnemyCombat()
+            if (currentEnemy.hitPoints > 0 && currentPlayer.hitPoints > 0)
+            {
+                turnSystem.mainCamera.transform.DOMove(new Vector3(0, 0, -10) + currentEnemy.transform.position, 0.1f, true);
+                //EnemyCombat();
+            }
+        }
+
+        private void EnemyCombat()
         {
             currentTarget = null;
             
