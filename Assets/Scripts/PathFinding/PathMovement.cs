@@ -90,7 +90,7 @@ namespace PathFinding
                     Vector2 mousePosition = turnSystem.mainCamera.ScreenToWorldPoint(Input.mousePosition);
                     Vector3 gridPosition = map.WorldToCell(mousePosition);
 
-                    var newTarget = Instantiate(target, gridPosition, quaternion.identity);
+                    var newTarget = Instantiate(target, gridPosition + new Vector3(0.5f, 0.5f, 0f), quaternion.identity);
                     selectedNewSpace = true;
 
                     Vector3Int tilePosition = map.WorldToCell(mousePosition);
@@ -110,6 +110,15 @@ namespace PathFinding
 
                     pathMovement.FindPath(unitGridPos, targetGridPos);
 
+                    if (pathMovement.path == null)
+                    {
+                        grabed = false;
+                        selectedNewSpace = false;
+                        Destroy(newTarget);
+                        selectedUnit.path.SetActive(false);
+                        return;
+
+                    }
                     if (pathMovement.path.Count > selectedUnit.movement)
                     {
                         grabed = false;
