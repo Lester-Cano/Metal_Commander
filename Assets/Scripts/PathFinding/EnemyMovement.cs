@@ -134,9 +134,9 @@ namespace PathFinding
         {
             var count = 0;
             
-            if (unitPath.path.Count <= currentEnemy.movement)
+            if (unitPath.path.Count - 1 <= currentEnemy.movement)
             {
-                while (count < currentEnemy.movement - 1)
+                while (count < unitPath.path.Count - 1)
                 {
                     currentEnemy.transform.DOMove(unitPath.path[count].worldPosition, 0.6f, true);
                 
@@ -144,6 +144,12 @@ namespace PathFinding
                 }
                 
                 count = 0;
+                
+                if (currentEnemy.hitPoints > 0 && currentPlayer.hitPoints > 0)
+                {
+                    turnSystem.mainCamera.transform.DOMove(new Vector3(0, 0, -10) + currentEnemy.transform.position, 0.1f, true);
+                    EnemyCombat();
+                }
             }
             else
             {
@@ -155,12 +161,6 @@ namespace PathFinding
                 }
                 
                 count = 0;
-            }
-
-            if (currentEnemy.hitPoints > 0 && currentPlayer.hitPoints > 0)
-            {
-                turnSystem.mainCamera.transform.DOMove(new Vector3(0, 0, -10) + currentEnemy.transform.position, 0.1f, true);
-                //EnemyCombat();
             }
         }
 
