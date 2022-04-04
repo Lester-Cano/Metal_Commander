@@ -135,10 +135,10 @@ MonoBehaviour:
   unitSide: Ally
   hitPoints: 30
   maxHP: 30
-  movement: 4
   weaponPower: 4
   attack: 8
   defense: 8
+  movement: 4
   hasMoved: 0
   isDead: 0
   hasAttacked: 0
@@ -155,6 +155,10 @@ MonoBehaviour:
   turnSystem: {fileID: 0}
   renderer: {fileID: 0}
   range: {fileID: 0}
+  foundRival: 0
+  aggressive: 0
+  inRange: 0
+  passive: 0
 --- !u!95 &-7805956015046696009
 Animator:
   serializedVersion: 3
@@ -4102,7 +4106,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6623807960470586946}
         m_TargetAssemblyTypeName: HealSystem, Assembly-CSharp
         m_MethodName: Combat
         m_Mode: 1

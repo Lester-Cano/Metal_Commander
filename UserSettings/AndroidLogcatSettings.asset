@@ -1,9 +1,9 @@
 {
     "m_SelectedDeviceId": "KPSDU18831023941",
     "m_SelectedPackage": {
-        "deviceId": "KPSDU18831023941",
-        "name": "com.DefaultCompany.com.unity.template.mobile2D",
-        "processId": 27286,
+        "deviceId": "",
+        "name": "",
+        "processId": 0,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -11,43 +11,37 @@
         {
             "deviceId": "KPSDU18831023941",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 6001,
-            "exited": false
-        },
-        {
-            "deviceId": "KPSDU18831023941",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 7675,
-            "exited": false
-        },
-        {
-            "deviceId": "KPSDU18831023941",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 25969,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "KPSDU18831023941",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 6611,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "KPSDU18831023941",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 10510,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "KPSDU18831023941",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 11854,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "KPSDU18831023941",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 27286,
+            "exited": true
+        },
+        {
+            "deviceId": "KPSDU18831023941",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 6541,
             "exited": false
         }
     ],

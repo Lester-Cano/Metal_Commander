@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f28edbc9-f60c-4763-a6cb-b0a8424ca198" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Taller-VI-1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Taller-VI-1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PathFinding/PathMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PathFinding/PathMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PathFinding/EnemyMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PathFinding/EnemyMovement.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,6 +107,9 @@
       <workItem from="1647808748300" duration="790000" />
       <workItem from="1647822886344" duration="562000" />
       <workItem from="1647824714718" duration="568000" />
+      <workItem from="1648693100529" duration="2369000" />
+      <workItem from="1649017131440" duration="6456000" />
+      <workItem from="1649084260950" duration="1450000" />
     </task>
     <servers />
   </component>
