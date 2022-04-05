@@ -731,6 +731,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3710636489275211419, guid: 8f0b954b6d55cdd40915267fa8eff02b, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1962850672}
+    - target: {fileID: 3710636489275211419, guid: 8f0b954b6d55cdd40915267fa8eff02b, type: 3}
       propertyPath: m_RenderMode
       value: 0
       objectReference: {fileID: 0}
@@ -3171,8 +3175,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -455.9, y: -196.35}
-  m_SizeDelta: {x: 190, y: 37}
+  m_AnchoredPosition: {x: -445, y: -196.35}
+  m_SizeDelta: {x: 208, y: 38}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &448596704
 MonoBehaviour:
@@ -7656,7 +7660,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -5.20499}
+  m_AnchoredPosition: {x: 0, y: -5.2049904}
   m_SizeDelta: {x: 0, y: -10.41002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &844109907
@@ -8269,7 +8273,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 431.2, y: -215.6}
-  m_SizeDelta: {x: 120.817, y: 38.1527}
+  m_SizeDelta: {x: 144, y: 45.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &938610384
 MonoBehaviour:
@@ -9269,7 +9273,7 @@ PrefabInstance:
       objectReference: {fileID: 1962850672}
     - target: {fileID: 4975421174014812452, guid: f820099a86cd34049a048636eb2c2016, type: 3}
       propertyPath: m_RenderMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4975421174014812453, guid: f820099a86cd34049a048636eb2c2016, type: 3}
       propertyPath: m_UiScaleMode
@@ -10333,7 +10337,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -454.6, y: 197.9}
-  m_SizeDelta: {x: 171.72, y: 30}
+  m_SizeDelta: {x: 221, y: 39}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1513498433
 MonoBehaviour:
@@ -10498,7 +10502,7 @@ PrefabInstance:
       objectReference: {fileID: 1962850672}
     - target: {fileID: 4023151865549601709, guid: 3d9cb085ff1413a45b557d1797bb29ca, type: 3}
       propertyPath: m_RenderMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4023151865549601710, guid: 3d9cb085ff1413a45b557d1797bb29ca, type: 3}
       propertyPath: m_Pivot.x
@@ -17952,8 +17956,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -455.9, y: -196.35}
-  m_SizeDelta: {x: 190, y: 37}
+  m_AnchoredPosition: {x: -445, y: -196.35}
+  m_SizeDelta: {x: 208, y: 38}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1789328382
 MonoBehaviour:
@@ -18348,6 +18352,7 @@ GameObject:
   - component: {fileID: 1962850674}
   - component: {fileID: 1962850675}
   - component: {fileID: 1962850676}
+  - component: {fileID: 1962850677}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -18482,6 +18487,26 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &1962850677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962850670}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c88f5cead0c0b2a4eb05b5900433f8d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AssetsPPU: 32
+  m_RefResolutionX: 1920
+  m_RefResolutionY: 1080
+  m_UpscaleRT: 1
+  m_PixelSnapping: 0
+  m_CropFrameX: 0
+  m_CropFrameY: 1
+  m_StretchFill: 1
 --- !u!114 &1975550580 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3710636489355062558, guid: 8f0b954b6d55cdd40915267fa8eff02b, type: 3}
@@ -18563,7 +18588,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1962850672}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
