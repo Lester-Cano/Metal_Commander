@@ -3939,10 +3939,10 @@ MonoBehaviour:
   unitSide: Ally
   hitPoints: 20
   maxHP: 20
-  movement: 5
   weaponPower: 7
   attack: 8
   defense: 4
+  movement: 4
   hasMoved: 0
   isDead: 0
   hasAttacked: 0
@@ -3960,6 +3960,9 @@ MonoBehaviour:
   renderer: {fileID: 0}
   range: {fileID: 0}
   foundRival: 0
+  aggressive: 0
+  inRange: 0
+  passive: 0
 --- !u!95 &-9151684484739527446
 Animator:
   serializedVersion: 3
