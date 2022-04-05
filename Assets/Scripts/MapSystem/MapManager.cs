@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Random = System.Random;
@@ -13,12 +14,17 @@ namespace MapSystem
         
         [SerializeField] public Tilemap allySpawners;
         [SerializeField] public Tilemap enemySpawners; 
-        public List<Vector3> allySpawns; 
-        public List<Vector3> enemySpawns;
+        [HideInInspector] public List<Vector3> allySpawns; 
+        [HideInInspector] public List<Vector3> enemySpawns;
         [SerializeField] public List<Unit> unitPrefab;
         [SerializeField] public List<Unit> enemyPrefab;
         private Random rnd = new Random();
-        
+
+
+        [SerializeField] public List<Vector3> enemySpawn;
+        [SerializeField] public List<int> unitType;
+        [SerializeField] public List<int> unitIA;
+
         //TurnSystem Data
 
         [SerializeField] private TurnSystem.TurnSystem turnSystem;
@@ -65,12 +71,46 @@ namespace MapSystem
 
         public void SpawnEnemies()
         {
-            GetSpawners(enemySpawners, enemySpawns);
-            for(var i = 0; i < enemySpawns.Count; i++)
+             // GetSpawners(enemySpawners, enemySpawns);
+             // for(var i = 0; i < enemySpawns.Count; i++)
+             // {
+             //     int number = rnd.Next(0, 3);
+             //     var newEnemyUnit = Instantiate(enemyPrefab[number], enemySpawns[i], Quaternion.identity);
+             //     turnSystem.enemyTeam.Add(newEnemyUnit);
+             // }
+
+            for (var i = 0; i < enemySpawn.Count; i++)
             {
-                int number = rnd.Next(0, 3);
-                var newEnemyUnit = Instantiate(enemyPrefab[number], enemySpawns[i], Quaternion.identity);
+                int enemyClass = 0;
+
+                if (unitType[i] == 0)
+                {
+                    enemyClass = unitType[i];
+                }
+                else if (unitType[i] == 1)
+                {
+                    enemyClass = unitType[i];
+                }
+                else if (unitType[i] == 2)
+                {
+                    enemyClass = unitType[i];
+                }
+
+                var newEnemyUnit = Instantiate(enemyPrefab[enemyClass], enemySpawn[i], Quaternion.identity);
                 turnSystem.enemyTeam.Add(newEnemyUnit);
+
+                if (unitIA[i] == 0)
+                {
+                    turnSystem.enemyTeam[i].aggressive = true;
+                }
+                else if (unitIA[i] == 1)
+                {
+                    turnSystem.enemyTeam[i].inRange = true;
+                }
+                else if (unitIA[i] == 2)
+                {
+                    turnSystem.enemyTeam[i].passive = true;
+                }
             }
         }
     }

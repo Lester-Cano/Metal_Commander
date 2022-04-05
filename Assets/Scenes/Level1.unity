@@ -2755,6 +2755,11 @@ MonoBehaviour:
   - {fileID: 5091326166117662736, guid: 6057b184017561644ae35b1730f32473, type: 3}
   - {fileID: 5091326166117662736, guid: 6057b184017561644ae35b1730f32473, type: 3}
   - {fileID: 5091326166117662736, guid: 6057b184017561644ae35b1730f32473, type: 3}
+  enemySpawn:
+  - {x: -3, y: 0, z: 0}
+  - {x: 4, y: 1, z: 0}
+  unitType: 0000000000000000
+  unitIA: 0100000001000000
   turnSystem: {fileID: 212247447}
 --- !u!1 &245404443
 GameObject:
@@ -7482,7 +7487,7 @@ MonoBehaviour:
   currentTarget: {fileID: 0}
   currentPlayer: {fileID: 0}
   turnSystem: {fileID: 212247447}
-  StartCombat: 0
+  startCombat: 0
   rivalFound: 0
 --- !u!114 &785611019
 MonoBehaviour:
