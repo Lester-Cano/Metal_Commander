@@ -3957,10 +3957,10 @@ MonoBehaviour:
   unitSide: Ally
   hitPoints: 15
   maxHP: 15
-  movement: 5
   weaponPower: 10
   attack: 5
   defense: 2
+  movement: 5
   hasMoved: 0
   isDead: 0
   hasAttacked: 0
@@ -3968,7 +3968,7 @@ MonoBehaviour:
   hit: {fileID: 8300000, guid: fce0ed3723eb222429666adbe5054b4c, type: 3}
   selected: {fileID: 8300000, guid: 3ce59964c9063e448a90019736ee55c2, type: 3}
   spaceSelected: {fileID: 8300000, guid: 0741420877bfba248a55abd935cc75a9, type: 3}
-  portrait: {fileID: 21300000, guid: f71ac04f2872c7f4086f623a4aeba04c, type: 3}
+  portrait: {fileID: 21300000, guid: 8e394b6cea8fdb646ab0e09151ac1427, type: 3}
   parent: {fileID: 8781895274828106709}
   path: {fileID: 4833937209304931062}
   healthBarBehaviour: {fileID: 2037996523914688966}
@@ -3978,6 +3978,9 @@ MonoBehaviour:
   renderer: {fileID: 0}
   range: {fileID: 0}
   foundRival: 0
+  aggressive: 0
+  inRange: 0
+  passive: 0
 --- !u!95 &529349744860720901
 Animator:
   serializedVersion: 3
