@@ -13,12 +13,9 @@ namespace MapSystem
         //Spawning Units.
         
         [SerializeField] public Tilemap allySpawners;
-        [SerializeField] public Tilemap enemySpawners; 
-        [HideInInspector] public List<Vector3> allySpawns; 
-        [HideInInspector] public List<Vector3> enemySpawns;
+        [HideInInspector] public List<Vector3> allySpawns;
         [SerializeField] public List<Unit> unitPrefab;
         [SerializeField] public List<Unit> enemyPrefab;
-        private Random rnd = new Random();
 
 
         [SerializeField] public List<Vector3> enemySpawn;
@@ -32,10 +29,8 @@ namespace MapSystem
 
         private void Start()
         { 
-            allySpawners = GetComponent<Tilemap>();
-            enemySpawners = GetComponent<Tilemap>(); 
-            allySpawns = new List<Vector3>(); 
-            enemySpawns = new List<Vector3>();
+            //allySpawners = GetComponent<Tilemap>();
+            allySpawns = new List<Vector3>();
         }
 
         public void GetSpawners(Tilemap spawn, List<Vector3> spawners)
@@ -71,14 +66,6 @@ namespace MapSystem
 
         public void SpawnEnemies()
         {
-             // GetSpawners(enemySpawners, enemySpawns);
-             // for(var i = 0; i < enemySpawns.Count; i++)
-             // {
-             //     int number = rnd.Next(0, 3);
-             //     var newEnemyUnit = Instantiate(enemyPrefab[number], enemySpawns[i], Quaternion.identity);
-             //     turnSystem.enemyTeam.Add(newEnemyUnit);
-             // }
-
             for (var i = 0; i < enemySpawn.Count; i++)
             {
                 int enemyClass = 0;

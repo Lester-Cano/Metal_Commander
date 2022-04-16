@@ -255,7 +255,6 @@ GameObject:
   - component: {fileID: -2327035311333975274}
   - component: {fileID: 7416341977574145073}
   - component: {fileID: -3287827200589104046}
-  - component: {fileID: -5192853283816639411}
   m_Layer: 3
   m_Name: Warrior
   m_TagString: Ally
@@ -277,6 +276,7 @@ Transform:
   - {fileID: 7745854566709218335}
   - {fileID: 2383228823334901877}
   - {fileID: 2776943486561672178}
+  - {fileID: 2915585560794558784}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -355,7 +355,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2, y: 1.2}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &987571919943208407
 MonoBehaviour:
@@ -549,21 +549,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &-5192853283816639411
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 987571919943208402}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd6dae1e5cacb50419a20cfd02d1a7ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unit1: {fileID: 0}
-  unit2: {fileID: 0}
-  buttonContainer: {fileID: 2322209077624822726}
 --- !u!1 &1006956806763280822
 GameObject:
   m_ObjectHideFlags: 0
@@ -2268,6 +2253,86 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &6970331679587539087
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2915585560794558784}
+  - component: {fileID: 274912377540967500}
+  - component: {fileID: 6209534705371756958}
+  m_Layer: 2
+  m_Name: Coll
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2915585560794558784
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6970331679587539087}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 987571919943208405}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &274912377540967500
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6970331679587539087}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 0.9, y: 0.9}
+  - {x: 1.9, y: 0.9}
+  - {x: 1.9, y: 0.1}
+  - {x: 0.9, y: 0.1}
+  - {x: 0.9, y: -0.9}
+  - {x: 0.1, y: -0.9}
+  - {x: 0.1, y: 0.1}
+  - {x: -0.9, y: 0.1}
+  - {x: -0.9, y: 0.9}
+  - {x: 0.1, y: 0.9}
+  - {x: 0.1, y: 1.9}
+  - {x: 0.9, y: 1.9}
+  - {x: 0.9, y: 0.9}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
+--- !u!114 &6209534705371756958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6970331679587539087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd6dae1e5cacb50419a20cfd02d1a7ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit1: {fileID: 0}
+  unit2: {fileID: 0}
+  buttonContainer: {fileID: 2322209077624822726}
 --- !u!1 &7477364897038500799
 GameObject:
   m_ObjectHideFlags: 0
@@ -6005,7 +6070,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -5192853283816639411}
+      - m_Target: {fileID: 6209534705371756958}
         m_TargetAssemblyTypeName: HealSystem, Assembly-CSharp
         m_MethodName: Combat
         m_Mode: 1

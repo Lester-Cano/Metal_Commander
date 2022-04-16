@@ -14,7 +14,6 @@ namespace Camera_Stuff
 
         private Vector3 origin, difference, resetCamera;
         private bool drag;
-        [SerializeField] private Camera mainCamera;
 
         private void Start()
         {

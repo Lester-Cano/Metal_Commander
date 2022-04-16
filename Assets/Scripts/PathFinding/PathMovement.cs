@@ -16,8 +16,6 @@ namespace PathFinding
         private bool grabed;
         private bool selectedNewSpace;
 
-        [SerializeField] private TileBase tile;
-
         //From here, TurnSystem
 
         [SerializeField] private TurnSystem.TurnSystem turnSystem;
