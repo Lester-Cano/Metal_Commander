@@ -385,7 +385,7 @@ MonoBehaviour:
   hit: {fileID: 8300000, guid: fce0ed3723eb222429666adbe5054b4c, type: 3}
   selected: {fileID: 8300000, guid: 3ce59964c9063e448a90019736ee55c2, type: 3}
   spaceSelected: {fileID: 8300000, guid: 0741420877bfba248a55abd935cc75a9, type: 3}
-  portrait: {fileID: 21300000, guid: 329e669804d46bc4985dac2239882fb6, type: 3}
+  portrait: {fileID: 21300000, guid: 0eea3d2c1adf0db48ba300572491d18f, type: 3}
   parent: {fileID: 987571919943208402}
   path: {fileID: 7745854566709218334}
   healthBarBehaviour: {fileID: 3756915774074777390}
