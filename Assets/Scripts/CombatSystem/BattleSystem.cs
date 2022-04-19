@@ -37,24 +37,34 @@ public class BattleSystem : MonoBehaviour
             }
         }
     }
-    
-    private void OnTriggerExit2D(Collider2D other)
+
+    private void OnTriggerStay(Collider other)
     {
-        //var distance = Vector3.Distance(unit1.transform.position, unit2.transform.position);
-        
         if (other.CompareTag("Ally"))
         {
-            if (unit2.unitName == "Sniper")
+            unit2 = other.GetComponent<Unit>();
+            
+            if (unit2.className == "Sniper")
             {
-                buttonContainer.SetActive(false);
+                buttonContainer.SetActive(true);
             }
             else
             {
-                // if (distance > 0.6)
-                // {
-                //     buttonContainer.SetActive(false);
-                // }
+                StartCoroutine(CalDistance(unit1, unit2));
             }
+
+            if (unit2.hasAttacked)
+            {
+                buttonContainer.SetActive(false);
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Ally"))
+        {
+            buttonContainer.SetActive(false);
         }
     }
 
