@@ -18913,6 +18913,7 @@ MonoBehaviour:
   mainCamera: {fileID: 788830345}
   enemyMovement: {fileID: 819821295}
   source: {fileID: 392507780}
+  cameraController: {fileID: 788830344}
 --- !u!4 &2071233553
 Transform:
   m_ObjectHideFlags: 0

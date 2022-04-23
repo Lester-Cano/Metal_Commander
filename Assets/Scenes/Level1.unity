@@ -900,6 +900,7 @@ MonoBehaviour:
   mainCamera: {fileID: 1962850672}
   enemyMovement: {fileID: 785611018}
   source: {fileID: 1425673255}
+  cameraController: {fileID: 1962850675}
 --- !u!1 &224155700
 GameObject:
   m_ObjectHideFlags: 0
