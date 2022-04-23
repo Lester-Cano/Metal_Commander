@@ -79,7 +79,7 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    public IEnumerator CalDistance(Unit unit1, Unit unit2)
+    private IEnumerator CalDistance(Unit unit1, Unit unit2)
     {
         yield return new WaitForSeconds(0.5f);
         

@@ -7,20 +7,11 @@ namespace Camera_Stuff
     public class CameraController : MonoBehaviour
     {
         [SerializeField] public Camera cam;
-        [SerializeField] public Vector3 newDirection;
         [SerializeField] public Vector3 maxValue, minValue;
+        private Vector3 _origin, _difference;
+        private bool _drag;
         
-        //From here another try
-
-        private Vector3 origin, difference, resetCamera;
-        private bool drag;
-
-        private void Start()
-        {
-            resetCamera = cam.transform.position;
-        }
-
-        private void LateUpdate()
+        private void Update()
         {
             if (Input.GetMouseButton(0))
             {
@@ -33,28 +24,23 @@ namespace Camera_Stuff
                 }
                 else
                 {
-                    difference = (cam.ScreenToWorldPoint(Input.mousePosition) - cam.transform.position);
-                    if (drag == false)
+                    _difference = (cam.ScreenToWorldPoint(Input.mousePosition) - cam.transform.position);
+                    if (_drag == false)
                     {
-                        drag = true;
-                        origin = cam.ScreenToWorldPoint(Input.mousePosition);
+                        _drag = true;
+                        _origin = cam.ScreenToWorldPoint(Input.mousePosition);
                     }
                 }
             }
             else
             {
-                drag = false;
+                _drag = false;
             }
 
-            if (drag)
+            if (_drag)
             {
-                cam.transform.position = origin - difference;
+                cam.transform.position = _origin - _difference;
                 ReBound();
-            }
-
-            if (Input.GetMouseButton(1))
-            {
-                cam.transform.position = resetCamera;
             }
         }
 

@@ -54,7 +54,7 @@ namespace PathFinding
 
                     if (currentEnemy.foundRival)
                     {
-                        turnSystem.mainCamera.transform.DOMove(new Vector3(0, 0, -10) + currentEnemy.transform.position, 0.1f, true);
+                        //turnSystem.mainCamera.transform.DOMove(new Vector3(0, 0, -10) + currentEnemy.transform.position, 0.1f, true);
                         yield return new WaitForSeconds(2f);
                     }
 
