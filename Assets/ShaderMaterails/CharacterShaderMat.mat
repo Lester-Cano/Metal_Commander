@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: OutlineP
-  m_Shader: {fileID: -6465566751694194690, guid: 32d242e85fbd11742ac66f0e2b7c97b7, type: 3}
+  m_Name: CharacterShaderMat
+  m_Shader: {fileID: -6465566751694194690, guid: 8340530c07da7154cb9ba56a12cc938c, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,6 +19,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_f9c42f712dc4477abea8f87e75ed18de:
+        m_Texture: {fileID: 2800000, guid: 36561dcb223cf1f47829b2ed8c7d56a4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 4a9a108baff29344d8c5c6bef55f6f5f, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -35,6 +39,11 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors: []
+    m_Floats:
+    - Vector1_b6d31214a5ff4fabb56b6b40d40f9e6e: 0
+    - Vector1_df0dc23bc18642df97b4af877fe1cfa9: 0.0016
+    - _fade: 1
+    m_Colors:
+    - Color_37f5591730084603bf0006d0b61c881d: {r: 1, g: 1, b: 1, a: 1}
+    - Color_5f504c89160d4308a69dbf4e199dac1e: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []

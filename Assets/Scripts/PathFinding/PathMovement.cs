@@ -14,7 +14,7 @@ namespace PathFinding
         [SerializeField] private Unit selectedUnit;
         [SerializeField] private GameObject target;
         [SerializeField] private Tilemap map;
-        private bool _grabed, _selectedNewSpace;
+        private bool _grabbed, _selectedNewSpace;
 
         //From here, TurnSystem
 
@@ -30,11 +30,11 @@ namespace PathFinding
 
         private void Update()
         {
-            if (Input.GetMouseButtonDown(0) && !_grabed && !_selectedNewSpace)
+            if (Input.GetMouseButtonDown(0) && !_grabbed && !_selectedNewSpace)
             {
                 SelectUnit(); 
             }
-            else if (Input.GetMouseButtonDown(0) && _grabed && !_selectedNewSpace)
+            else if (Input.GetMouseButtonDown(0) && _grabbed && !_selectedNewSpace)
             {
                 SelectNewSpace();
             }
@@ -47,12 +47,12 @@ namespace PathFinding
 
             if (!hitData)
             {
-                _grabed = false;
+                _grabbed = false;
                 return;
             }
             if (hitData.transform.gameObject.CompareTag("Enemy"))
             {
-                _grabed = false;
+                _grabbed = false;
             }
             if (hitData.transform.gameObject.CompareTag("Ally"))
             {
@@ -63,14 +63,14 @@ namespace PathFinding
                 
                 selectedUnit.path.SetActive(true);
                 
-                _grabed = true;
+                _grabbed = true;
                 
                 //turnSystem.mainCamera.transform.DOMove(new Vector3(0, 0, -10) + selectedUnit.transform.position, 0.2f, false);
                 selectedUnit.anim.SetBool("Walk2", true);
 
                 if (selectedUnit.hasMoved)
                 {
-                    _grabed = false;
+                    _grabbed = false;
                     selectedUnit.path.SetActive(false);
                     
                     selectedUnit.anim.SetBool("Walk2", false);
@@ -80,7 +80,7 @@ namespace PathFinding
 
         void SelectNewSpace()
         {
-            if (_grabed)
+            if (_grabbed)
             {
                 Vector2 worldPosition = turnSystem.mainCamera.ScreenToWorldPoint(Input.mousePosition);
                 RaycastHit2D hitData = Physics2D.Raycast(worldPosition, Vector2.zero, 0);
@@ -99,7 +99,7 @@ namespace PathFinding
 
                     if (map.GetTile(tilePosition) == null)
                     {
-                        _grabed = false;
+                        _grabbed = false;
                         _selectedNewSpace = false;
                         selectedUnit.path.SetActive(false);
                         selectedUnit.anim.SetBool("Walk2", false);
@@ -114,7 +114,7 @@ namespace PathFinding
 
                     if (pathMovement.path == null)
                     {
-                        _grabed = false;
+                        _grabbed = false;
                         _selectedNewSpace = false;
                         Destroy(newTarget);
                         selectedUnit.path.SetActive(false);
@@ -123,7 +123,7 @@ namespace PathFinding
                     }
                     if (pathMovement.path.Count > selectedUnit.movement)
                     {
-                        _grabed = false;
+                        _grabbed = false;
                         _selectedNewSpace = false;
                         selectedUnit.path.SetActive(false);
                         selectedUnit.anim.SetBool(Walk2, false);
@@ -131,16 +131,15 @@ namespace PathFinding
                         return;
                     }
                     
-                    //StartCoroutine(Move(pathMovement));
                     MoveWithPath(pathMovement);
 
-                    _grabed = false;
+                    _grabbed = false;
                     _selectedNewSpace = false;
                     Destroy(newTarget);
                 }
                 else
                 {
-                    _grabed = false;
+                    _grabbed = false;
                     selectedUnit.path.SetActive(false);
                     
                     selectedUnit.anim.SetBool(Walk2, false);
@@ -148,7 +147,7 @@ namespace PathFinding
             }
             else
             {
-                _grabed = false;
+                _grabbed = false;
             }
         }
 
@@ -175,13 +174,13 @@ namespace PathFinding
 
             var maxCount = unitPath.path.Count;
 
-            Vector3[] path = new Vector3[maxCount];
+            var path = new Vector3[maxCount];
             for (var i = 0; i < path.Length; i++)
             {
                 path[i] = unitPath.path[i].worldPosition;
             }
 
-            selectedUnit.transform.DOPath(path, 2, PathType.Linear, PathMode.TopDown2D);
+            selectedUnit.transform.DOPath(path, 1, PathType.Linear, PathMode.TopDown2D);
             
             selectedUnit.anim.SetBool(Walk2, false);
             selectedUnit.hasMoved = true;

@@ -10,7 +10,8 @@ public class Unit : MonoBehaviour
     [SerializeField] public string unitName, className, unitSide;
     [SerializeField] public int hitPoints, maxHP, weaponPower, attack, defense;
     [SerializeField] public float movement;
-    [HideInInspector] [SerializeField] public bool hasMoved, isDead, hasAttacked;
+    [HideInInspector] [SerializeField] public bool hasMoved, hasAttacked;
+    [SerializeField] public bool isDead;
     [SerializeField] public AudioClip getHit, hit, selected, spaceSelected;
     [SerializeField] public Sprite portrait;
 
@@ -45,6 +46,14 @@ public class Unit : MonoBehaviour
     //Enemy IA
 
     [SerializeField] public bool aggressive, inRange, passive;
+    
+    //Shaders
+
+    [SerializeField] public Material mat;
+    public Material instancedMat;
+    private static readonly int Attack1 = Animator.StringToHash("Attack");
+    private static readonly int Fade = Shader.PropertyToID("_fade");
+    private float _time;
 
     public Unit(int hitPoints, int maxHP, int attack, int defense, int movement, int weaponPower)
     {
@@ -61,14 +70,18 @@ public class Unit : MonoBehaviour
     {
         renderer = GetComponentInParent<SpriteRenderer>();
         source = FindObjectOfType<AudioManager>();
-        turnSystem = FindObjectOfType<TurnSystem.TurnSystem>();
+        turnSystem = FindObjectOfType<TurnSystem.TurnSystem>(); 
+        instancedMat = gameObject.GetComponent<SpriteRenderer>().material = new Material(mat);
     }
 
     private void Update()
     {
         if (isDead)
         {
-            parent.SetActive(false);
+            _time += 0.04f;
+            instancedMat.SetFloat(Fade, Mathf.Lerp(1, 0, _time));
+            
+            Invoke(nameof(Deactive), 2);
         }
 
         if (hasMoved)
@@ -102,12 +115,12 @@ public class Unit : MonoBehaviour
 
         if (attacked.hitPoints > 0)
         {
-            attacked.anim.SetBool("Attack", true);
+            attacked.anim.SetBool(Attack1, true);
 
             yield return new WaitForSeconds(1f);
             
             attacked.source.Play("Hit");
-            attacked.anim.SetBool("Attack", false);
+            attacked.anim.SetBool(Attack1, false);
             
             yield return new WaitForSeconds(0.2f);
         
@@ -118,8 +131,6 @@ public class Unit : MonoBehaviour
         
         if (attacked.hitPoints <= 0)
         {
-            attacked.anim.SetBool("Death", true);
-
             yield return new WaitForSeconds(1.2f);
             
             if (attacked.CompareTag("Ally"))
@@ -136,8 +147,6 @@ public class Unit : MonoBehaviour
 
         if (hitPoints <= 0)
         {
-            anim.SetBool("Death", true);
-
             yield return new WaitForSeconds(1.2f);
             
             if (CompareTag("Ally"))
@@ -167,4 +176,9 @@ public class Unit : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
     }
     #endregion
+
+    private void Deactive()
+    {
+        parent.SetActive(false);
+    }
 }
