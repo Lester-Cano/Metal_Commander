@@ -2952,7 +2952,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 8c17abfdb052de2428b6b50cb7c4a996, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e8af5196fb42a634d8d878cc233a9e54, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2978,9 +2978,9 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0.5, y: 0.5}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0.03846154, z: 0, w: 0.03846154}
+    border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
-    oldSize: {x: 1.2307693, y: 1.2307693}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -3002,17 +3002,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitName: Enemy
-  className: Tank
+  className: Mage
   unitSide: Enemy
-  hitPoints: 28
-  maxHP: 28
-  weaponPower: 3
+  hitPoints: 20
+  maxHP: 20
+  weaponPower: 6
   attack: 7
-  defense: 7
+  defense: 4
   movement: 3
   hasMoved: 0
-  isDead: 0
   hasAttacked: 0
+  isDead: 0
   getHit: {fileID: 8300000, guid: 4c51997b156cfd54592638f9ad99fe4d, type: 3}
   hit: {fileID: 8300000, guid: fce0ed3723eb222429666adbe5054b4c, type: 3}
   selected: {fileID: 8300000, guid: 3ce59964c9063e448a90019736ee55c2, type: 3}
@@ -3031,6 +3031,7 @@ MonoBehaviour:
   inRange: 0
   passive: 0
   mat: {fileID: 2100000, guid: fcf2735585cb6874cbbdbd5df8812042, type: 2}
+  instancedMat: {fileID: 0}
 --- !u!95 &6266082911966067982
 Animator:
   serializedVersion: 3
@@ -3041,7 +3042,7 @@ Animator:
   m_GameObject: {fileID: 8500508323015490522}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0d7bb71a707538248845c14cf60d797e, type: 2}
+  m_Controller: {fileID: 9100000, guid: aea742418fa2876418f69a2ad690d65d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
