@@ -123,13 +123,19 @@ namespace PathFinding
             {
                 path[i] = unitPath.path[i].worldPosition;
             }
+            
+            var camPath = new Vector3[path.Length];
+            for (var i = 0; i < path.Length; i++)
+            {
+                camPath[i] = path[i] + new Vector3(0, 0, -10);
+            }
 
             turnSystem.mainCamera.transform.DOMove(currentEnemy.transform.position + new Vector3(0, 0, -10), 1,
                 false);
             yield return new WaitForSeconds(1.1f);
             
             currentEnemy.transform.DOPath(path, 1, PathType.Linear, PathMode.TopDown2D);
-            turnSystem.mainCamera.transform.DOPath(path, 1, PathType.Linear, PathMode.TopDown2D);
+            turnSystem.mainCamera.transform.DOPath(camPath, 1, PathType.Linear, PathMode.TopDown2D);
 
             if (currentEnemy.hitPoints > 0 && currentPlayer.hitPoints > 0)
             {
