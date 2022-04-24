@@ -81,10 +81,10 @@ public class Unit : MonoBehaviour
     {
         if (isDead)
         {
-            _time += 0.04f;
+            _time += 0.02f;
             instancedMat.SetFloat(Fade, Mathf.Lerp(1, 0, _time));
             
-            Invoke(nameof(Deactive), 2);
+            Invoke(nameof(Deactive), 0.8f);
         }
 
         if (hasMoved)
