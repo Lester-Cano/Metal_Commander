@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using Unity.Mathematics;
@@ -13,8 +14,7 @@ namespace PathFinding
         [SerializeField] private Unit selectedUnit;
         [SerializeField] private GameObject target;
         [SerializeField] private Tilemap map;
-        private bool grabed;
-        private bool selectedNewSpace;
+        private bool _grabbed, _selectedNewSpace;
 
         //From here, TurnSystem
 
@@ -24,13 +24,18 @@ namespace PathFinding
 
         [SerializeField] private AudioManager source;
 
+        public Ease easeIn = Ease.InExpo;
+        public Ease easeOut = Ease.OutExpo;
+        private static readonly int Walk2 = Animator.StringToHash("Walk2");
+        private static readonly int Thickness = Shader.PropertyToID("_thickness");
+
         private void Update()
         {
-            if (Input.GetMouseButtonDown(0) && !grabed && !selectedNewSpace)
+            if (Input.GetMouseButtonDown(0) && !_grabbed && !_selectedNewSpace)
             {
                 SelectUnit(); 
             }
-            else if (Input.GetMouseButtonDown(0) && grabed && !selectedNewSpace)
+            else if (Input.GetMouseButtonDown(0) && _grabbed && !_selectedNewSpace)
             {
                 SelectNewSpace();
             }
@@ -43,12 +48,12 @@ namespace PathFinding
 
             if (!hitData)
             {
-                grabed = false;
+                _grabbed = false;
                 return;
             }
             if (hitData.transform.gameObject.CompareTag("Enemy"))
             {
-                grabed = false;
+                _grabbed = false;
             }
             if (hitData.transform.gameObject.CompareTag("Ally"))
             {
@@ -58,25 +63,27 @@ namespace PathFinding
                 pathMovement = selectedUnit.GetComponent<Pathfinding2D>();
                 
                 selectedUnit.path.SetActive(true);
+                selectedUnit.instancedMat.SetFloat(Thickness, 0.0016f);
                 
-                grabed = true;
+                _grabbed = true;
                 
-                //turnSystem.mainCamera.transform.DOMove(new Vector3(0, 0, -10) + selectedUnit.transform.position, 0.2f, false);
-                selectedUnit.anim.SetBool("Walk2", true);
+                selectedUnit.anim.SetBool(Walk2, true);
 
                 if (selectedUnit.hasMoved)
                 {
-                    grabed = false;
+                    _grabbed = false;
                     selectedUnit.path.SetActive(false);
                     
-                    selectedUnit.anim.SetBool("Walk2", false);
+                    selectedUnit.anim.SetBool(Walk2, false);
+                    
+                    selectedUnit.instancedMat.SetFloat(Thickness, 0);
                 }
             }
         }
 
         void SelectNewSpace()
         {
-            if (grabed)
+            if (_grabbed)
             {
                 Vector2 worldPosition = turnSystem.mainCamera.ScreenToWorldPoint(Input.mousePosition);
                 RaycastHit2D hitData = Physics2D.Raycast(worldPosition, Vector2.zero, 0);
@@ -89,16 +96,17 @@ namespace PathFinding
                     Vector3 gridPosition = map.WorldToCell(mousePosition);
 
                     var newTarget = Instantiate(target, gridPosition + new Vector3(0.5f, 0.5f, 0f), quaternion.identity);
-                    selectedNewSpace = true;
+                    _selectedNewSpace = true;
 
                     Vector3Int tilePosition = map.WorldToCell(mousePosition);
 
                     if (map.GetTile(tilePosition) == null)
                     {
-                        grabed = false;
-                        selectedNewSpace = false;
+                        _grabbed = false;
+                        _selectedNewSpace = false;
                         selectedUnit.path.SetActive(false);
-                        selectedUnit.anim.SetBool("Walk2", false);
+                        selectedUnit.anim.SetBool(Walk2, false);
+                        selectedUnit.instancedMat.SetFloat(Thickness, 0);
                         Destroy(newTarget);
                         return;
                     }
@@ -110,54 +118,78 @@ namespace PathFinding
 
                     if (pathMovement.path == null)
                     {
-                        grabed = false;
-                        selectedNewSpace = false;
+                        _grabbed = false;
+                        _selectedNewSpace = false;
                         Destroy(newTarget);
                         selectedUnit.path.SetActive(false);
+                        selectedUnit.instancedMat.SetFloat(Thickness, 0);
                         return;
 
                     }
                     if (pathMovement.path.Count > selectedUnit.movement)
                     {
-                        grabed = false;
-                        selectedNewSpace = false;
+                        _grabbed = false;
+                        _selectedNewSpace = false;
                         selectedUnit.path.SetActive(false);
-                        selectedUnit.anim.SetBool("Walk2", false);
+                        selectedUnit.anim.SetBool(Walk2, false);
+                        selectedUnit.instancedMat.SetFloat(Thickness, 0);
                         Destroy(newTarget);
                         return;
                     }
-            
-                    Move(pathMovement);
+                    
+                    MoveWithPath(pathMovement);
 
-                    grabed = false;
-                    selectedNewSpace = false;
+                    _grabbed = false;
+                    _selectedNewSpace = false;
                     Destroy(newTarget);
+                    selectedUnit.instancedMat.SetFloat(Thickness, 0);
                 }
                 else
                 {
-                    grabed = false;
+                    _grabbed = false;
                     selectedUnit.path.SetActive(false);
-                    
-                    selectedUnit.anim.SetBool("Walk2", false);
+                    selectedUnit.instancedMat.SetFloat(Thickness, 0);
+                    selectedUnit.anim.SetBool(Walk2, false);
                 }
             }
             else
             {
-                grabed = false;
+                _grabbed = false;
             }
         }
 
-        private void Move(Pathfinding2D unitPath)
+        private IEnumerator Move(Pathfinding2D unitPath)
         {
             selectedUnit.path.SetActive(false);
             
-            foreach (var t in unitPath.path)
-            { 
-                selectedUnit.transform.DOMove(t.worldPosition, 0.5f, true);
+             foreach (var t in unitPath.path)
+             {
+                 selectedUnit.transform.DOMove(t.worldPosition, 0.2f, true);
+                 yield return new WaitForSeconds(0.2f);
+             }
+
+            selectedUnit.anim.SetBool(Walk2, false);
+             
+            selectedUnit.hasMoved = true;
+
+            yield return new WaitForSeconds(0);
+        }
+
+        private void MoveWithPath(Pathfinding2D unitPath)
+        {
+            selectedUnit.path.SetActive(false);
+
+            var maxCount = unitPath.path.Count;
+
+            var path = new Vector3[maxCount];
+            for (var i = 0; i < path.Length; i++)
+            {
+                path[i] = unitPath.path[i].worldPosition;
             }
 
-            selectedUnit.anim.SetBool("Walk2", false);
-             
+            selectedUnit.transform.DOPath(path, 1, PathType.Linear, PathMode.TopDown2D);
+            
+            selectedUnit.anim.SetBool(Walk2, false);
             selectedUnit.hasMoved = true;
         }
     }

@@ -79,9 +79,9 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    public IEnumerator CalDistance(Unit unit1, Unit unit2)
+    private IEnumerator CalDistance(Unit unit1, Unit unit2)
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         
         distance = Vector3.Distance(unit1.transform.position, unit2.transform.position);
         

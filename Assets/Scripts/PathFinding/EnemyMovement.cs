@@ -43,7 +43,7 @@ namespace PathFinding
         {
             startCombat = false;
             
-            for (int i = 0; i < enemies.Count; i++)
+            for (var i = 0; i < enemies.Count; i++)
             {
                 currentEnemy = enemies[i];
 
@@ -54,8 +54,7 @@ namespace PathFinding
 
                     if (currentEnemy.foundRival)
                     {
-                        turnSystem.mainCamera.transform.DOMove(new Vector3(0, 0, -10) + currentEnemy.transform.position, 0.1f, true);
-                        yield return new WaitForSeconds(2f);
+                        yield return new WaitForSeconds(1f);
                     }
 
                     yield return new WaitForSeconds(0.1f);
@@ -94,7 +93,7 @@ namespace PathFinding
                 
                 if (enemyMovement.path.Count <= currentEnemy.movement)
                 {
-                    MoveInRange(enemyMovement);
+                    StartCoroutine(MoveInRange(enemyMovement));
                     
                     currentEnemy.foundRival = true;
                 }
@@ -103,64 +102,91 @@ namespace PathFinding
             if (currentTarget != null && currentEnemy.passive == true)
             {
                 //Do nothing.
-                
+
                 currentEnemy.foundRival = true;
             }
             
             if (currentTarget != null && currentEnemy.aggressive == true)
             {
                 enemyMovement.FindPath(currentEnemy.transform.position, currentTarget.transform.position);
-                MoveAggressive(enemyMovement);
+                StartCoroutine(MoveAggressive(enemyMovement));
 
                 currentEnemy.foundRival = true;
             }
         }
         
-        private void MoveInRange(Pathfinding2D unitPath)
+        private IEnumerator MoveInRange(Pathfinding2D unitPath)
         {
-            foreach (var t in unitPath.path.Take(unitPath.path.Count - 1))
+            var maxCount = unitPath.path.Count - 1;
+            var path = new Vector3[maxCount];
+            for (var i = 0; i < path.Length; i++)
             {
-                currentEnemy.transform.DOMove(t.worldPosition, 0.5f, true);
+                path[i] = unitPath.path[i].worldPosition;
             }
+
+            turnSystem.mainCamera.transform.DOMove(currentEnemy.transform.position + new Vector3(0, 0, -10), 1,
+                false);
+            yield return new WaitForSeconds(1.1f);
+            
+            currentEnemy.transform.DOPath(path, 1, PathType.Linear, PathMode.TopDown2D);
+            turnSystem.mainCamera.transform.DOPath(path, 1, PathType.Linear, PathMode.TopDown2D);
 
             if (currentEnemy.hitPoints > 0 && currentPlayer.hitPoints > 0)
             {
-                turnSystem.mainCamera.transform.DOMove(new Vector3(0, 0, -10) + currentEnemy.transform.position, 0.1f, true);
                 EnemyCombat();
             }
         }
         
-        private void MoveAggressive(Pathfinding2D unitPath)
+        private IEnumerator MoveAggressive(Pathfinding2D unitPath)
         {
-            var count = 0;
-            
             if (unitPath.path.Count - 1 <= currentEnemy.movement)
             {
-                while (count < unitPath.path.Count - 1)
+                var maxCount = unitPath.path.Count - 1;
+                var path = new Vector3[maxCount];
+                for (var i = 0; i < path.Length; i++)
                 {
-                    currentEnemy.transform.DOMove(unitPath.path[count].worldPosition, 0.6f, true);
-                
-                    count++;
+                    path[i] = unitPath.path[i].worldPosition;
                 }
+
+                var camPath = new Vector3[path.Length];
+                for (var i = 0; i < path.Length; i++)
+                {
+                    camPath[i] = path[i] + new Vector3(0, 0, -10);
+                }
+
+                turnSystem.mainCamera.transform.DOMove(currentEnemy.transform.position + new Vector3(0, 0, -10), 0.8f,
+                    false);
+                yield return new WaitForSeconds(1.1f);
                 
-                count = 0;
-                
+                currentEnemy.transform.DOPath(path, 1, PathType.Linear, PathMode.TopDown2D);
+                turnSystem.mainCamera.transform.DOPath(camPath, 1, PathType.Linear, PathMode.TopDown2D);
+
                 if (currentEnemy.hitPoints > 0 && currentPlayer.hitPoints > 0)
                 {
-                    turnSystem.mainCamera.transform.DOMove(new Vector3(0, 0, -10) + currentEnemy.transform.position, 0.1f, true);
                     EnemyCombat();
                 }
             }
             else
             {
-                while (count < currentEnemy.movement)
+                var maxCount = (int)currentEnemy.movement;
+                var path = new Vector3[maxCount];
+                for (var i = 0; i < maxCount; i++)
                 {
-                    currentEnemy.transform.DOMove(unitPath.path[count].worldPosition, 0.6f, true);
-                
-                    count++;
+                    path[i] = unitPath.path[i].worldPosition;
                 }
                 
-                count = 0;
+                var camPath = new Vector3[path.Length];
+                for (var i = 0; i < path.Length; i++)
+                {
+                    camPath[i] = path[i] + new Vector3(0, 0, -10);
+                }
+
+                turnSystem.mainCamera.transform.DOMove(currentEnemy.transform.position + new Vector3(0, 0, -10), 0.8f,
+                    false);
+                yield return new WaitForSeconds(1);
+                
+                currentEnemy.transform.DOPath(path, 1, PathType.Linear, PathMode.TopDown2D);
+                turnSystem.mainCamera.transform.DOPath(camPath, 1, PathType.Linear, PathMode.TopDown2D);
             }
         }
 

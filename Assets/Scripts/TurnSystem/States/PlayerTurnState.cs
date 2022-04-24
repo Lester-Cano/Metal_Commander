@@ -28,6 +28,8 @@ namespace TurnSystem.States
 
             TurnSystem.titleSystem.SetTitle(TurnSystem.playerTitle);
             TurnSystem.playerUI.SetActive(true);
+            
+            TurnSystem.cameraController.enabled = true;
 
             yield return new WaitForSeconds(1f);
             
