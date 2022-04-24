@@ -3,8 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="f28edbc9-f60c-4763-a6cb-b0a8424ca198" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Taller-VI-1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Taller-VI-1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UnitSystem/Unit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UnitSystem/Unit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animator/EnemyController.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/Animator/EnemyController.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animator/HealerController.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/Animator/HealerController.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animator/SniperController.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/Animator/SniperController.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animator/TankController.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/Animator/TankController.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Animator/WarriorController.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/Animator/WarriorController.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Characters/Enemy 2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Characters/Enemy 2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Characters/Enemy 3.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Characters/Enemy 3.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +128,7 @@
       <workItem from="1650732491636" duration="1401000" />
       <workItem from="1650734473423" duration="491000" />
       <workItem from="1650735127722" duration="1000" />
-      <workItem from="1650814813891" duration="3733000" />
+      <workItem from="1650814813891" duration="4398000" />
     </task>
     <servers />
   </component>
