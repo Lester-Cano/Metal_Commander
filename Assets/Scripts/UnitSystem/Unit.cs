@@ -54,6 +54,7 @@ public class Unit : MonoBehaviour
     private static readonly int Attack1 = Animator.StringToHash("Attack");
     private static readonly int Fade = Shader.PropertyToID("_fade");
     private float _time;
+    private static readonly int Thickness = Shader.PropertyToID("_thickness");
 
     public Unit(int hitPoints, int maxHP, int attack, int defense, int movement, int weaponPower)
     {
@@ -72,6 +73,8 @@ public class Unit : MonoBehaviour
         source = FindObjectOfType<AudioManager>();
         turnSystem = FindObjectOfType<TurnSystem.TurnSystem>(); 
         instancedMat = gameObject.GetComponent<SpriteRenderer>().material = new Material(mat);
+        
+        instancedMat.SetFloat(Thickness, 0);
     }
 
     private void Update()

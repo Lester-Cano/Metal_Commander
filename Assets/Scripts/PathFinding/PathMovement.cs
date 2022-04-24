@@ -27,6 +27,7 @@ namespace PathFinding
         public Ease easeIn = Ease.InExpo;
         public Ease easeOut = Ease.OutExpo;
         private static readonly int Walk2 = Animator.StringToHash("Walk2");
+        private static readonly int Thickness = Shader.PropertyToID("_thickness");
 
         private void Update()
         {
@@ -62,18 +63,20 @@ namespace PathFinding
                 pathMovement = selectedUnit.GetComponent<Pathfinding2D>();
                 
                 selectedUnit.path.SetActive(true);
+                selectedUnit.instancedMat.SetFloat(Thickness, 0.0016f);
                 
                 _grabbed = true;
                 
-                //turnSystem.mainCamera.transform.DOMove(new Vector3(0, 0, -10) + selectedUnit.transform.position, 0.2f, false);
-                selectedUnit.anim.SetBool("Walk2", true);
+                selectedUnit.anim.SetBool(Walk2, true);
 
                 if (selectedUnit.hasMoved)
                 {
                     _grabbed = false;
                     selectedUnit.path.SetActive(false);
                     
-                    selectedUnit.anim.SetBool("Walk2", false);
+                    selectedUnit.anim.SetBool(Walk2, false);
+                    
+                    selectedUnit.instancedMat.SetFloat(Thickness, 0);
                 }
             }
         }
@@ -102,7 +105,8 @@ namespace PathFinding
                         _grabbed = false;
                         _selectedNewSpace = false;
                         selectedUnit.path.SetActive(false);
-                        selectedUnit.anim.SetBool("Walk2", false);
+                        selectedUnit.anim.SetBool(Walk2, false);
+                        selectedUnit.instancedMat.SetFloat(Thickness, 0);
                         Destroy(newTarget);
                         return;
                     }
@@ -118,6 +122,7 @@ namespace PathFinding
                         _selectedNewSpace = false;
                         Destroy(newTarget);
                         selectedUnit.path.SetActive(false);
+                        selectedUnit.instancedMat.SetFloat(Thickness, 0);
                         return;
 
                     }
@@ -127,6 +132,7 @@ namespace PathFinding
                         _selectedNewSpace = false;
                         selectedUnit.path.SetActive(false);
                         selectedUnit.anim.SetBool(Walk2, false);
+                        selectedUnit.instancedMat.SetFloat(Thickness, 0);
                         Destroy(newTarget);
                         return;
                     }
@@ -136,12 +142,13 @@ namespace PathFinding
                     _grabbed = false;
                     _selectedNewSpace = false;
                     Destroy(newTarget);
+                    selectedUnit.instancedMat.SetFloat(Thickness, 0);
                 }
                 else
                 {
                     _grabbed = false;
                     selectedUnit.path.SetActive(false);
-                    
+                    selectedUnit.instancedMat.SetFloat(Thickness, 0);
                     selectedUnit.anim.SetBool(Walk2, false);
                 }
             }

@@ -2819,7 +2819,7 @@
     },
     "m_Name": "thickness",
     "m_DefaultReferenceName": "Vector1_df0dc23bc18642df97b4af877fe1cfa9",
-    "m_OverrideReferenceName": "",
+    "m_OverrideReferenceName": "_thickness",
     "m_GeneratePropertyBlock": true,
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
