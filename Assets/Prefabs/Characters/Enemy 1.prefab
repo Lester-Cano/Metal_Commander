@@ -3162,8 +3162,8 @@ MonoBehaviour:
   defense: 1
   movement: 5
   hasMoved: 0
-  isDead: 0
   hasAttacked: 0
+  isDead: 0
   getHit: {fileID: 8300000, guid: 4c51997b156cfd54592638f9ad99fe4d, type: 3}
   hit: {fileID: 8300000, guid: fce0ed3723eb222429666adbe5054b4c, type: 3}
   selected: {fileID: 8300000, guid: 3ce59964c9063e448a90019736ee55c2, type: 3}
@@ -3182,6 +3182,7 @@ MonoBehaviour:
   inRange: 0
   passive: 0
   mat: {fileID: 2100000, guid: fcf2735585cb6874cbbdbd5df8812042, type: 2}
+  instancedMat: {fileID: 0}
 --- !u!95 &7325738464273450689
 Animator:
   serializedVersion: 3
@@ -3669,6 +3670,7 @@ MonoBehaviour:
   unit2: {fileID: 0}
   buttonContainer: {fileID: 1315949655745046007}
   distance: 0
+  _camera: {fileID: 0}
 --- !u!1 &5890013367621183598
 GameObject:
   m_ObjectHideFlags: 0
