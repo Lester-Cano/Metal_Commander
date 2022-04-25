@@ -84,7 +84,7 @@ public class Unit : MonoBehaviour
             _time += 0.02f;
             instancedMat.SetFloat(Fade, Mathf.Lerp(1, 0, _time));
             
-            Invoke(nameof(Deactive), 0.8f);
+            Invoke(nameof(Deactivate), 0.8f);
         }
 
         if (hasMoved)
@@ -97,18 +97,17 @@ public class Unit : MonoBehaviour
             renderer.color = Color.white;
         }
     }
-    
 
     #region Combat Methods
 
     public IEnumerator Attack(Unit attacked)
     {
-        anim.SetBool("Attack", true);
+        anim.SetBool(Attack1, true);
         
         yield return new WaitForSeconds(1f);
 
         source.Play("Hit");
-        anim.SetBool("Attack", false);
+        anim.SetBool(Attack1, false);
 
         yield return new WaitForSeconds(0.2f);
         
@@ -180,7 +179,7 @@ public class Unit : MonoBehaviour
     }
     #endregion
 
-    private void Deactive()
+    private void Deactivate()
     {
         parent.SetActive(false);
     }

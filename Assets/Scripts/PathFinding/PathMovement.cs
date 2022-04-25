@@ -5,6 +5,7 @@ using UnityEngine;
 using DG.Tweening;
 using Unity.Mathematics;
 using UnityEngine.Tilemaps;
+using CombatSystem;
 
 namespace PathFinding
 {
@@ -12,8 +13,10 @@ namespace PathFinding
     {
         [SerializeField] private Pathfinding2D pathMovement;
         [SerializeField] private Unit selectedUnit;
+        [SerializeField] private Unit enemyUnit;
         [SerializeField] private GameObject target;
         [SerializeField] private Tilemap map;
+        [SerializeField] private CombatManager combatManager;
         private bool _grabbed, _selectedNewSpace;
 
         //From here, TurnSystem
@@ -23,11 +26,13 @@ namespace PathFinding
         //From here, SoundSystem
 
         [SerializeField] private AudioManager source;
-
-        public Ease easeIn = Ease.InExpo;
-        public Ease easeOut = Ease.OutExpo;
+        
         private static readonly int Walk2 = Animator.StringToHash("Walk2");
         private static readonly int Thickness = Shader.PropertyToID("_thickness");
+
+        [SerializeField] private GameObject button;
+        [SerializeField] private GameObject UI;
+        private Vector3 _lastPosition;
 
         private void Update()
         {
@@ -97,7 +102,6 @@ namespace PathFinding
 
                     var newTarget = Instantiate(target, gridPosition + new Vector3(0.5f, 0.5f, 0f), quaternion.identity);
                     _selectedNewSpace = true;
-
                     Vector3Int tilePosition = map.WorldToCell(mousePosition);
 
                     if (map.GetTile(tilePosition) == null)
@@ -124,8 +128,8 @@ namespace PathFinding
                         selectedUnit.path.SetActive(false);
                         selectedUnit.instancedMat.SetFloat(Thickness, 0);
                         return;
-
                     }
+                    
                     if (pathMovement.path.Count > selectedUnit.movement)
                     {
                         _grabbed = false;
@@ -144,35 +148,79 @@ namespace PathFinding
                     Destroy(newTarget);
                     selectedUnit.instancedMat.SetFloat(Thickness, 0);
                 }
+                else if (hitData.transform.gameObject.CompareTag("Enemy"))
+                {
+                    source.Play("SelectedSpace");
+                    
+                    enemyUnit = hitData.transform.gameObject.GetComponent<Unit>();
+
+                    Vector2 mousePosition = turnSystem.mainCamera.ScreenToWorldPoint(Input.mousePosition);
+                    Vector3 gridPosition = map.WorldToCell(mousePosition);
+                        
+                    var newTarget = Instantiate(target, gridPosition + new Vector3(0.5f, 0.5f, 0f), quaternion.identity);
+                    _selectedNewSpace = true;
+                    Vector3Int tilePosition = map.WorldToCell(mousePosition);
+                        
+                    if (map.GetTile(tilePosition) == null)
+                    {
+                        _grabbed = false;
+                        _selectedNewSpace = false;
+                        selectedUnit.path.SetActive(false);
+                        selectedUnit.anim.SetBool(Walk2, false);
+                        selectedUnit.instancedMat.SetFloat(Thickness, 0);
+                        Destroy(newTarget);
+                        return;
+                    }
+                        
+                    Vector3Int unitGridPos = map.WorldToCell(selectedUnit.transform.position);
+                    Vector3Int targetGridPos = map.WorldToCell(newTarget.transform.position);
+
+                    _lastPosition = unitGridPos;
+                        
+                    pathMovement.FindPath(unitGridPos, targetGridPos);
+                        
+                    if (pathMovement.path == null)
+                    {
+                        _grabbed = false;
+                        _selectedNewSpace = false;
+                        Destroy(newTarget);
+                        selectedUnit.path.SetActive(false);
+                        selectedUnit.instancedMat.SetFloat(Thickness, 0);
+                        return;
+                    }
+                    
+                    if (pathMovement.path.Count > selectedUnit.movement)
+                    {
+                        _grabbed = false;
+                        _selectedNewSpace = false;
+                        selectedUnit.path.SetActive(false);
+                        selectedUnit.anim.SetBool(Walk2, false);
+                        selectedUnit.instancedMat.SetFloat(Thickness, 0);
+                        Destroy(newTarget);
+                        return;
+                    }
+                    
+                    MoveToEnemyWithPath(pathMovement);
+                    UI.SetActive(false);
+                    button.SetActive(true);
+
+                    _grabbed = false;
+                    _selectedNewSpace = false;
+                    Destroy(newTarget);
+                    selectedUnit.instancedMat.SetFloat(Thickness, 0);
+                }
                 else
                 {
                     _grabbed = false;
                     selectedUnit.path.SetActive(false);
                     selectedUnit.instancedMat.SetFloat(Thickness, 0);
-                    selectedUnit.anim.SetBool(Walk2, false);
+                    selectedUnit.anim.SetBool(Walk2, false); 
                 }
             }
             else
             {
                 _grabbed = false;
             }
-        }
-
-        private IEnumerator Move(Pathfinding2D unitPath)
-        {
-            selectedUnit.path.SetActive(false);
-            
-             foreach (var t in unitPath.path)
-             {
-                 selectedUnit.transform.DOMove(t.worldPosition, 0.2f, true);
-                 yield return new WaitForSeconds(0.2f);
-             }
-
-            selectedUnit.anim.SetBool(Walk2, false);
-             
-            selectedUnit.hasMoved = true;
-
-            yield return new WaitForSeconds(0);
         }
 
         private void MoveWithPath(Pathfinding2D unitPath)
@@ -191,6 +239,37 @@ namespace PathFinding
             
             selectedUnit.anim.SetBool(Walk2, false);
             selectedUnit.hasMoved = true;
+        }
+
+        private void MoveToEnemyWithPath(Pathfinding2D unitPath)
+        {
+            selectedUnit.path.SetActive(false);
+            var maxCount = unitPath.path.Count - 1;
+            
+            var path = new Vector3[maxCount];
+            for (var i = 0; i < path.Length; i++)
+            {
+                path[i] = unitPath.path[i].worldPosition;
+            }
+
+            selectedUnit.transform.DOPath(path, 1, PathType.Linear, PathMode.TopDown2D);
+            
+            selectedUnit.anim.SetBool(Walk2, false);
+            selectedUnit.hasMoved = true;
+        }
+
+        public void SendToCombat()
+        {
+            StartCoroutine(combatManager.MoveToCombat(selectedUnit, enemyUnit));
+        }
+
+        public void GoBack()
+        {
+            Vector3Int unitGridPos = map.WorldToCell(selectedUnit.transform.position);
+            pathMovement.FindPath(unitGridPos, _lastPosition);
+            MoveWithPath(pathMovement);
+            
+            button.SetActive(false);
         }
     }
 }
