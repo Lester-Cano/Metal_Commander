@@ -100,41 +100,17 @@ public class Unit : MonoBehaviour
 
     #region Combat Methods
 
-    public IEnumerator Attack(Unit attacked)
+    public void Attack(Unit attacked)
     {
-        anim.SetBool(Attack1, true);
-        
-        yield return new WaitForSeconds(1f);
-
-        source.Play("Hit");
-        anim.SetBool(Attack1, false);
-
-        yield return new WaitForSeconds(0.2f);
-        
-        source.Play("GetHit");
-
         attacked.hitPoints -= weaponPower + attack - attacked.defense;
 
         if (attacked.hitPoints > 0)
         {
-            attacked.anim.SetBool(Attack1, true);
-
-            yield return new WaitForSeconds(1f);
-            
-            attacked.source.Play("Hit");
-            attacked.anim.SetBool(Attack1, false);
-            
-            yield return new WaitForSeconds(0.2f);
-        
-            attacked.source.Play("GetHit");
-            
             hitPoints -= attacked.weaponPower + attacked.attack - defense;
         }
         
         if (attacked.hitPoints <= 0)
         {
-            yield return new WaitForSeconds(1.2f);
-            
             if (attacked.CompareTag("Ally"))
             {
                 turnSystem.playerCount++;
@@ -149,8 +125,7 @@ public class Unit : MonoBehaviour
 
         if (hitPoints <= 0)
         {
-            yield return new WaitForSeconds(1.2f);
-            
+            Debug.Log("Is dead");
             if (CompareTag("Ally"))
             {
                 turnSystem.playerCount++;
@@ -164,7 +139,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public IEnumerator Heal(Unit healed)
+    public void Heal(Unit healed)
     {
         if (healed.hitPoints > 0)
         {
@@ -175,7 +150,6 @@ public class Unit : MonoBehaviour
                 healed.hitPoints = healed.maxHP;
             }
         }
-        yield return new WaitForSeconds(0.2f);
     }
     #endregion
 

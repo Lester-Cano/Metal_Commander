@@ -32,14 +32,14 @@ namespace CombatSystem
         {
             unitCard1.unitName = unit.unitName;
             unitCard1.hp = unit.maxHP + "/" + unit.hitPoints;
-            unitCard1.attack = unit.attack.ToString() + unit.weaponPower.ToString();
+            unitCard1.attack = (unit.attack + unit.weaponPower).ToString();
             unitCard1.defense = unit.defense.ToString();
             unitCard1.renderer = unit.GetComponentInParent<SpriteRenderer>();
             unitCard1.animator = unit.GetComponentInParent<Animator>();
             
             unitCard2.unitName = unit2.unitName;
             unitCard2.hp = unit2.maxHP + "/" + unit2.hitPoints;
-            unitCard2.attack = unit2.attack.ToString() + unit2.weaponPower.ToString();
+            unitCard2.attack = (unit2.attack + unit2.weaponPower).ToString();
             unitCard2.defense = unit2.defense.ToString();
             unitCard2.renderer = unit2.GetComponentInParent<SpriteRenderer>();
             unitCard2.animator = unit2.GetComponentInParent<Animator>();

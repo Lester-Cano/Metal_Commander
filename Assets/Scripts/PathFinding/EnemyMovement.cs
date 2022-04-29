@@ -5,6 +5,7 @@ using DG.Tweening;
 using System.Linq;
 using TurnSystem.States;
 using UnityEngine.Serialization;
+using CombatSystem;
 
 namespace PathFinding
 {
@@ -18,8 +19,9 @@ namespace PathFinding
         [SerializeField] private Unit currentEnemy;
         [SerializeField] private GameObject currentTarget = null;
         [SerializeField] private Unit currentPlayer;
-
         [SerializeField] public TurnSystem.TurnSystem turnSystem;
+
+        [SerializeField] private CombatManager combatManager;
 
         public bool startCombat = false;
 
@@ -54,7 +56,7 @@ namespace PathFinding
 
                     if (currentEnemy.foundRival)
                     {
-                        yield return new WaitForSeconds(1f);
+                        yield return new WaitForSeconds(4);
                     }
 
                     yield return new WaitForSeconds(0.1f);
@@ -103,7 +105,7 @@ namespace PathFinding
             {
                 //Do nothing.
 
-                currentEnemy.foundRival = true;
+                currentEnemy.foundRival = false;
             }
             
             if (currentTarget != null && currentEnemy.aggressive == true)
@@ -202,7 +204,7 @@ namespace PathFinding
             
             if (currentPlayer != null)
             {
-                StartCoroutine(currentEnemy.Attack(currentPlayer));
+                StartCoroutine(combatManager.MoveToCombat(currentEnemy, currentPlayer));
             }
 
             currentEnemy.foundRival = false;
