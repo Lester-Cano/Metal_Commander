@@ -66,7 +66,7 @@ namespace PathFinding
                 
                 selectedUnit = hitData.transform.gameObject.GetComponent<Unit>();
                 pathMovement = selectedUnit.GetComponent<Pathfinding2D>();
-                
+
                 selectedUnit.path.SetActive(true);
                 selectedUnit.instancedMat.SetFloat(Thickness, 0.0016f);
                 

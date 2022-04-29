@@ -11,74 +11,22 @@ namespace CombatSystem
 
         void Start()
         {
-            unit1 = GetComponentInParent<Unit>();
+            unit2 = GetComponentInParent<Unit>();
             buttonContainer.SetActive(false);
-        }
-
-        private void OnTriggerEnter2D(Collider2D other)
-        {
-            if (other.CompareTag("Ally"))
-            {
-                unit2 = other.GetComponent<Unit>();
-            
-                if (unit2.className == "Sniper")
-                {
-                    buttonContainer.SetActive(true);
-                }
-                else
-                {
-                    StartCoroutine(CalDistance(unit1, unit2));
-                }
-
-                if (unit2.hasAttacked)
-                {
-                    buttonContainer.SetActive(false);
-                }
-            }
-        }
-
-        private void OnTriggerStay(Collider other)
-        {
-            if (other.CompareTag("Ally"))
-            {
-                unit2 = other.GetComponent<Unit>();
-            
-                if (unit2.className == "Sniper")
-                {
-                    buttonContainer.SetActive(true);
-                }
-                else
-                {
-                    StartCoroutine(CalDistance(unit1, unit2));
-                }
-
-                if (unit2.hasAttacked)
-                {
-                    buttonContainer.SetActive(false);
-                }
-            }
-        }
-
-        private void OnTriggerExit2D(Collider2D other)
-        {
-            if (other.CompareTag("Ally"))
-            {
-                buttonContainer.SetActive(false);
-            }
         }
 
         public void Combat()
         {
             if (unit2.hasAttacked == false)
             {
-                //StartCoroutine(unit2.Attack(unit1));
+                //StartCoroutine(unit1.Attack(unit2));
 
                 unit2.hasAttacked = true;
                 buttonContainer.SetActive(false);
             }
         }
 
-        private IEnumerator CalDistance(Unit unit1, Unit unit2)
+        private IEnumerator CallDistance(Unit unit1, Unit unit2)
         {
             yield return new WaitForSeconds(1f);
         
