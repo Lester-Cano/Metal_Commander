@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f28edbc9-f60c-4763-a6cb-b0a8424ca198" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Taller-VI-1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Taller-VI-1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PathFinding/EnemyMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PathFinding/EnemyMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PathFinding/PathMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PathFinding/PathMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level3.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level3.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PathFinding/Grid2D.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PathFinding/Grid2D.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PathFinding/Pathfinding2D.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PathFinding/Pathfinding2D.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
@@ -128,7 +128,7 @@
       <workItem from="1650814813891" duration="4398000" />
       <workItem from="1650831265703" duration="6526000" />
       <workItem from="1651257416902" duration="10770000" />
-      <workItem from="1651431659222" duration="9130000" />
+      <workItem from="1651431659222" duration="10099000" />
     </task>
     <servers />
   </component>

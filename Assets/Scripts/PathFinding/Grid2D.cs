@@ -9,12 +9,14 @@ namespace PathFinding
          public Vector3 gridWorldSize;
     public float nodeRadius;
     public Node2D[,] Grid;
-    public Tilemap obstaclemap;
+    public Tilemap obstacleMap;
     public List<Node2D> path;
     Vector3 worldBottomLeft;
 
     float nodeDiameter;
     public int gridSizeX, gridSizeY;
+
+    public Tilemap unitObstacle;
 
     void Awake()
     {
@@ -38,18 +40,23 @@ namespace PathFinding
                 Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) + Vector3.up * (y * nodeDiameter + nodeRadius);
                 Grid[x, y] = new Node2D(false, worldPoint, x, y);
 
-                if (obstaclemap.HasTile(obstaclemap.WorldToCell(Grid[x, y].worldPosition)))
+                if (obstacleMap.HasTile(obstacleMap.WorldToCell(Grid[x, y].worldPosition)))
                     Grid[x, y].SetObstacle(true);
                 else
                     Grid[x, y].SetObstacle(false);
+                
+                //Set unit obstacle
 
-
+                if (unitObstacle.HasTile(unitObstacle.WorldToCell(Grid[x, y].worldPosition)))
+                    Grid[x, y].SetObstacle(true);
+                else
+                    Grid[x, y].SetObstacle(false);
             }
         }
     }
 
 
-    //gets the neighboring nodes in the 4 cardinal directions. If you would like to enable diagonal pathfinding, uncomment out that portion of code
+    //gets the neighboring nodes in the 4 cardinal directions.
     public List<Node2D> GetNeighbors(Node2D node)
     {
         List<Node2D> neighbors = new List<Node2D>();
@@ -69,40 +76,29 @@ namespace PathFinding
         //checks and adds left neighbor
         if (node.GridX - 1 >= 0 && node.GridX - 1 < gridSizeX && node.GridY >= 0 && node.GridY < gridSizeY)
             neighbors.Add(Grid[node.GridX - 1, node.GridY]);
-
-
-
-        /* Uncomment this code to enable diagonal movement
         
-        //checks and adds top right neighbor
-        if (node.GridX + 1 >= 0 && node.GridX + 1< gridSizeX && node.GridY + 1 >= 0 && node.GridY + 1 < gridSizeY)
-            neighbors.Add(Grid[node.GridX + 1, node.GridY + 1]);
-        //checks and adds bottom right neighbor
-        if (node.GridX + 1>= 0 && node.GridX + 1 < gridSizeX && node.GridY - 1 >= 0 && node.GridY - 1 < gridSizeY)
-            neighbors.Add(Grid[node.GridX + 1, node.GridY - 1]);
-        //checks and adds top left neighbor
-        if (node.GridX - 1 >= 0 && node.GridX - 1 < gridSizeX && node.GridY + 1>= 0 && node.GridY + 1 < gridSizeY)
-            neighbors.Add(Grid[node.GridX - 1, node.GridY + 1]);
-        //checks and adds bottom left neighbor
-        if (node.GridX - 1 >= 0 && node.GridX - 1 < gridSizeX && node.GridY  - 1>= 0 && node.GridY  - 1 < gridSizeY)
-            neighbors.Add(Grid[node.GridX - 1, node.GridY - 1]);
-        */
-
-
-
         return neighbors;
     }
-
-
+    
     public Node2D NodeFromWorldPoint(Vector3 worldPosition)
     {
         // Let unity convert from world to cell coord
-        var cellPos = obstaclemap.WorldToCell(worldPosition);
+        var cellPos = obstacleMap.WorldToCell(worldPosition);
+        
+        //unit obstacle
+
+        var cellPos2 = unitObstacle.WorldToCell(worldPosition);
 
         // Make the (0, 0) tile to be bottom left tile
         cellPos.x += gridSizeX / 2;
         cellPos.y += gridSizeY / 2;
         return Grid[cellPos.x, cellPos.y];
+        
+        //obstacle 2
+        
+        cellPos2.x += gridSizeX / 2;
+        cellPos2.y += gridSizeY / 2;
+        return Grid[cellPos2.x, cellPos2.y];
 
         // R: This calculation is expecting the tileMap to be aligned to the bottom left corner of the camera frustum
         // int x = Mathf.RoundToInt(worldPosition.x - 1 + (gridSizeX / 2));

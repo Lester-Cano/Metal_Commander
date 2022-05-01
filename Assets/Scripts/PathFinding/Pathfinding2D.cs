@@ -7,8 +7,8 @@ namespace PathFinding
     public class Pathfinding2D : MonoBehaviour
     {
         public Transform seeker, target;
-        Grid2D grid;
-        Node2D seekerNode, targetNode;
+        Grid2D _grid;
+        Node2D _seekerNode, _targetNode;
         public GameObject gridOwner;    
         public List<Node2D> path = null;
 
@@ -17,19 +17,19 @@ namespace PathFinding
         {
             gridOwner = GameObject.FindWithTag("GridOwner");
             //Instantiate grid
-            grid = gridOwner.GetComponent<Grid2D>();
+            _grid = gridOwner.GetComponent<Grid2D>();
         }
 
 
         public void FindPath(Vector3 startPos, Vector3 targetPos)
         {
             //get player and target position in grid coords
-            seekerNode = grid.NodeFromWorldPoint(startPos);
-            targetNode = grid.NodeFromWorldPoint(targetPos);
+            _seekerNode = _grid.NodeFromWorldPoint(startPos);
+            _targetNode = _grid.NodeFromWorldPoint(targetPos);
 
             List<Node2D> openSet = new List<Node2D>();
             HashSet<Node2D> closedSet = new HashSet<Node2D>();
-            openSet.Add(seekerNode);
+            openSet.Add(_seekerNode);
             
             //calculates path for pathfinding
             while (openSet.Count > 0)
@@ -50,14 +50,14 @@ namespace PathFinding
                 closedSet.Add(node);
 
                 //If target found, retrace path
-                if (node == targetNode)
+                if (node == _targetNode)
                 {
-                    RetracePath(seekerNode, targetNode);
+                    RetracePath(_seekerNode, _targetNode);
                     return;
                 }
                 
                 //adds neighbor nodes to openSet
-                foreach (Node2D neighbour in grid.GetNeighbors(node))
+                foreach (Node2D neighbour in _grid.GetNeighbors(node))
                 {
                     if (neighbour.obstacle || closedSet.Contains(neighbour))
                     {
@@ -68,7 +68,7 @@ namespace PathFinding
                     if (newCostToNeighbour < neighbour.gCost || !openSet.Contains(neighbour))
                     {
                         neighbour.gCost = newCostToNeighbour;
-                        neighbour.hCost = GetDistance(neighbour, targetNode);
+                        neighbour.hCost = GetDistance(neighbour, _targetNode);
                         neighbour.parent = node;
 
                         if (!openSet.Contains(neighbour))
@@ -91,7 +91,7 @@ namespace PathFinding
             }
             path.Reverse();
 
-            grid.path = path;
+            _grid.path = path;
 
         }
 
@@ -104,6 +104,12 @@ namespace PathFinding
             if (dstX > dstY)
                 return 14 * dstY + 10 * (dstX - dstY);
             return 14 * dstX + 10 * (dstY - dstX);
+        }
+
+        public void UpdateGrid()
+        {
+            gridOwner = GameObject.FindWithTag("GridOwner");
+            _grid = gridOwner.GetComponent<Grid2D>();
         }
     }
 }
