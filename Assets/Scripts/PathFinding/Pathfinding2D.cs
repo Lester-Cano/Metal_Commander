@@ -6,19 +6,18 @@ namespace PathFinding
 {
     public class Pathfinding2D : MonoBehaviour
     {
-
         public Transform seeker, target;
         Grid2D grid;
         Node2D seekerNode, targetNode;
-        public GameObject GridOwner;
-
+        public GameObject gridOwner;    
         public List<Node2D> path = null;
+
 
         void Start()
         {
-            GridOwner = GameObject.FindWithTag("GridOwner");
+            gridOwner = GameObject.FindWithTag("GridOwner");
             //Instantiate grid
-            grid = GridOwner.GetComponent<Grid2D>();
+            grid = gridOwner.GetComponent<Grid2D>();
         }
 
 
@@ -31,7 +30,7 @@ namespace PathFinding
             List<Node2D> openSet = new List<Node2D>();
             HashSet<Node2D> closedSet = new HashSet<Node2D>();
             openSet.Add(seekerNode);
-        
+            
             //calculates path for pathfinding
             while (openSet.Count > 0)
             {
@@ -56,7 +55,7 @@ namespace PathFinding
                     RetracePath(seekerNode, targetNode);
                     return;
                 }
-            
+                
                 //adds neighbor nodes to openSet
                 foreach (Node2D neighbour in grid.GetNeighbors(node))
                 {
@@ -65,7 +64,7 @@ namespace PathFinding
                         continue;
                     }
 
-                    float newCostToNeighbour = node.gCost + GetDistance(node, neighbour);
+                    int newCostToNeighbour = node.gCost + GetDistance(node, neighbour);
                     if (newCostToNeighbour < neighbour.gCost || !openSet.Contains(neighbour))
                     {
                         neighbour.gCost = newCostToNeighbour;
@@ -82,7 +81,7 @@ namespace PathFinding
         //reverses calculated path so first node is closest to seeker
         void RetracePath(Node2D startNode, Node2D endNode)
         {
-            path = new List<Node2D>();
+            List<Node2D> path = new List<Node2D>();
             Node2D currentNode = endNode;
 
             while (currentNode != startNode)
@@ -90,24 +89,17 @@ namespace PathFinding
                 path.Add(currentNode);
                 currentNode = currentNode.parent;
             }
-
             path.Reverse();
 
             grid.path = path;
 
-            for (int i = 0; i < path.Count; i++)
-            {
-                path[i].worldPosition = new Vector3(Mathf.Ceil(path[i].worldPosition.x),
-                    Mathf.Floor(path[i].worldPosition.y), path[i].worldPosition.z);
-            }
-
         }
 
         //gets distance between 2 nodes for calculating cost
-        float GetDistance(Node2D nodeA, Node2D nodeB)
+        int GetDistance(Node2D nodeA, Node2D nodeB)
         {
-            float dstX = nodeA.GridX - nodeB.GridX;
-            float dstY = nodeA.GridY - nodeB.GridY;
+            int dstX = Mathf.Abs(nodeA.GridX - nodeB.GridX);
+            int dstY = Mathf.Abs(nodeA.GridY - nodeB.GridY);
 
             if (dstX > dstY)
                 return 14 * dstY + 10 * (dstX - dstY);

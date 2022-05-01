@@ -101,7 +101,7 @@ namespace PathFinding
                     Vector2 mousePosition = turnSystem.mainCamera.ScreenToWorldPoint(Input.mousePosition);
                     Vector3 gridPosition = map.WorldToCell(mousePosition);
 
-                    var newTarget = Instantiate(target, gridPosition + new Vector3(0.5f, 0.5f, 0f), quaternion.identity);
+                    var newTarget = Instantiate(target, gridPosition, quaternion.identity);
                     _selectedNewSpace = true;
                     Vector3Int tilePosition = map.WorldToCell(mousePosition);
 
@@ -158,7 +158,7 @@ namespace PathFinding
                     Vector2 mousePosition = turnSystem.mainCamera.ScreenToWorldPoint(Input.mousePosition);
                     Vector3 gridPosition = map.WorldToCell(mousePosition);
                         
-                    var newTarget = Instantiate(target, gridPosition + new Vector3(0.5f, 0.5f, 0f), quaternion.identity);
+                    var newTarget = Instantiate(target, gridPosition, quaternion.identity);
                     _selectedNewSpace = true;
                     Vector3Int tilePosition = map.WorldToCell(mousePosition);
                         
@@ -229,7 +229,7 @@ namespace PathFinding
                     Vector2 mousePosition = turnSystem.mainCamera.ScreenToWorldPoint(Input.mousePosition);
                     Vector3 gridPosition = map.WorldToCell(mousePosition);
                         
-                    var newTarget = Instantiate(target, gridPosition + new Vector3(0.5f, 0.5f, 0f), quaternion.identity);
+                    var newTarget = Instantiate(target, gridPosition, quaternion.identity);
                     _selectedNewSpace = true;
                     Vector3Int tilePosition = map.WorldToCell(mousePosition);
                         
