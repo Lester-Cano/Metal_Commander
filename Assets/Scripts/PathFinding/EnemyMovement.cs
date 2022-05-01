@@ -14,6 +14,7 @@ namespace PathFinding
     {
 
         [SerializeField] private Pathfinding2D enemyMovement;
+        [SerializeField] private UnitObstacle unitObstacle;
         [SerializeField] public List<Unit> enemies;
         [SerializeField] public List<Unit> allies;
         [SerializeField] private Unit currentEnemy;
@@ -52,6 +53,15 @@ namespace PathFinding
                 if (currentEnemy.hitPoints > 0)
                 {
                     enemyMovement = currentEnemy.GetComponent<Pathfinding2D>();
+                    
+                    unitObstacle.UpdateObstacleMap();
+                    var unitPos = unitObstacle.obstacleTilemap.WorldToCell(currentEnemy.transform.position);
+                    if (unitObstacle.obstacleTilemap.GetTile(unitPos) != null)
+                    {
+                        unitObstacle.obstacleTilemap.SetTile(unitPos, null);
+                    }
+                    enemyMovement.UpdateGrid();
+                    
                     SearchForAllies();
 
                     if (currentEnemy.foundRival)

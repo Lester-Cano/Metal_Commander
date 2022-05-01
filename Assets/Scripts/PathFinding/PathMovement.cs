@@ -12,6 +12,7 @@ namespace PathFinding
     public class PathMovement : MonoBehaviour
     {
         [SerializeField] private Pathfinding2D pathMovement;
+        [SerializeField] private UnitObstacle unitObstacle;
         [SerializeField] private Unit selectedUnit;
         [SerializeField] private Unit enemyUnit;
         [SerializeField] private GameObject target;
@@ -67,6 +68,14 @@ namespace PathFinding
                 
                 selectedUnit = hitData.transform.gameObject.GetComponent<Unit>();
                 pathMovement = selectedUnit.GetComponent<Pathfinding2D>();
+                
+                unitObstacle.UpdateObstacleMap();
+                var unitPos = unitObstacle.obstacleTilemap.WorldToCell(selectedUnit.transform.position);
+                if (unitObstacle.obstacleTilemap.GetTile(unitPos) != null)
+                {
+                    unitObstacle.obstacleTilemap.SetTile(unitPos, null);
+                }
+                pathMovement.UpdateGrid();
 
                 selectedUnit.path.SetActive(true);
                 selectedUnit.instancedMat.SetFloat(Thickness, 0.0016f);
@@ -89,7 +98,7 @@ namespace PathFinding
 
         void SelectNewSpace()
         {
-            if (_grabbed)
+            if (_grabbed) 
             {
                 Vector2 worldPosition = turnSystem.mainCamera.ScreenToWorldPoint(Input.mousePosition);
                 RaycastHit2D hitData = Physics2D.Raycast(worldPosition, Vector2.zero, 0);
@@ -112,7 +121,7 @@ namespace PathFinding
                         selectedUnit.anim.SetBool(Walk2, false);
                         selectedUnit.instancedMat.SetFloat(Thickness, 0);
                         Destroy(newTarget);
-                        return;
+                        return; 
                     }
 
                     Vector3Int unitGridPos = map.WorldToCell(selectedUnit.transform.position);
@@ -120,20 +129,18 @@ namespace PathFinding
 
                     pathMovement.FindPath(unitGridPos, targetGridPos);
 
-                    if (pathMovement.path == null)
-                    {
-                        Debug.Log("2");
-                        _grabbed = false;
-                        _selectedNewSpace = false;
-                        Destroy(newTarget);
-                        selectedUnit.path.SetActive(false);
-                        selectedUnit.instancedMat.SetFloat(Thickness, 0);
-                        return;
-                    }
+                     if (pathMovement.path == null)
+                     {
+                         _grabbed = false;
+                         _selectedNewSpace = false;
+                         Destroy(newTarget);
+                         selectedUnit.path.SetActive(false);
+                         selectedUnit.instancedMat.SetFloat(Thickness, 0);
+                         return;
+                     }
                     
                     if (pathMovement.path.Count > selectedUnit.movement)
                     {
-                        Debug.Log("3");
                         _grabbed = false;
                         _selectedNewSpace = false;
                         selectedUnit.path.SetActive(false);
@@ -161,7 +168,7 @@ namespace PathFinding
                     var newTarget = Instantiate(target, gridPosition, quaternion.identity);
                     _selectedNewSpace = true;
                     Vector3Int tilePosition = map.WorldToCell(mousePosition);
-                        
+                    
                     if (map.GetTile(tilePosition) == null)
                     {
                         _grabbed = false;
@@ -172,14 +179,14 @@ namespace PathFinding
                         Destroy(newTarget);
                         return;
                     }
-                        
+
                     Vector3Int unitGridPos = map.WorldToCell(selectedUnit.transform.position);
                     Vector3Int targetGridPos = map.WorldToCell(newTarget.transform.position);
 
                     _lastPosition = unitGridPos;
                         
                     pathMovement.FindPath(unitGridPos, targetGridPos);
-                        
+                    
                     if (pathMovement.path == null)
                     {
                         _grabbed = false;
@@ -189,7 +196,7 @@ namespace PathFinding
                         selectedUnit.instancedMat.SetFloat(Thickness, 0);
                         return;
                     }
-                    
+
                     if (pathMovement.path.Count > selectedUnit.movement)
                     {
                         _grabbed = false;

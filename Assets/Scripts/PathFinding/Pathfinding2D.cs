@@ -59,7 +59,23 @@ namespace PathFinding
                 //adds neighbor nodes to openSet
                 foreach (Node2D neighbour in _grid.GetNeighbors(node))
                 {
-                    if (neighbour.obstacle || closedSet.Contains(neighbour))
+                    if (neighbour.obstacle)
+                    {
+                        var hitData = Physics2D.Raycast(neighbour.worldPosition, Vector2.zero, 0);
+                        if (hitData)
+                        {
+                            if (neighbour.worldPosition != _targetNode.worldPosition)
+                            {
+                             continue;   
+                            }
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                    }
+                    
+                    if (closedSet.Contains(neighbour))
                     {
                         continue;
                     }
@@ -110,6 +126,7 @@ namespace PathFinding
         {
             gridOwner = GameObject.FindWithTag("GridOwner");
             _grid = gridOwner.GetComponent<Grid2D>();
+            _grid.CreateGrid();
         }
     }
 }
