@@ -17,7 +17,7 @@ namespace PathFinding
         [SerializeField] private GameObject target;
         [SerializeField] private Tilemap map;
         [SerializeField] private CombatManager combatManager;
-        private bool _grabbed, _selectedNewSpace;
+        [SerializeField] private bool _grabbed, _selectedNewSpace;
 
         //From here, TurnSystem
 
@@ -99,13 +99,12 @@ namespace PathFinding
                     source.Play("SelectedSpace");
                 
                     Vector2 mousePosition = turnSystem.mainCamera.ScreenToWorldPoint(Input.mousePosition);
-                    Vector3 gridPosition = map.WorldToCell(mousePosition);
-
+                    Vector3Int gridPosition = map.WorldToCell(mousePosition);
+                    
                     var newTarget = Instantiate(target, gridPosition, quaternion.identity);
                     _selectedNewSpace = true;
-                    Vector3Int tilePosition = map.WorldToCell(mousePosition);
 
-                    if (map.GetTile(tilePosition) == null)
+                    if (map.GetTile(gridPosition) == null)
                     {
                         _grabbed = false;
                         _selectedNewSpace = false;
@@ -123,6 +122,7 @@ namespace PathFinding
 
                     if (pathMovement.path == null)
                     {
+                        Debug.Log("2");
                         _grabbed = false;
                         _selectedNewSpace = false;
                         Destroy(newTarget);
@@ -133,6 +133,7 @@ namespace PathFinding
                     
                     if (pathMovement.path.Count > selectedUnit.movement)
                     {
+                        Debug.Log("3");
                         _grabbed = false;
                         _selectedNewSpace = false;
                         selectedUnit.path.SetActive(false);
@@ -143,7 +144,6 @@ namespace PathFinding
                     }
                     
                     MoveWithPath(pathMovement);
-
                     _grabbed = false;
                     _selectedNewSpace = false;
                     Destroy(newTarget);
@@ -304,7 +304,7 @@ namespace PathFinding
             var path = new Vector3[maxCount];
             for (var i = 0; i < path.Length; i++)
             {
-                path[i] = unitPath.path[i].worldPosition;
+                path[i] = unitPath.path[i].worldPosition - new Vector3(0.5f, 0.5f, 0);
             }
 
             selectedUnit.transform.DOPath(path, 1, PathType.Linear, PathMode.TopDown2D);
@@ -321,7 +321,7 @@ namespace PathFinding
             var path = new Vector3[maxCount];
             for (var i = 0; i < path.Length; i++)
             {
-                path[i] = unitPath.path[i].worldPosition;
+                path[i] = unitPath.path[i].worldPosition - new Vector3(0.5f, 0.5f, 0);
             }
 
             selectedUnit.transform.DOPath(path, 1, PathType.Linear, PathMode.TopDown2D);

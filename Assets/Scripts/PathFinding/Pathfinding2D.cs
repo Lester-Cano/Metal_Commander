@@ -81,7 +81,7 @@ namespace PathFinding
         //reverses calculated path so first node is closest to seeker
         void RetracePath(Node2D startNode, Node2D endNode)
         {
-            List<Node2D> path = new List<Node2D>();
+            path = new List<Node2D>();
             Node2D currentNode = endNode;
 
             while (currentNode != startNode)

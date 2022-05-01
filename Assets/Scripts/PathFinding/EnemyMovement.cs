@@ -123,7 +123,7 @@ namespace PathFinding
             var path = new Vector3[maxCount];
             for (var i = 0; i < path.Length; i++)
             {
-                path[i] = unitPath.path[i].worldPosition;
+                path[i] = unitPath.path[i].worldPosition - new Vector3(0.5f, 0.5f, 0);
             }
             
             var camPath = new Vector3[path.Length];
@@ -153,7 +153,7 @@ namespace PathFinding
                 var path = new Vector3[maxCount];
                 for (var i = 0; i < path.Length; i++)
                 {
-                    path[i] = unitPath.path[i].worldPosition;
+                    path[i] = unitPath.path[i].worldPosition - new Vector3(0.5f, 0.5f, 0);
                 }
 
                 var camPath = new Vector3[path.Length];
@@ -180,7 +180,7 @@ namespace PathFinding
                 var path = new Vector3[maxCount];
                 for (var i = 0; i < maxCount; i++)
                 {
-                    path[i] = unitPath.path[i].worldPosition;
+                    path[i] = unitPath.path[i].worldPosition - new Vector3(0.5f, 0.5f, 0);
                 }
                 
                 var camPath = new Vector3[path.Length];
