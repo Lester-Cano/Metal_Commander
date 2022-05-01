@@ -2561,16 +2561,13 @@ MonoBehaviour:
   hasMoved: 0
   hasAttacked: 0
   isDead: 0
-  getHit: {fileID: 8300000, guid: 4c51997b156cfd54592638f9ad99fe4d, type: 3}
-  hit: {fileID: 8300000, guid: fce0ed3723eb222429666adbe5054b4c, type: 3}
-  selected: {fileID: 8300000, guid: 3ce59964c9063e448a90019736ee55c2, type: 3}
-  spaceSelected: {fileID: 8300000, guid: 0741420877bfba248a55abd935cc75a9, type: 3}
   portrait: {fileID: 21300000, guid: 53edda221a135ba4689d125fd3fe7ca1, type: 3}
   parent: {fileID: 8500508323015490522}
   path: {fileID: 2923857564857279234}
   healthBarBehaviour: {fileID: 0}
   source: {fileID: 0}
   anim: {fileID: 6266082911966067982}
+  controller: {fileID: 9100000, guid: aea742418fa2876418f69a2ad690d65d, type: 2}
   turnSystem: {fileID: 0}
   renderer: {fileID: 0}
   range: {fileID: 2923857564857279234}

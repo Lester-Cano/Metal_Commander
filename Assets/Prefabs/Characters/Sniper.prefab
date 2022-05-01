@@ -3965,18 +3965,15 @@ MonoBehaviour:
   defense: 4
   movement: 4
   hasMoved: 0
-  isDead: 0
   hasAttacked: 0
-  getHit: {fileID: 8300000, guid: 4c51997b156cfd54592638f9ad99fe4d, type: 3}
-  hit: {fileID: 8300000, guid: fce0ed3723eb222429666adbe5054b4c, type: 3}
-  selected: {fileID: 8300000, guid: 3ce59964c9063e448a90019736ee55c2, type: 3}
-  spaceSelected: {fileID: 8300000, guid: 0741420877bfba248a55abd935cc75a9, type: 3}
+  isDead: 0
   portrait: {fileID: 21300000, guid: 9989a92e67f68f44eb083d6d78bc874c, type: 3}
   parent: {fileID: 6074522667540474971}
   path: {fileID: 6007512467058447766}
   healthBarBehaviour: {fileID: 865548265565484710}
   source: {fileID: 0}
   anim: {fileID: -9151684484739527446}
+  controller: {fileID: 9100000, guid: 20bcd926133a971458438b7e9a29bedf, type: 2}
   turnSystem: {fileID: 0}
   renderer: {fileID: 0}
   range: {fileID: 0}
@@ -3985,6 +3982,7 @@ MonoBehaviour:
   inRange: 0
   passive: 0
   mat: {fileID: 2100000, guid: fcf2735585cb6874cbbdbd5df8812042, type: 2}
+  instancedMat: {fileID: 0}
 --- !u!95 &-9151684484739527446
 Animator:
   serializedVersion: 3

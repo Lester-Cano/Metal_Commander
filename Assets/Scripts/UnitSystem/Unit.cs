@@ -12,7 +12,6 @@ public class Unit : MonoBehaviour
     [SerializeField] public float movement;
     [HideInInspector] [SerializeField] public bool hasMoved, hasAttacked;
     [SerializeField] public bool isDead;
-    [SerializeField] public AudioClip getHit, hit, selected, spaceSelected;
     [SerializeField] public Sprite portrait;
 
     [SerializeField] private GameObject parent;
@@ -30,6 +29,7 @@ public class Unit : MonoBehaviour
     //Animator
 
     [SerializeField] public Animator anim;
+    [SerializeField] public RuntimeAnimatorController controller;
     
     [SerializeField] private TurnSystem.TurnSystem turnSystem;
 

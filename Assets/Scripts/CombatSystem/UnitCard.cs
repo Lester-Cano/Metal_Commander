@@ -6,7 +6,7 @@ namespace CombatSystem
     public class UnitCard : ScriptableObject
     {
         public string unitName, hp, attack, defense;
-        public SpriteRenderer renderer;
         public Animator animator;
+        public RuntimeAnimatorController controller;
     }
 }

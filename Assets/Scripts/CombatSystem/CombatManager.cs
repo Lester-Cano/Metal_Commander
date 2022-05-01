@@ -20,6 +20,7 @@ namespace CombatSystem
             button.SetActive(false);
             _prevPos = new Vector3(0, 0, -10) + unit2.transform.position;
             mainCamera.transform.position = new Vector3(0, -39, -10);
+            mainCamera.orthographicSize = 5.5f;
             canvas.SetActive(false);
             combatStation.SetActive(true);
             
@@ -31,7 +32,7 @@ namespace CombatSystem
             combatSpace.UpdateCardValue(unit, unit2);
             combatSpace.UpdateTitlesValue();
 
-            if (unit.unitSide == "Enemy" || unit2.unitSide == "Enemey")
+            if (unit.unitSide == "Enemy" || unit2.unitSide == "Enemy")
             {
                 StartCoroutine(StartCombat(unit, unit2));
             }
@@ -49,6 +50,7 @@ namespace CombatSystem
             unit.hasAttacked = true;
             
             combatSpace.UpdateCardValue(unit, unit2);
+            combatSpace.UpdateTitlesValue();
             
             StartCoroutine(BackToOverWorld(unit, unit2));
         }
@@ -61,6 +63,7 @@ namespace CombatSystem
             unit.hasAttacked = true;
             
             combatSpace.UpdateCardValue(unit, unit2);
+            combatSpace.UpdateTitlesValue();
             
             StartCoroutine(BackToOverWorld(unit, unit2));
         }
@@ -70,6 +73,7 @@ namespace CombatSystem
             yield return new WaitForSeconds(1);
             
             mainCamera.transform.position = _prevPos;
+            mainCamera.orthographicSize = 3.5f;
             canvas.SetActive(true);
             combatStation.SetActive(false);
             button.SetActive(false);
