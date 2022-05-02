@@ -6,31 +6,32 @@ namespace PathFinding
 {
     public class Pathfinding2D : MonoBehaviour
     {
-        public Transform seeker, target;
-        Grid2D _grid;
-        Node2D _seekerNode, _targetNode;
-        public GameObject gridOwner;    
-        public List<Node2D> path = null;
 
+        public Transform seeker, target;
+        Grid2D grid;
+        Node2D seekerNode, targetNode;
+        public GameObject GridOwner;
+
+        public List<Node2D> path = null;
 
         void Start()
         {
-            gridOwner = GameObject.FindWithTag("GridOwner");
+            GridOwner = GameObject.FindWithTag("GridOwner");
             //Instantiate grid
-            _grid = gridOwner.GetComponent<Grid2D>();
+            grid = GridOwner.GetComponent<Grid2D>();
         }
 
 
         public void FindPath(Vector3 startPos, Vector3 targetPos)
         {
             //get player and target position in grid coords
-            _seekerNode = _grid.NodeFromWorldPoint(startPos);
-            _targetNode = _grid.NodeFromWorldPoint(targetPos);
+            seekerNode = grid.NodeFromWorldPoint(startPos);
+            targetNode = grid.NodeFromWorldPoint(targetPos);
 
             List<Node2D> openSet = new List<Node2D>();
             HashSet<Node2D> closedSet = new HashSet<Node2D>();
-            openSet.Add(_seekerNode);
-            
+            openSet.Add(seekerNode);
+        
             //calculates path for pathfinding
             while (openSet.Count > 0)
             {
@@ -50,41 +51,25 @@ namespace PathFinding
                 closedSet.Add(node);
 
                 //If target found, retrace path
-                if (node == _targetNode)
+                if (node == targetNode)
                 {
-                    RetracePath(_seekerNode, _targetNode);
+                    RetracePath(seekerNode, targetNode);
                     return;
                 }
-                
+            
                 //adds neighbor nodes to openSet
-                foreach (Node2D neighbour in _grid.GetNeighbors(node))
+                foreach (Node2D neighbour in grid.GetNeighbors(node))
                 {
-                    if (neighbour.obstacle)
-                    {
-                        var hitData = Physics2D.Raycast(neighbour.worldPosition, Vector2.zero, 0);
-                        if (hitData)
-                        {
-                            if (neighbour.worldPosition != _targetNode.worldPosition)
-                            {
-                             continue;   
-                            }
-                        }
-                        else
-                        {
-                            continue;
-                        }
-                    }
-                    
-                    if (closedSet.Contains(neighbour))
+                    if (neighbour.obstacle || closedSet.Contains(neighbour))
                     {
                         continue;
                     }
 
-                    int newCostToNeighbour = node.gCost + GetDistance(node, neighbour);
+                    float newCostToNeighbour = node.gCost + GetDistance(node, neighbour);
                     if (newCostToNeighbour < neighbour.gCost || !openSet.Contains(neighbour))
                     {
                         neighbour.gCost = newCostToNeighbour;
-                        neighbour.hCost = GetDistance(neighbour, _targetNode);
+                        neighbour.hCost = GetDistance(neighbour, targetNode);
                         neighbour.parent = node;
 
                         if (!openSet.Contains(neighbour))
@@ -105,28 +90,28 @@ namespace PathFinding
                 path.Add(currentNode);
                 currentNode = currentNode.parent;
             }
+
             path.Reverse();
 
-            _grid.path = path;
+            grid.path = path;
+
+            for (int i = 0; i < path.Count; i++)
+            {
+                path[i].worldPosition = new Vector3(Mathf.Ceil(path[i].worldPosition.x),
+                    Mathf.Floor(path[i].worldPosition.y), path[i].worldPosition.z);
+            }
 
         }
 
         //gets distance between 2 nodes for calculating cost
-        int GetDistance(Node2D nodeA, Node2D nodeB)
+        float GetDistance(Node2D nodeA, Node2D nodeB)
         {
-            int dstX = Mathf.Abs(nodeA.GridX - nodeB.GridX);
-            int dstY = Mathf.Abs(nodeA.GridY - nodeB.GridY);
+            float dstX = nodeA.GridX - nodeB.GridX;
+            float dstY = nodeA.GridY - nodeB.GridY;
 
             if (dstX > dstY)
                 return 14 * dstY + 10 * (dstX - dstY);
             return 14 * dstX + 10 * (dstY - dstX);
-        }
-
-        public void UpdateGrid()
-        {
-            gridOwner = GameObject.FindWithTag("GridOwner");
-            _grid = gridOwner.GetComponent<Grid2D>();
-            _grid.CreateGrid();
         }
     }
 }

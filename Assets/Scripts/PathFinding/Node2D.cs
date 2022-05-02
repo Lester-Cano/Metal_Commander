@@ -4,15 +4,15 @@ namespace PathFinding
 {
     public class Node2D
     {
-        public int gCost, hCost;
+        public float gCost, hCost;
         public bool obstacle;
         public Vector3 worldPosition;
 
-        public int GridX, GridY;
+        public float GridX, GridY;
         public Node2D parent;
 
 
-        public Node2D(bool _obstacle, Vector3 _worldPos, int _gridX, int _gridY)
+        public Node2D(bool _obstacle, Vector3 _worldPos, float _gridX, float _gridY)
         {
             obstacle = _obstacle;
             worldPosition = _worldPos;
@@ -20,7 +20,7 @@ namespace PathFinding
             GridY = _gridY;
         }
 
-        public int FCost
+        public float FCost
         {
             get
             {

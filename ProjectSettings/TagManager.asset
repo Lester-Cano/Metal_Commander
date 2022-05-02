@@ -8,7 +8,6 @@ TagManager:
   - Enemy
   - GridOwner
   - Mov
-  - UI
   layers:
   - Default
   - TransparentFX

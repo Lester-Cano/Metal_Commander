@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: asphalt_grass_top_tile (1)
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 21300000, guid: a3bf4df9f6e4a60429c1efd1656eecfb, type: 3}
-  m_Color: {r: 0.69803923, g: 0.69803923, b: 0.69803923, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
     e01: 0

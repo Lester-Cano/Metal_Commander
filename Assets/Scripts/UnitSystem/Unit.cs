@@ -12,6 +12,7 @@ public class Unit : MonoBehaviour
     [SerializeField] public float movement;
     [HideInInspector] [SerializeField] public bool hasMoved, hasAttacked;
     [SerializeField] public bool isDead;
+    [SerializeField] public AudioClip getHit, hit, selected, spaceSelected;
     [SerializeField] public Sprite portrait;
 
     [SerializeField] private GameObject parent;
@@ -29,7 +30,6 @@ public class Unit : MonoBehaviour
     //Animator
 
     [SerializeField] public Animator anim;
-    [SerializeField] public RuntimeAnimatorController controller;
     
     [SerializeField] private TurnSystem.TurnSystem turnSystem;
 
@@ -100,17 +100,41 @@ public class Unit : MonoBehaviour
 
     #region Combat Methods
 
-    public void Attack(Unit attacked)
+    public IEnumerator Attack(Unit attacked)
     {
+        anim.SetBool(Attack1, true);
+        
+        yield return new WaitForSeconds(1f);
+
+        source.Play("Hit");
+        anim.SetBool(Attack1, false);
+
+        yield return new WaitForSeconds(0.2f);
+        
+        source.Play("GetHit");
+
         attacked.hitPoints -= weaponPower + attack - attacked.defense;
 
         if (attacked.hitPoints > 0)
         {
+            attacked.anim.SetBool(Attack1, true);
+
+            yield return new WaitForSeconds(1f);
+            
+            attacked.source.Play("Hit");
+            attacked.anim.SetBool(Attack1, false);
+            
+            yield return new WaitForSeconds(0.2f);
+        
+            attacked.source.Play("GetHit");
+            
             hitPoints -= attacked.weaponPower + attacked.attack - defense;
         }
         
         if (attacked.hitPoints <= 0)
         {
+            yield return new WaitForSeconds(1.2f);
+            
             if (attacked.CompareTag("Ally"))
             {
                 turnSystem.playerCount++;
@@ -125,7 +149,8 @@ public class Unit : MonoBehaviour
 
         if (hitPoints <= 0)
         {
-            Debug.Log("Is dead");
+            yield return new WaitForSeconds(1.2f);
+            
             if (CompareTag("Ally"))
             {
                 turnSystem.playerCount++;
@@ -139,7 +164,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public void Heal(Unit healed)
+    public IEnumerator Heal(Unit healed)
     {
         if (healed.hitPoints > 0)
         {
@@ -150,6 +175,7 @@ public class Unit : MonoBehaviour
                 healed.hitPoints = healed.maxHP;
             }
         }
+        yield return new WaitForSeconds(0.2f);
     }
     #endregion
 

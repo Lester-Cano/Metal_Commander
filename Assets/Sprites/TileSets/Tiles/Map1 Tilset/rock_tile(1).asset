@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: rock_tile(1)
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 21300000, guid: 0af477a714f4e8e4e9f0e4d1e4336a46, type: 3}
-  m_Color: {r: 0.6981132, g: 0.6981132, b: 0.6981132, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
     e01: 0
