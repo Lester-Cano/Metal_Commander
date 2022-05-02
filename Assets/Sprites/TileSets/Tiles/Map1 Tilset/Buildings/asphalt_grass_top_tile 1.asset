@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: TileRock
+  m_Name: asphalt_grass_top_tile 1
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: d11186a808ff59343b228373f1bbf59d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 9cdf05a36c52868429c1261a2982762a, type: 3}
+  m_Color: {r: 0.69803923, g: 0.69803923, b: 0.69803923, a: 1}
   m_Transform:
     e00: 1
     e01: 0

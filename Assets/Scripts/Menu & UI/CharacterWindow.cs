@@ -55,7 +55,7 @@ public class CharacterWindow : MonoBehaviour
         if (hitData)
         {
             unitSelected = hitData.transform.gameObject.GetComponent<Unit>();
-            
+            if (unitSelected.GetComponent<Unit>() ==null) return;
             Selected(unitSelected);
         }
     }
