@@ -3,63 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f28edbc9-f60c-4763-a6cb-b0a8424ca198" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Taller-VI-1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Taller-VI-1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level2.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level3.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level3.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level4.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level4.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/Buildings/Red_house_part2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/Buildings/Red_house_part2.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/Buildings/asphalt_grass_top_side.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/Buildings/asphalt_grass_top_side.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/Buildings/asphalt_grass_top_tile (1).asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/Buildings/asphalt_grass_top_tile (1).asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/Buildings/asphalt_grass_top_tile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/Buildings/asphalt_grass_top_tile.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/Buildings/asphalt_tile (1).asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/Buildings/asphalt_tile (1).asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/Buildings/asphalt_tile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/Buildings/asphalt_tile.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/Buildings/asphalt_tile_line (1).asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/Buildings/asphalt_tile_line (1).asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/Buildings/asphalt_tile_line.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/Buildings/asphalt_tile_line.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/Buildings/asphalt_tile_line_grass_top.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/Buildings/asphalt_tile_line_grass_top.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/Buildings/asphalt_top_bridgepng (1).asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/Buildings/asphalt_top_bridgepng (1).asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/Buildings/asphalt_top_bridgepng.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/Buildings/asphalt_top_bridgepng.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/Buildings/asphalt_variant_1 (1).asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/Buildings/asphalt_variant_1 (1).asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/Buildings/asphalt_variant_1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/Buildings/asphalt_variant_1.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/Buildings/asphalt_variant_2 (1).asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/Buildings/asphalt_variant_2 (1).asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/Buildings/asphalt_variant_2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/Buildings/asphalt_variant_2.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/Water_tile (2).asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/Water_tile (2).asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/asphalt_tile_lineup.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/asphalt_tile_lineup.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/grass_tile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/grass_tile.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/grass_tile_flowers.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/grass_tile_flowers.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/grass_tile_flowers2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/grass_tile_flowers2.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/grass_tile_flowers3.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/grass_tile_flowers3.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/grass_tile_rocks.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/grass_tile_rocks.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/grass_tile_water_all.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/grass_tile_water_all.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/grass_tile_water_bot.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/grass_tile_water_bot.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/grass_tile_water_left.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/grass_tile_water_left.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/grass_tile_water_left_top.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/grass_tile_water_left_top.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/grass_tile_water_leftbot2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/grass_tile_water_leftbot2.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/grass_tile_water_leftbotn.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/grass_tile_water_leftbotn.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/grass_tile_water_right.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/grass_tile_water_right.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/rock_tile(1).asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/rock_tile(1).asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/rock_tile_front.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/rock_tile_front.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/rock_tile_frontLeft.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/rock_tile_frontLeft.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/rock_tile_frontUp.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/rock_tile_frontUp.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/rock_tile_front_side.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/rock_tile_front_side.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/rock_tile_front_sideRight 1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/rock_tile_front_sideRight 1.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/rock_tile_front_sideRight.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/rock_tile_front_sideRight.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/rock_tile_front_sideUp.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/rock_tile_front_sideUp.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/rock_tile_side.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/rock_tile_side.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/rock_tile_sideRight.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/rock_tile_sideRight.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/rock_tile_sideUp.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/Map1 Tilset/rock_tile_sideUp.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/TIleGrass.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/TIleGrass.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/TileRock.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/TileRock.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/TileWater.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/TileWater.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/grass-tile.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/grass-tile.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/rock_tile.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/rock_tile.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/water_tile.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/TileSets/Tiles/water_tile.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,7 +125,7 @@
       <workItem from="1650831265703" duration="6526000" />
       <workItem from="1651257416902" duration="10770000" />
       <workItem from="1651431659222" duration="13873000" />
-      <workItem from="1651516599526" duration="1127000" />
+      <workItem from="1651516599526" duration="1346000" />
     </task>
     <servers />
   </component>
