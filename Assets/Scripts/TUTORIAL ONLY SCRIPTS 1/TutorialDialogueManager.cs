@@ -11,11 +11,7 @@ public class TutorialDialogueManager : MonoBehaviour
 
     public Image imageEnemy;
     public Image imageAlly;
-    public Image tutorialCompass;
-    public Image tutorialSelectChar;
-    public Image tutorialMovement;
-    public Canvas canvasTutorial;
-    public GameObject canvasUI;
+    public Canvas canvasTutorial, canvasUI;
 
     public GameObject arrow;
 
@@ -26,7 +22,6 @@ public class TutorialDialogueManager : MonoBehaviour
         sentences = new Queue<string>();
         dialogue = GetComponent<TextTutorial>();
         StartTutorial(dialogue.dialogue);
-        
     }
 
 
@@ -38,7 +33,7 @@ public class TutorialDialogueManager : MonoBehaviour
         {
             sentences.Enqueue(sentence);
         }
-        
+
         DisplayNextSentence();
 
     }
@@ -46,8 +41,6 @@ public class TutorialDialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
-        
-
         if (sentences.Count == 0)
         {
             EndDialogue();
@@ -59,23 +52,12 @@ public class TutorialDialogueManager : MonoBehaviour
         string sentence = sentences.Dequeue();
         dialogueText.text = sentence;
 
-        if (counter >= 0) canvasUI.SetActive(false);
-
         if (counter == 2)
         {
             imageEnemy.gameObject.SetActive(false);
             imageAlly.gameObject.SetActive(true);
-            tutorialCompass.gameObject.SetActive(true);
         }
-
-        if (counter == 3)
-        {
-            imageAlly.gameObject.SetActive(false);
-            tutorialCompass.gameObject.SetActive(false);
-            tutorialSelectChar.gameObject.SetActive(true);
-            tutorialMovement.gameObject.SetActive(true);
-        }
-
+        
 
     }
 

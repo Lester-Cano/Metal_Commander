@@ -10,8 +10,6 @@ namespace Menu___UI
         [SerializeField] private GameObject target2;
         [SerializeField] private GameObject outTarget;
         [SerializeField] private GameObject outTarget2;
-
-        [SerializeField] private GameObject invisibleImage;
         
         public void SetTitle(GameObject title)
         {
@@ -26,13 +24,11 @@ namespace Menu___UI
         public void SetTitleExit(GameObject title)
         {
             title.transform.DOMove(target2.transform.position, 0.2f, false);
-            invisibleImage.SetActive(false);
         }
         
         public void RemoveTitleExit(GameObject title)
         {
             title.transform.DOMove(outTarget2.transform.position, 0.2f, false);
-            invisibleImage.SetActive(true);
         }
     }
 }
