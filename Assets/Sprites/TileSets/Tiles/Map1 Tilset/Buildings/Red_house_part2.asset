@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Red_house_part2
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 21300000, guid: 7e08bab5c58cee1409df95ec78edc452, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_Transform:
     e00: 1
     e01: 0

@@ -5,6 +5,7 @@ using DG.Tweening;
 using System.Linq;
 using TurnSystem.States;
 using UnityEngine.Serialization;
+using CombatSystem;
 
 namespace PathFinding
 {
@@ -13,13 +14,15 @@ namespace PathFinding
     {
 
         [SerializeField] private Pathfinding2D enemyMovement;
+        [SerializeField] private UnitObstacle unitObstacle;
         [SerializeField] public List<Unit> enemies;
         [SerializeField] public List<Unit> allies;
         [SerializeField] private Unit currentEnemy;
         [SerializeField] private GameObject currentTarget = null;
         [SerializeField] private Unit currentPlayer;
-
         [SerializeField] public TurnSystem.TurnSystem turnSystem;
+
+        [SerializeField] private CombatManager combatManager;
 
         public bool startCombat = false;
 
@@ -50,11 +53,20 @@ namespace PathFinding
                 if (currentEnemy.hitPoints > 0)
                 {
                     enemyMovement = currentEnemy.GetComponent<Pathfinding2D>();
+                    
+                    unitObstacle.UpdateObstacleMap();
+                    var unitPos = unitObstacle.obstacleTilemap.WorldToCell(currentEnemy.transform.position);
+                    if (unitObstacle.obstacleTilemap.GetTile(unitPos) != null)
+                    {
+                        unitObstacle.obstacleTilemap.SetTile(unitPos, null);
+                    }
+                    enemyMovement.UpdateGrid();
+                    
                     SearchForAllies();
 
                     if (currentEnemy.foundRival)
                     {
-                        yield return new WaitForSeconds(1f);
+                        yield return new WaitForSeconds(4);
                     }
 
                     yield return new WaitForSeconds(0.1f);
@@ -103,7 +115,7 @@ namespace PathFinding
             {
                 //Do nothing.
 
-                currentEnemy.foundRival = true;
+                currentEnemy.foundRival = false;
             }
             
             if (currentTarget != null && currentEnemy.aggressive == true)
@@ -121,7 +133,7 @@ namespace PathFinding
             var path = new Vector3[maxCount];
             for (var i = 0; i < path.Length; i++)
             {
-                path[i] = unitPath.path[i].worldPosition;
+                path[i] = unitPath.path[i].worldPosition - new Vector3(0.5f, 0.5f, 0);
             }
             
             var camPath = new Vector3[path.Length];
@@ -151,7 +163,7 @@ namespace PathFinding
                 var path = new Vector3[maxCount];
                 for (var i = 0; i < path.Length; i++)
                 {
-                    path[i] = unitPath.path[i].worldPosition;
+                    path[i] = unitPath.path[i].worldPosition - new Vector3(0.5f, 0.5f, 0);
                 }
 
                 var camPath = new Vector3[path.Length];
@@ -178,7 +190,7 @@ namespace PathFinding
                 var path = new Vector3[maxCount];
                 for (var i = 0; i < maxCount; i++)
                 {
-                    path[i] = unitPath.path[i].worldPosition;
+                    path[i] = unitPath.path[i].worldPosition - new Vector3(0.5f, 0.5f, 0);
                 }
                 
                 var camPath = new Vector3[path.Length];
@@ -202,7 +214,7 @@ namespace PathFinding
             
             if (currentPlayer != null)
             {
-                StartCoroutine(currentEnemy.Attack(currentPlayer));
+                StartCoroutine(combatManager.MoveToCombat(currentEnemy, currentPlayer));
             }
 
             currentEnemy.foundRival = false;
