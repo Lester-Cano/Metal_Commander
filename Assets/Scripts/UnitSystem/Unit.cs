@@ -104,7 +104,12 @@ public class Unit : MonoBehaviour
     {
         attacked.hitPoints -= weaponPower + attack - attacked.defense;
 
-        if (attacked.hitPoints > 0)
+        if (attacked.hitPoints > 0 && this.className != "Sniper")
+        {
+            hitPoints -= attacked.weaponPower + attacked.attack - defense;
+        }
+        
+        if (attacked.hitPoints > 0 && this.className != "Mage")
         {
             hitPoints -= attacked.weaponPower + attacked.attack - defense;
         }
