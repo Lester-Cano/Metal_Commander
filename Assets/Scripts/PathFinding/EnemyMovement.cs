@@ -99,7 +99,7 @@ namespace PathFinding
                 }
             }
 
-            if (currentTarget != null && currentEnemy.inRange == true)
+            if (currentTarget != null && currentEnemy.inRange)
             {
                 enemyMovement.FindPath(currentEnemy.transform.position, currentTarget.transform.position);
                 
@@ -111,14 +111,12 @@ namespace PathFinding
                 }
             }
             
-            if (currentTarget != null && currentEnemy.passive == true)
+            if (currentTarget != null && currentEnemy.passive)
             {
-                //Do nothing.
-
                 currentEnemy.foundRival = false;
             }
             
-            if (currentTarget != null && currentEnemy.aggressive == true)
+            if (currentTarget != null && currentEnemy.aggressive)
             {
                 enemyMovement.FindPath(currentEnemy.transform.position, currentTarget.transform.position);
                 StartCoroutine(MoveAggressive(enemyMovement));
@@ -129,37 +127,94 @@ namespace PathFinding
         
         private IEnumerator MoveInRange(Pathfinding2D unitPath)
         {
-            var maxCount = unitPath.path.Count - 1;
-            var path = new Vector3[maxCount];
-            for (var i = 0; i < path.Length; i++)
+            if (currentEnemy.className != "Mage")
             {
-                path[i] = unitPath.path[i].worldPosition - new Vector3(0.5f, 0.5f, 0);
-            }
+                var maxCount = unitPath.path.Count - 1;
+                var path = new Vector3[maxCount];
+                for (var i = 0; i < path.Length; i++)
+                {
+                    path[i] = unitPath.path[i].worldPosition - new Vector3(0.5f, 0.5f, 0);
+                }
             
-            var camPath = new Vector3[path.Length];
-            for (var i = 0; i < path.Length; i++)
-            {
-                camPath[i] = path[i] + new Vector3(0, 0, -10);
-            }
+                var camPath = new Vector3[path.Length];
+                for (var i = 0; i < path.Length; i++)
+                {
+                    camPath[i] = path[i] + new Vector3(0, 0, -10);
+                }
 
-            turnSystem.mainCamera.transform.DOMove(currentEnemy.transform.position + new Vector3(0, 0, -10), 1,
-                false);
-            yield return new WaitForSeconds(1.1f);
+                turnSystem.mainCamera.transform.DOMove(currentEnemy.transform.position + new Vector3(0, 0, -10), 1,
+                    false);
+                yield return new WaitForSeconds(1.1f);
             
-            currentEnemy.transform.DOPath(path, 1, PathType.Linear, PathMode.TopDown2D);
-            turnSystem.mainCamera.transform.DOPath(camPath, 1, PathType.Linear, PathMode.TopDown2D);
+                currentEnemy.transform.DOPath(path, 1, PathType.Linear, PathMode.TopDown2D);
+                turnSystem.mainCamera.transform.DOPath(camPath, 1, PathType.Linear, PathMode.TopDown2D);
 
-            if (currentEnemy.hitPoints > 0 && currentPlayer.hitPoints > 0)
+                if (currentEnemy.hitPoints > 0 && currentPlayer.hitPoints > 0)
+                {
+                    EnemyCombat();
+                }
+            }
+            else if (currentEnemy.className == "Mage")
             {
-                EnemyCombat();
+                var maxCount = unitPath.path.Count - 2;
+                var path = new Vector3[maxCount];
+                for (var i = 0; i < path.Length; i++)
+                {
+                    path[i] = unitPath.path[i].worldPosition - new Vector3(0.5f, 0.5f, 0);
+                }
+            
+                var camPath = new Vector3[path.Length];
+                for (var i = 0; i < path.Length; i++)
+                {
+                    camPath[i] = path[i] + new Vector3(0, 0, -10);
+                }
+
+                turnSystem.mainCamera.transform.DOMove(currentEnemy.transform.position + new Vector3(0, 0, -10), 1,
+                    false);
+                yield return new WaitForSeconds(1.1f);
+            
+                currentEnemy.transform.DOPath(path, 1, PathType.Linear, PathMode.TopDown2D);
+                turnSystem.mainCamera.transform.DOPath(camPath, 1, PathType.Linear, PathMode.TopDown2D);
+
+                if (currentEnemy.hitPoints > 0 && currentPlayer.hitPoints > 0)
+                {
+                    EnemyCombat();
+                }
             }
         }
         
         private IEnumerator MoveAggressive(Pathfinding2D unitPath)
         {
-            if (unitPath.path.Count - 1 <= currentEnemy.movement)
+            if (unitPath.path.Count - 1 <= currentEnemy.movement && currentEnemy.className != "Mage")
             {
                 var maxCount = unitPath.path.Count - 1;
+                var path = new Vector3[maxCount];
+                for (var i = 0; i < path.Length; i++)
+                {
+                    path[i] = unitPath.path[i].worldPosition - new Vector3(0.5f, 0.5f, 0);
+                }
+
+                var camPath = new Vector3[path.Length];
+                for (var i = 0; i < path.Length; i++)
+                {
+                    camPath[i] = path[i] + new Vector3(0, 0, -10);
+                }
+
+                turnSystem.mainCamera.transform.DOMove(currentEnemy.transform.position + new Vector3(0, 0, -10), 0.8f,
+                    false);
+                yield return new WaitForSeconds(1.1f);
+                
+                currentEnemy.transform.DOPath(path, 1, PathType.Linear, PathMode.TopDown2D);
+                turnSystem.mainCamera.transform.DOPath(camPath, 1, PathType.Linear, PathMode.TopDown2D);
+
+                if (currentEnemy.hitPoints > 0 && currentPlayer.hitPoints > 0)
+                {
+                    EnemyCombat();
+                }
+            }
+            else if (unitPath.path.Count - 1 <= currentEnemy.movement && currentEnemy.className == "Mage")
+            {
+                var maxCount = unitPath.path.Count - 2;
                 var path = new Vector3[maxCount];
                 for (var i = 0; i < path.Length; i++)
                 {

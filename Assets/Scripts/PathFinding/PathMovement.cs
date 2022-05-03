@@ -76,6 +76,7 @@ namespace PathFinding
                     unitObstacle.obstacleTilemap.SetTile(unitPos, null);
                 }
                 pathMovement.UpdateGrid();
+                pathMovement.UpdateGrid();
 
                 selectedUnit.path.SetActive(true);
                 selectedUnit.instancedMat.SetFloat(Thickness, 0.0016f);
@@ -156,7 +157,7 @@ namespace PathFinding
                     Destroy(newTarget);
                     selectedUnit.instancedMat.SetFloat(Thickness, 0);
                 }
-                else if (hitData.transform.gameObject.CompareTag("Enemy"))
+                else if (hitData.transform.gameObject.CompareTag("Enemy") && selectedUnit.className != "Sniper")
                 {
                     source.Play("SelectedSpace");
                     
@@ -182,7 +183,6 @@ namespace PathFinding
 
                     Vector3Int unitGridPos = map.WorldToCell(selectedUnit.transform.position);
                     Vector3Int targetGridPos = map.WorldToCell(newTarget.transform.position);
-
                     _lastPosition = unitGridPos;
                         
                     pathMovement.FindPath(unitGridPos, targetGridPos);
@@ -197,7 +197,7 @@ namespace PathFinding
                         return;
                     }
 
-                    if (pathMovement.path.Count > selectedUnit.movement)
+                    if (pathMovement.path.Count > selectedUnit.movement + 1)
                     {
                         _grabbed = false;
                         _selectedNewSpace = false;
@@ -268,7 +268,7 @@ namespace PathFinding
                         return;
                     }
                     
-                    if (pathMovement.path.Count > selectedUnit.movement)
+                    if (pathMovement.path.Count > selectedUnit.movement + 1)
                     {
                         _grabbed = false;
                         _selectedNewSpace = false;
@@ -282,6 +282,66 @@ namespace PathFinding
                     MoveToEnemyWithPath(pathMovement);
                     UI.SetActive(false);
                     button2.SetActive(true);
+
+                    _grabbed = false;
+                    _selectedNewSpace = false;
+                    Destroy(newTarget);
+                    selectedUnit.instancedMat.SetFloat(Thickness, 0);
+                }
+                else if(hitData.transform.gameObject.CompareTag("Enemy") && selectedUnit.className == "Sniper")
+                {
+                    source.Play("SelectedSpace");
+                    
+                    enemyUnit = hitData.transform.gameObject.GetComponent<Unit>();
+
+                    Vector2 mousePosition = turnSystem.mainCamera.ScreenToWorldPoint(Input.mousePosition);
+                    Vector3 gridPosition = map.WorldToCell(mousePosition);
+                        
+                    var newTarget = Instantiate(target, gridPosition, quaternion.identity);
+                    _selectedNewSpace = true;
+                    Vector3Int tilePosition = map.WorldToCell(mousePosition);
+                    
+                    if (map.GetTile(tilePosition) == null)
+                    {
+                        _grabbed = false;
+                        _selectedNewSpace = false;
+                        selectedUnit.path.SetActive(false);
+                        selectedUnit.anim.SetBool(Walk2, false);
+                        selectedUnit.instancedMat.SetFloat(Thickness, 0);
+                        Destroy(newTarget);
+                        return;
+                    }
+
+                    Vector3Int unitGridPos = map.WorldToCell(selectedUnit.transform.position);
+                    Vector3Int targetGridPos = map.WorldToCell(newTarget.transform.position);
+                    _lastPosition = unitGridPos;
+                        
+                    pathMovement.FindPath(unitGridPos, targetGridPos);
+                    
+                    if (pathMovement.path == null)
+                    {
+                        _grabbed = false;
+                        _selectedNewSpace = false;
+                        Destroy(newTarget);
+                        selectedUnit.path.SetActive(false);
+                        selectedUnit.instancedMat.SetFloat(Thickness, 0);
+                        return;
+                    }
+
+                    if (pathMovement.path.Count > selectedUnit.movement + 1)
+                    {
+                        _grabbed = false;
+                        _selectedNewSpace = false;
+                        selectedUnit.path.SetActive(false);
+                        selectedUnit.anim.SetBool(Walk2, false);
+                        selectedUnit.instancedMat.SetFloat(Thickness, 0);
+                        Destroy(newTarget);
+                        return;
+                    }
+                    
+                    MoveToEnemyWithPathSniper(pathMovement);
+                    UI.SetActive(false);
+                    button.SetActive(true);
 
                     _grabbed = false;
                     _selectedNewSpace = false;
@@ -324,6 +384,23 @@ namespace PathFinding
         {
             selectedUnit.path.SetActive(false);
             var maxCount = unitPath.path.Count - 1;
+            
+            var path = new Vector3[maxCount];
+            for (var i = 0; i < path.Length; i++)
+            {
+                path[i] = unitPath.path[i].worldPosition - new Vector3(0.5f, 0.5f, 0);
+            }
+
+            selectedUnit.transform.DOPath(path, 1, PathType.Linear, PathMode.TopDown2D);
+            
+            selectedUnit.anim.SetBool(Walk2, false);
+            selectedUnit.hasMoved = true;
+        }
+        
+        private void MoveToEnemyWithPathSniper(Pathfinding2D unitPath)
+        {
+            selectedUnit.path.SetActive(false);
+            var maxCount = unitPath.path.Count - 2;
             
             var path = new Vector3[maxCount];
             for (var i = 0; i < path.Length; i++)
