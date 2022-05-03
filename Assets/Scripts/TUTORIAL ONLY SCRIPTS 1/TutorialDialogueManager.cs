@@ -13,7 +13,13 @@ public class TutorialDialogueManager : MonoBehaviour
     public Image imageAlly;
     public Canvas canvasTutorial, canvasUI;
 
-    public GameObject arrow;
+
+    public Image exampleCompass;
+    public Image exampleSelect;
+
+    public Image exampleMove;
+
+    public Image exampleAttack;
 
     public int counter = 0;
 
@@ -55,19 +61,28 @@ public class TutorialDialogueManager : MonoBehaviour
         if (counter == 2)
         {
             imageEnemy.gameObject.SetActive(false);
-            imageAlly.gameObject.SetActive(true);
+            exampleCompass.gameObject.SetActive(true);
+            exampleSelect.gameObject.SetActive(true);
         }
-        
+        if (counter == 3)
+        {
+            exampleCompass.gameObject.SetActive(false);
+            exampleSelect.gameObject.SetActive(false);
+            exampleMove.gameObject.SetActive(true);
+        }
+        if (counter == 4)
+        {
+            exampleMove.gameObject.SetActive(false);
+            exampleAttack.gameObject.SetActive(true);
+        }
+
 
     }
 
     void EndDialogue()
     {
-
-        arrow.gameObject.SetActive(true);
         canvasTutorial.gameObject.SetActive(false);
         imageAlly.gameObject.SetActive(false);
-
     }
 
 }

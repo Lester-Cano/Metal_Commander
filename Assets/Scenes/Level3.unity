@@ -1495,7 +1495,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b0267661b4d60d347a8009ce4e822197, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 00ab4d351cdb3cc40ba6865158b5ec4d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -38194,7 +38194,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1220260832}
         m_TargetAssemblyTypeName: PathFinding.PathMovement, Assembly-CSharp
         m_MethodName: SendToHeal
         m_Mode: 1
@@ -41526,7 +41526,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1220260832}
         m_TargetAssemblyTypeName: PathFinding.PathMovement, Assembly-CSharp
         m_MethodName: GoBack
         m_Mode: 1
