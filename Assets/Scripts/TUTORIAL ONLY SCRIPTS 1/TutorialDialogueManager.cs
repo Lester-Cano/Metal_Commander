@@ -19,7 +19,7 @@ public class TutorialDialogueManager : MonoBehaviour
 
     public Image exampleMove;
 
-    public GameObject arrow;
+    public Image exampleAttack;
 
     public int counter = 0;
 
@@ -73,6 +73,7 @@ public class TutorialDialogueManager : MonoBehaviour
         if (counter == 4)
         {
             exampleMove.gameObject.SetActive(false);
+            exampleAttack.gameObject.SetActive(true);
         }
 
 
@@ -80,11 +81,8 @@ public class TutorialDialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
-
-        arrow.gameObject.SetActive(true);
         canvasTutorial.gameObject.SetActive(false);
         imageAlly.gameObject.SetActive(false);
-
     }
 
 }
