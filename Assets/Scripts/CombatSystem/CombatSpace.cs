@@ -13,15 +13,15 @@ namespace CombatSystem
         [SerializeField] private TMP_Text unit1Hp;
         [SerializeField] private TMP_Text unit1Attack;
         [SerializeField] private TMP_Text unit1Defense;
-        [SerializeField] private Animator unit1Anim;
-        [SerializeField] private RuntimeAnimatorController unit1Controller;
+        public Animator unit1Anim;
+        [SerializeField] public RuntimeAnimatorController unit1Controller;
 
         [SerializeField] private TMP_Text unit2Name;
         [SerializeField] private TMP_Text unit2Hp;
         [SerializeField] private TMP_Text unit2Attack;
         [SerializeField] private TMP_Text unit2Defense;
-        [SerializeField] private Animator unit2Anim;
-        [SerializeField] private RuntimeAnimatorController unit2Controller;
+        public Animator unit2Anim;
+        [SerializeField] public RuntimeAnimatorController unit2Controller;
 
         [SerializeField] private Image name, name2, hud, hud2;
 
@@ -37,8 +37,8 @@ namespace CombatSystem
             unitCard1.hp = unit.maxHP.ToString() + "/" + unit.hitPoints.ToString();
             unitCard1.attack = (unit.attack + unit.weaponPower).ToString();
             unitCard1.defense = unit.defense.ToString();
-            unitCard1.animator = unit.anim;
-            unitCard1.controller = unit.controller;
+            // unitCard1.animator = unit.anim;
+            // unitCard1.controller = unit.controller;
             
             if (unit.unitSide == "Enemy")
             {
@@ -55,8 +55,8 @@ namespace CombatSystem
             unitCard2.hp = unit2.maxHP.ToString() + "/" + unit2.hitPoints.ToString();
             unitCard2.attack = (unit2.attack + unit2.weaponPower).ToString();
             unitCard2.defense = unit2.defense.ToString();
-            unitCard2.animator = unit2.anim;
-            unitCard2.controller = unit2.controller;
+            // unitCard2.animator = unit2.anim;
+            // unitCard2.controller = unit2.controller;
             
             if (unit2.unitSide == "Enemy")
             {
@@ -76,17 +76,17 @@ namespace CombatSystem
             unit1Hp.text = unitCard1.hp;
             unit1Attack.text = unitCard1.attack;
             unit1Defense.text = unitCard1.defense;
-            unit1Anim = unitCard1.animator;
-            unit1Controller = unitCard1.controller;
-            unit1Anim.runtimeAnimatorController = unit1Controller;
+            //unit1Anim = unitCard1.animator;
+            // unit1Controller = unitCard1.controller;
+            // unit1Anim.runtimeAnimatorController = unit1Controller;
 
             unit2Name.text = unitCard2.unitName;
             unit2Hp.text = unitCard2.hp;
             unit2Attack.text = unitCard2.attack;
             unit2Defense.text = unitCard2.defense;
-            unit2Anim = unitCard2.animator;
-            unit2Controller = unitCard2.controller;
-            unit2Anim.runtimeAnimatorController = unit2Controller;
+            //unit2Anim = unitCard2.animator;
+            // unit2Controller = unitCard2.controller;
+            // unit2Anim.runtimeAnimatorController = unit2Controller;
         }
     }
 }
