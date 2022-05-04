@@ -12,6 +12,7 @@ namespace CombatSystem
         [SerializeField] private GameObject button;
         [SerializeField] private Camera mainCamera;
         private Vector3 _prevPos;
+        private static readonly int Attack = Animator.StringToHash("Attack");
 
         public IEnumerator MoveToCombat(Unit unit, Unit unit2)
         {
@@ -44,10 +45,16 @@ namespace CombatSystem
 
         private IEnumerator StartCombat(Unit unit, Unit unit2)
         {
-            yield return new WaitForSeconds(1);
-            
+            combatSpace.unit1Anim.SetBool(Attack, true);
+
             unit.Attack(unit2);
             unit.hasAttacked = true;
+
+            yield return new WaitForSeconds(2);
+            
+            combatSpace.unit2Anim.SetBool(Attack, true);
+
+            yield return new WaitForSeconds(1);
             
             combatSpace.UpdateCardValue(unit, unit2);
             combatSpace.UpdateTitlesValue();
@@ -57,10 +64,14 @@ namespace CombatSystem
         
         private IEnumerator StartHeal(Unit unit, Unit unit2)
         {
+            combatSpace.unit1Anim.SetBool(Attack, true);
+
             yield return new WaitForSeconds(1);
-            
+
             unit.Heal(unit2);
             unit.hasAttacked = true;
+            
+            yield return new WaitForSeconds(1);
             
             combatSpace.UpdateCardValue(unit, unit2);
             combatSpace.UpdateTitlesValue();

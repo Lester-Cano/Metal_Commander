@@ -102,6 +102,7 @@ public class Unit : MonoBehaviour
 
     public void Attack(Unit attacked)
     {
+
         attacked.hitPoints -= weaponPower + attack - attacked.defense;
 
         if (attacked.hitPoints > 0 && this.className != "Sniper")
@@ -113,7 +114,7 @@ public class Unit : MonoBehaviour
         {
             hitPoints -= attacked.weaponPower + attacked.attack - defense;
         }
-        
+
         if (attacked.hitPoints <= 0)
         {
             if (attacked.CompareTag("Ally"))
@@ -130,7 +131,6 @@ public class Unit : MonoBehaviour
 
         if (hitPoints <= 0)
         {
-            Debug.Log("Is dead");
             if (CompareTag("Ally"))
             {
                 turnSystem.playerCount++;
