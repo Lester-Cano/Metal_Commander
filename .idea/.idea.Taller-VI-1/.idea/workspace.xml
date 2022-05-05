@@ -5,33 +5,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Taller-VI-1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Taller-VI-1/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level2.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level3.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level3.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level4.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level4.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Menu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CombatSystem/CombatManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CombatSystem/CombatManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CombatSystem/CombatSpace.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CombatSystem/CombatSpace.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scenes.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scenes/Cinematica inicial.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scenes/Cinematica inicial.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scenes/Level1.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scenes/Level1.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scenes/Level2.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scenes/Level2.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scenes/Level3.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scenes/Level3.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scenes/Level4.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scenes/Level4.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scenes/Lost.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scenes/Lost.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scenes/Main Menu.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scenes/Main Menu.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scenes/Win.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scenes/Win.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UnitSystem/Tiles.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UnitSystem/Tiles/Base Tile.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UnitSystem/Tiles/Base Tile.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UnitSystem/Unit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UnitSystem/Unit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Menus/Main Title.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Menus/Main Title.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level2.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level2.unity.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -157,7 +132,7 @@
       <workItem from="1651431659222" duration="13873000" />
       <workItem from="1651516599526" duration="1346000" />
       <workItem from="1651532834071" duration="3290000" />
-      <workItem from="1651714759202" duration="785000" />
+      <workItem from="1651714759202" duration="1380000" />
     </task>
     <servers />
   </component>
