@@ -32,7 +32,6 @@ public class CharacterWindow : MonoBehaviour
     private void Selected(Unit selectedUnit)
     {
         window.transform.DOMove(targetPos.transform.position, 0.2f, false);
-        
         unitName.text = selectedUnit.unitName;
         health.text = selectedUnit.hitPoints.ToString() + "/" + selectedUnit.maxHP.ToString();
         attack.text = (selectedUnit.attack + selectedUnit.weaponPower).ToString();
