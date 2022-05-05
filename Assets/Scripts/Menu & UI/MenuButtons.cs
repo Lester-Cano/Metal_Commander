@@ -36,6 +36,6 @@ public class MenuButtons : MonoBehaviour
         _camera.transform.DOMove(_selectLvlP.position, 0.5f, false);
     }
     public void OnLevelSelectBack() {
-        _camera.transform.DOMove(_newGameP.position, 0.5f, false);
+        _camera.transform.DOMove( _playMenuP.position, 0.5f, false);
     }
 }
