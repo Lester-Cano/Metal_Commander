@@ -14,14 +14,14 @@ namespace CombatSystem
         [SerializeField] private TMP_Text unit1Attack;
         [SerializeField] private TMP_Text unit1Defense;
         public Animator unit1Anim;
-        [SerializeField] public RuntimeAnimatorController unit1Controller;
+        //[SerializeField] public RuntimeAnimatorController unit1Controller;
 
         [SerializeField] private TMP_Text unit2Name;
         [SerializeField] private TMP_Text unit2Hp;
         [SerializeField] private TMP_Text unit2Attack;
         [SerializeField] private TMP_Text unit2Defense;
         public Animator unit2Anim;
-        [SerializeField] public RuntimeAnimatorController unit2Controller;
+        //[SerializeField] public RuntimeAnimatorController unit2Controller;
 
         [SerializeField] private Image name, name2, hud, hud2;
 
