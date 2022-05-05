@@ -100,19 +100,17 @@ public class Unit : MonoBehaviour
 
     #region Combat Methods
 
-    public void Attack(Unit attacked)
+    public void Attack(Unit attacked, Unit attacker)
     {
+        attacked.hitPoints -= (attacker.weaponPower + attacker.attack) - attacked.defense;
 
-        attacked.hitPoints -= weaponPower + attack - attacked.defense;
-
-        if (attacked.hitPoints > 0 && this.className != "Sniper")
+        if (attacked.hitPoints > 0 && attacker.className != "Sniper" && attacker.CompareTag("Ally"))
         {
-            hitPoints -= attacked.weaponPower + attacked.attack - defense;
+            attacker.hitPoints -= (attacked.weaponPower + attacked.attack) - attacker.defense;
         }
-        
-        if (attacked.hitPoints > 0 && this.className != "Mage")
+        else if (attacked.hitPoints > 0 && attacker.className != "Mage" && attacker.CompareTag("Enemy"))
         {
-            hitPoints -= attacked.weaponPower + attacked.attack - defense;
+            attacker.hitPoints -= (attacked.weaponPower + attacked.attack) - attacker.defense;
         }
 
         if (attacked.hitPoints <= 0)
@@ -129,13 +127,13 @@ public class Unit : MonoBehaviour
             attacked.isDead = true;
         }
 
-        if (hitPoints <= 0)
+        if (attacker.hitPoints <= 0)
         {
-            if (CompareTag("Ally"))
+            if (attacker.CompareTag("Ally"))
             {
                 turnSystem.playerCount++;
             }
-            if (CompareTag("Enemy"))
+            if (attacker.CompareTag("Enemy"))
             {
                 turnSystem.enemyCount++;
             }
@@ -148,7 +146,7 @@ public class Unit : MonoBehaviour
     {
         if (healed.hitPoints > 0)
         {
-            healed.hitPoints += weaponPower + attack - attack / 3;
+            healed.hitPoints += weaponPower + attack;
         
             if (healed.hitPoints > healed.maxHP)
             {

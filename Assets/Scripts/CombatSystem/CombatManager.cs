@@ -47,7 +47,7 @@ namespace CombatSystem
         {
             combatSpace.unit1Anim.SetBool(Attack, true);
 
-            unit.Attack(unit2);
+            unit.Attack(unit2, unit);
             unit.hasAttacked = true;
 
             yield return new WaitForSeconds(2);
