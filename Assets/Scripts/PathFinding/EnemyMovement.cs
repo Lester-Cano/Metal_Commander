@@ -12,7 +12,6 @@ namespace PathFinding
 
     public class EnemyMovement : MonoBehaviour
     {
-
         [SerializeField] private Pathfinding2D enemyMovement;
         [SerializeField] private UnitObstacle unitObstacle;
         [SerializeField] public List<Unit> enemies;
@@ -27,6 +26,8 @@ namespace PathFinding
         public bool startCombat = false;
 
         [SerializeField] private bool rivalFound;
+        
+        [SerializeField] private ButtonBehaviour fader;
         
 
         private void Start()
@@ -66,7 +67,7 @@ namespace PathFinding
 
                     if (currentEnemy.foundRival)
                     {
-                        yield return new WaitForSeconds(5);
+                        //yield return new WaitForSeconds(5);
                     }
 
                     yield return new WaitForSeconds(0.1f);
@@ -269,6 +270,8 @@ namespace PathFinding
             
             if (currentPlayer != null)
             {
+                fader.FadeToCombat();
+                
                 StartCoroutine(combatManager.MoveToCombat(currentEnemy, currentPlayer));
             }
 

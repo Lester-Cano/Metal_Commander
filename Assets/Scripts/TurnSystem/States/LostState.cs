@@ -10,7 +10,7 @@ namespace TurnSystem.States
 
         public override IEnumerator Start()
         {
-            TurnSystem.screenSystem.LoadScene("Lost");
+            TurnSystem.screenSystem.FadeToLevel("Lost");
 
             yield break;
         }

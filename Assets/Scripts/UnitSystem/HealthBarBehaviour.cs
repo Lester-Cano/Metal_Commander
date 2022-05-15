@@ -7,7 +7,6 @@ public class HealthBarBehaviour : MonoBehaviour
 {
 
     public Slider slider;
-    public Vector3 offset;
     public Unit unit;
 
     private void Start()
@@ -17,7 +16,6 @@ public class HealthBarBehaviour : MonoBehaviour
     
     private void Update()
     {
-        slider.transform.position = Camera.main.WorldToScreenPoint(transform.parent.position + offset);
         SetHealth(unit.hitPoints, unit.maxHP);
     }
     

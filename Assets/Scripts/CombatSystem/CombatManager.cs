@@ -13,6 +13,9 @@ namespace CombatSystem
         [SerializeField] private GameObject button;
         [SerializeField] private Camera mainCamera;
         private Vector3 _prevPos, _unit1PrevPos, _unit2PrevPos;
+        private Quaternion _unit2PrevRot;
+
+        [SerializeField] private ButtonBehaviour fader;
 
         public IEnumerator MoveToCombat(Unit unit, Unit unit2)
         {
@@ -20,8 +23,8 @@ namespace CombatSystem
 
             button.SetActive(false);
             _prevPos = new Vector3(0, 0, -10) + unit2.transform.position;
-            mainCamera.transform.position = new Vector3(0, -39, -10);
-            mainCamera.orthographicSize = 5.5f;
+            mainCamera.transform.position = new Vector3(0, -39, -11);
+            mainCamera.orthographicSize = 1.5f;
             canvas.SetActive(false);
             combatStation.SetActive(true);
             
@@ -35,8 +38,11 @@ namespace CombatSystem
 
             _unit1PrevPos = unit.transform.position;
             _unit2PrevPos = unit2.transform.position;
+            _unit2PrevRot = unit2.transform.rotation;
             unit.transform.position = new Vector3(0, 0, -10) + combatSpace.position1.position;
             unit2.transform.position = new Vector3(0, 0, -10) + combatSpace.position2.position;
+
+            unit2.transform.rotation = combatSpace.position2.rotation;
 
             if (unit.unitSide == "Enemy" || unit2.unitSide == "Enemy")
             {
@@ -52,15 +58,15 @@ namespace CombatSystem
         {
             unit.anim.SetTrigger("Attack");
 
-            unit.Attack(unit2, unit);
-            unit.hasAttacked = true;
-
             yield return new WaitForSeconds(2);
             
             unit2.anim.SetTrigger("Attack");
+            
+            unit.Attack(unit2, unit);
+            unit.hasAttacked = true;
 
             yield return new WaitForSeconds(1);
-            
+
             combatSpace.UpdateCardValue(unit, unit2);
             combatSpace.UpdateTitlesValue();
             
@@ -87,10 +93,14 @@ namespace CombatSystem
         private IEnumerator BackToOverWorld(Unit unit, Unit unit2)
         {
             yield return new WaitForSeconds(1);
+            
+            fader.FadeOutCombat();
 
             unit.transform.position = _unit1PrevPos;
             unit2.transform.position = _unit2PrevPos;
             
+            unit2.transform.rotation = _unit2PrevRot;
+
             mainCamera.transform.position = _prevPos;
             mainCamera.orthographicSize = 3.5f;
             canvas.SetActive(true);
