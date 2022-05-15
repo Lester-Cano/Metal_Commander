@@ -57,13 +57,18 @@ namespace CombatSystem
         private IEnumerator StartCombat(Unit unit, Unit unit2)
         {
             unit.anim.SetTrigger("Attack");
+            
+            unit.Attack(unit2, unit);
 
             yield return new WaitForSeconds(2);
             
             unit2.anim.SetTrigger("Attack");
             
-            unit.Attack(unit2, unit);
-            unit.hasAttacked = true;
+
+            if (unit.unitSide == "Ally")
+            {
+                unit.hasAttacked = true;
+            }
 
             yield return new WaitForSeconds(1);
 

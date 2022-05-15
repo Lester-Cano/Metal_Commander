@@ -25,8 +25,6 @@ namespace PathFinding
 
         public bool startCombat = false;
 
-        [SerializeField] private bool rivalFound;
-        
         [SerializeField] private ButtonBehaviour fader;
         
 
@@ -67,10 +65,8 @@ namespace PathFinding
 
                     if (currentEnemy.foundRival)
                     {
-                        //yield return new WaitForSeconds(5);
+                        yield return new WaitForSeconds(7);
                     }
-
-                    yield return new WaitForSeconds(0.1f);
                 }
             }
             
@@ -121,7 +117,7 @@ namespace PathFinding
             {
                 enemyMovement.FindPath(currentEnemy.transform.position, currentTarget.transform.position);
                 StartCoroutine(MoveAggressive(enemyMovement));
-
+                
                 currentEnemy.foundRival = true;
             }
         }
@@ -154,6 +150,8 @@ namespace PathFinding
                 {
                     EnemyCombat();
                 }
+                
+                currentEnemy.foundRival = false;
             }
             else if (currentEnemy.className == "Mage")
             {
@@ -181,6 +179,8 @@ namespace PathFinding
                 {
                     EnemyCombat();
                 }
+                
+                currentEnemy.foundRival = false;
             }
         }
         
@@ -212,6 +212,8 @@ namespace PathFinding
                 {
                     EnemyCombat();
                 }
+                
+                currentEnemy.foundRival = false;
             }
             else if (unitPath.path.Count - 1 <= currentEnemy.movement && currentEnemy.className == "Mage")
             {
@@ -239,6 +241,8 @@ namespace PathFinding
                 {
                     EnemyCombat();
                 }
+                
+                currentEnemy.foundRival = false;
             }
             else
             {
@@ -261,6 +265,8 @@ namespace PathFinding
                 
                 currentEnemy.transform.DOPath(path, 1, PathType.Linear, PathMode.TopDown2D);
                 turnSystem.mainCamera.transform.DOPath(camPath, 1, PathType.Linear, PathMode.TopDown2D);
+                
+                currentEnemy.foundRival = false;
             }
         }
 
