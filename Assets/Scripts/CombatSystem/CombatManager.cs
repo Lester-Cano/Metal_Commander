@@ -1,4 +1,5 @@
 using System.Collections;
+using DG.Tweening;
 using UnityEditor;
 using UnityEngine;
 
@@ -11,7 +12,7 @@ namespace CombatSystem
         [SerializeField] private GameObject canvas;
         [SerializeField] private GameObject button;
         [SerializeField] private Camera mainCamera;
-        private Vector3 _prevPos;
+        private Vector3 _prevPos, _unit1PrevPos, _unit2PrevPos;
 
         public IEnumerator MoveToCombat(Unit unit, Unit unit2)
         {
@@ -32,8 +33,10 @@ namespace CombatSystem
             combatSpace.UpdateCardValue(unit, unit2);
             combatSpace.UpdateTitlesValue();
 
-            unit.transform.position = combatSpace.position1.position;
-            unit2.transform.position = combatSpace.position2.position;
+            _unit1PrevPos = unit.transform.position;
+            _unit2PrevPos = unit2.transform.position;
+            unit.transform.position = new Vector3(0, 0, -10) + combatSpace.position1.position;
+            unit2.transform.position = new Vector3(0, 0, -10) + combatSpace.position2.position;
 
             if (unit.unitSide == "Enemy" || unit2.unitSide == "Enemy")
             {
@@ -47,26 +50,26 @@ namespace CombatSystem
 
         private IEnumerator StartCombat(Unit unit, Unit unit2)
         {
-            combatSpace.unit1Anim.SetTrigger("Attack");
+            unit.anim.SetTrigger("Attack");
 
             unit.Attack(unit2, unit);
             unit.hasAttacked = true;
 
             yield return new WaitForSeconds(2);
             
-            combatSpace.unit2Anim.SetTrigger("Attack");
+            unit2.anim.SetTrigger("Attack");
 
             yield return new WaitForSeconds(1);
             
             combatSpace.UpdateCardValue(unit, unit2);
             combatSpace.UpdateTitlesValue();
             
-            StartCoroutine(BackToOverWorld());
+            StartCoroutine(BackToOverWorld(unit, unit2));
         }
         
         private IEnumerator StartHeal(Unit unit, Unit unit2)
         {
-            combatSpace.unit1Anim.SetTrigger("Attack");
+            unit.anim.SetTrigger("Attack");
 
             yield return new WaitForSeconds(1);
 
@@ -78,12 +81,15 @@ namespace CombatSystem
             combatSpace.UpdateCardValue(unit, unit2);
             combatSpace.UpdateTitlesValue();
             
-            StartCoroutine(BackToOverWorld());
+            StartCoroutine(BackToOverWorld(unit, unit2));
         }
 
-        private IEnumerator BackToOverWorld()
+        private IEnumerator BackToOverWorld(Unit unit, Unit unit2)
         {
             yield return new WaitForSeconds(1);
+
+            unit.transform.position = _unit1PrevPos;
+            unit2.transform.position = _unit2PrevPos;
             
             mainCamera.transform.position = _prevPos;
             mainCamera.orthographicSize = 3.5f;

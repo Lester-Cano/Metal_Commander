@@ -9,8 +9,8 @@ namespace Camera_Stuff
         [SerializeField] public Camera cam;
         [SerializeField] public Vector3 maxValue, minValue;
         private Vector3 _origin, _difference;
-        private bool _drag;
-        
+        private bool _drag, _move;
+
         private void Update()
         {
             if (Input.GetMouseButton(0))
@@ -44,14 +44,27 @@ namespace Camera_Stuff
             }
         }
 
-        public void ReBound()
+        private void ReBound()
         {
             Vector3 targetPosition = cam.transform.position;
             Vector3 boundPosition = new Vector3(Mathf.Clamp(targetPosition.x, minValue.x, maxValue.x)
                 , Mathf.Clamp(targetPosition.y, minValue.y, maxValue.y)
                 , Mathf.Clamp(targetPosition.z, minValue.z, maxValue.z));
 
-            cam.transform.position = boundPosition;
+            if (_move)
+            {
+                cam.transform.position = boundPosition;
+            }
+        }
+
+        private void OnEnable()
+        {
+            _move = true;
+        }
+
+        private void OnDisable()
+        {
+            _move = false;
         }
     }
 }

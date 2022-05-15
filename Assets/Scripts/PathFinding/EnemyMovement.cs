@@ -66,7 +66,7 @@ namespace PathFinding
 
                     if (currentEnemy.foundRival)
                     {
-                        yield return new WaitForSeconds(4);
+                        yield return new WaitForSeconds(5);
                     }
 
                     yield return new WaitForSeconds(0.1f);

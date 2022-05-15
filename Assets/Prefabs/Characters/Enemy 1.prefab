@@ -2851,7 +2851,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seeker: {fileID: 0}
   target: {fileID: 0}
-  GridOwner: {fileID: 0}
+  gridOwner: {fileID: 0}
 --- !u!50 &5091326166117662742
 Rigidbody2D:
   serializedVersion: 4

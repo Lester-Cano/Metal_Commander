@@ -13,7 +13,6 @@ namespace CombatSystem
         [SerializeField] private TMP_Text unit1Hp;
         [SerializeField] private TMP_Text unit1Attack;
         [SerializeField] private TMP_Text unit1Defense;
-        public Animator unit1Anim;
 
         [SerializeField] public Transform position1;
 
@@ -21,8 +20,7 @@ namespace CombatSystem
         [SerializeField] private TMP_Text unit2Hp;
         [SerializeField] private TMP_Text unit2Attack;
         [SerializeField] private TMP_Text unit2Defense;
-        public Animator unit2Anim;
-        
+
         [SerializeField] public Transform position2;
 
 
