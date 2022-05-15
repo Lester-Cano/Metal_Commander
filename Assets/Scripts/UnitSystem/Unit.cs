@@ -81,10 +81,7 @@ public class Unit : MonoBehaviour
     {
         if (isDead)
         {
-            _time += 0.02f;
-            instancedMat.SetFloat(Fade, Mathf.Lerp(1, 0, _time));
-            
-            Invoke(nameof(Deactivate), 0.8f);
+            StartCoroutine(DeadAnim());
         }
 
         if (hasMoved)
@@ -159,5 +156,15 @@ public class Unit : MonoBehaviour
     private void Deactivate()
     {
         parent.SetActive(false);
+    }
+
+    private IEnumerator DeadAnim()
+    {
+        yield return new WaitForSeconds(5);
+
+        _time += 0.02f;
+        instancedMat.SetFloat(Fade, Mathf.Lerp(1, 0, _time));
+            
+        Invoke(nameof(Deactivate), 0.8f);
     }
 }
