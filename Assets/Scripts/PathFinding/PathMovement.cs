@@ -67,7 +67,7 @@ namespace PathFinding
                 selectedUnit = hitData.transform.gameObject.GetComponent<Unit>();
                 pathMovement = selectedUnit.GetComponent<Pathfinding2D>();
                 
-                unitObstacle.UpdateObstacleMap();
+                unitObstacle.UpdateObstacleMapForAllies();
                 var unitPos = unitObstacle.obstacleTilemap.WorldToCell(selectedUnit.transform.position);
                 if (unitObstacle.obstacleTilemap.GetTile(unitPos) != null)
                 {
@@ -177,6 +177,33 @@ namespace PathFinding
                         return;
                     }
                     
+                    if (pathMovement.path.Count > 1)
+                    {
+                        var hitAlly = Physics2D.Raycast(pathMovement.path[pathMovement.path.Count - 2].worldPosition, Vector2.zero, 0);
+                        if (hitAlly)
+                        {
+                            var newCol = unitObstacle.obstacleTilemap.WorldToCell(pathMovement.path[pathMovement.path.Count - 2].worldPosition);
+                            unitObstacle.obstacleTilemap.SetTile(newCol, unitObstacle.tile);
+                            pathMovement.UpdateGrid();
+                        }
+                    }
+
+                    pathMovement.FindPath(unitGridPos, targetGridPos);
+                    
+                    if (pathMovement.path == null)
+                    {
+                        Deactivate();
+                        Destroy(newTarget);
+                        return;
+                    }
+
+                    if (pathMovement.path.Count > selectedUnit.movement + 1)
+                    {
+                        Deactivate();
+                        Destroy(newTarget);
+                        return;
+                    }
+
                     MoveToEnemyWithPath(pathMovement);
                     
                     ui.SetActive(false);
@@ -224,6 +251,36 @@ namespace PathFinding
                         return;
                     }
                     
+                    if (pathMovement.path.Count > selectedUnit.movement + 1)
+                    {
+                        Deactivate();
+                        Destroy(newTarget);
+                        return;
+                    }
+
+                    if (pathMovement.path.Count > 1)
+                    { 
+                        var hitAlly = Physics2D.Raycast(pathMovement.path[pathMovement.path.Count - 2].worldPosition,
+                             Vector2.zero, 0);
+                         if (hitAlly)
+                         {
+                             var newCol =
+                                 unitObstacle.obstacleTilemap.WorldToCell(pathMovement.path[pathMovement.path.Count - 2]
+                                     .worldPosition);
+                             unitObstacle.obstacleTilemap.SetTile(newCol, unitObstacle.tile);
+                             pathMovement.UpdateGrid();
+                         }
+                    }
+                    
+                    pathMovement.FindPath(unitGridPos, targetGridPos);
+                    
+                    if (pathMovement.path == null)
+                    {
+                        Deactivate();
+                        Destroy(newTarget);
+                        return;
+                    }
+
                     if (pathMovement.path.Count > selectedUnit.movement + 1)
                     {
                         Deactivate();

@@ -22254,6 +22254,7 @@ MonoBehaviour:
   combatManager: {fileID: 1575190845}
   startCombat: 0
   fader: {fileID: 1328392704}
+  _inCombat: 0
 --- !u!1 &831498705
 GameObject:
   m_ObjectHideFlags: 0
@@ -29739,6 +29740,9 @@ MonoBehaviour:
   button: {fileID: 338361061}
   mainCamera: {fileID: 788830345}
   fader: {fileID: 1328392704}
+  unitObstacle: {fileID: 765991434}
+  movSystem: {fileID: 0}
+  enemyMovement: {fileID: 819821295}
 --- !u!1 &1626972209
 GameObject:
   m_ObjectHideFlags: 0
@@ -30802,7 +30806,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 53.3, y: -69.5}
+  m_AnchoredPosition: {x: 53.30005, y: -69.5}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1794854780

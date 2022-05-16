@@ -1004,7 +1004,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5befacfb8afddc4448167112d5756f8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  space: {fileID: 212247445}
   allyTeam: []
   enemyTeam: []
   mapSystem: {fileID: 234949889}
@@ -8300,6 +8299,8 @@ MonoBehaviour:
   button: {fileID: 1268935626}
   mainCamera: {fileID: 1962850672}
   fader: {fileID: 1038801770}
+  unitObstacle: {fileID: 1374513523}
+  movSystem: {fileID: 0}
 --- !u!1 &871187916
 GameObject:
   m_ObjectHideFlags: 0

@@ -32076,6 +32076,8 @@ MonoBehaviour:
   button: {fileID: 1718863189}
   mainCamera: {fileID: 275377955}
   fader: {fileID: 1921314140}
+  unitObstacle: {fileID: 104606757}
+  movSystem: {fileID: 0}
 --- !u!1 &1401806115
 GameObject:
   m_ObjectHideFlags: 0
