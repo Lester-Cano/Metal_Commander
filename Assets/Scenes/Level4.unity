@@ -22255,7 +22255,7 @@ MonoBehaviour:
   turnSystem: {fileID: 2071233552}
   combatManager: {fileID: 1575190845}
   startCombat: 0
-  fader: {fileID: 0}
+  fader: {fileID: 1328392704}
 --- !u!1 &831498705
 GameObject:
   m_ObjectHideFlags: 0

@@ -7633,7 +7633,7 @@ MonoBehaviour:
   turnSystem: {fileID: 212247447}
   combatManager: {fileID: 855822823}
   startCombat: 0
-  fader: {fileID: 0}
+  fader: {fileID: 1038801770}
 --- !u!114 &785611019
 MonoBehaviour:
   m_ObjectHideFlags: 0
