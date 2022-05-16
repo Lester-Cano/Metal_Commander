@@ -3385,6 +3385,8 @@ GameObject:
   m_Component:
   - component: {fileID: 983397855}
   - component: {fileID: 983397854}
+  - component: {fileID: 983397857}
+  - component: {fileID: 983397856}
   m_Layer: 0
   m_Name: Timeline
   m_TagString: Untagged
@@ -3437,6 +3439,8 @@ PlayableDirector:
     value: {fileID: 454175181}
   - key: {fileID: -8967959150329080062, guid: 50ce563b627eb3f4b983ab2e41463e91, type: 2}
     value: {fileID: 443657554}
+  - key: {fileID: -612265971986743398, guid: 50ce563b627eb3f4b983ab2e41463e91, type: 2}
+    value: {fileID: 983397857}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &983397855
@@ -3455,6 +3459,48 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &983397856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 983397853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26cd9fec6427745409766c5612c1e617, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &983397857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 983397853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: ea5bb1b12d2fdf54486e6b375c4dd7c4, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 983397856}
+          m_TargetAssemblyTypeName: SignalCode, Assembly-CSharp
+          m_MethodName: Cinematic1
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1037765208
 GameObject:
   m_ObjectHideFlags: 0
