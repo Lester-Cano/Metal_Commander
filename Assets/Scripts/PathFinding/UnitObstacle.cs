@@ -21,6 +21,7 @@ public class UnitObstacle : MonoBehaviour
                 var intPosition = Vector3Int.FloorToInt(position);
                 obstacleTilemap.SetTile(intPosition, null);
             }
+            
             units.Clear();
         }
         foreach (var t in turnSystem.enemyTeam)
