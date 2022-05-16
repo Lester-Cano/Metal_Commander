@@ -17,7 +17,7 @@ namespace PathFinding
         [SerializeField] private GameObject target;
         [SerializeField] private Tilemap map;
         [SerializeField] private CombatManager combatManager;
-        [SerializeField] private bool grabbed, selectedNewSpace;
+        private bool _grabbed, _selectedNewSpace;
         
         //From here, TurnSystem
 
@@ -36,11 +36,11 @@ namespace PathFinding
 
         private void Update()
         {
-            if (Input.GetMouseButtonDown(0) && !grabbed && !selectedNewSpace)
+            if (Input.GetMouseButtonDown(0) && !_grabbed && !_selectedNewSpace)
             {
                 SelectUnit(); 
             }
-            else if (Input.GetMouseButtonDown(0) && grabbed && !selectedNewSpace)
+            else if (Input.GetMouseButtonDown(0) && _grabbed && !_selectedNewSpace)
             {
                 SelectNewSpace();
             }
@@ -53,12 +53,12 @@ namespace PathFinding
 
             if (!hitData)
             {
-                grabbed = false;
+                _grabbed = false;
                 return;
             }
             if (hitData.transform.gameObject.CompareTag("Enemy"))
             {
-                grabbed = false;
+                _grabbed = false;
             }
             if (hitData.transform.gameObject.CompareTag("Ally"))
             {
@@ -78,12 +78,12 @@ namespace PathFinding
                 selectedUnit.path.SetActive(true);
                 selectedUnit.instancedMat.SetFloat(Thickness, 0.0016f);
                 
-                grabbed = true;
+                _grabbed = true;
                 
 
                 if (selectedUnit.hasMoved)
                 {
-                    grabbed = false;
+                    _grabbed = false;
                     selectedUnit.path.SetActive(false);
                     selectedUnit.instancedMat.SetFloat(Thickness, 0);
                 }
@@ -92,7 +92,7 @@ namespace PathFinding
 
         private void SelectNewSpace()
         {
-            if (grabbed) 
+            if (_grabbed) 
             {
                 Vector2 worldPosition = turnSystem.mainCamera.ScreenToWorldPoint(Input.mousePosition);
                 RaycastHit2D hitData = Physics2D.Raycast(worldPosition, Vector2.zero, 0);
@@ -105,14 +105,11 @@ namespace PathFinding
                     Vector3Int gridPosition = map.WorldToCell(mousePosition);
                     
                     var newTarget = Instantiate(target, gridPosition, quaternion.identity);
-                    selectedNewSpace = true;
+                    _selectedNewSpace = true;
 
                     if (map.GetTile(gridPosition) == null)
                     {
-                        grabbed = false;
-                        selectedNewSpace = false;
-                        selectedUnit.path.SetActive(false);
-                        selectedUnit.instancedMat.SetFloat(Thickness, 0);
+                        Deactivate();
                         Destroy(newTarget);
                         return; 
                     }
@@ -124,29 +121,21 @@ namespace PathFinding
 
                      if (pathMovement.path == null)
                      {
-                         grabbed = false;
-                         selectedNewSpace = false;
+                         Deactivate();
                          Destroy(newTarget);
-                         selectedUnit.path.SetActive(false);
-                         selectedUnit.instancedMat.SetFloat(Thickness, 0);
                          return;
                      }
                     
                     if (pathMovement.path.Count > selectedUnit.movement)
                     {
-                        grabbed = false;
-                        selectedNewSpace = false;
-                        selectedUnit.path.SetActive(false);
-                        selectedUnit.instancedMat.SetFloat(Thickness, 0);
+                        Deactivate();
                         Destroy(newTarget);
                         return;
                     }
                     
                     MoveWithPath(pathMovement);
-                    grabbed = false;
-                    selectedNewSpace = false;
+                    Deactivate();
                     Destroy(newTarget);
-                    selectedUnit.instancedMat.SetFloat(Thickness, 0);
                 }
                 else if (hitData.transform.gameObject.CompareTag("Enemy") && selectedUnit.className != "Sniper")
                 {
@@ -158,15 +147,12 @@ namespace PathFinding
                     Vector3 gridPosition = map.WorldToCell(mousePosition);
                         
                     var newTarget = Instantiate(target, gridPosition, quaternion.identity);
-                    selectedNewSpace = true;
+                    _selectedNewSpace = true;
                     Vector3Int tilePosition = map.WorldToCell(mousePosition);
                     
                     if (map.GetTile(tilePosition) == null)
                     {
-                        grabbed = false;
-                        selectedNewSpace = false;
-                        selectedUnit.path.SetActive(false);
-                        selectedUnit.instancedMat.SetFloat(Thickness, 0);
+                        Deactivate();
                         Destroy(newTarget);
                         return;
                     }
@@ -179,32 +165,25 @@ namespace PathFinding
                     
                     if (pathMovement.path == null)
                     {
-                        grabbed = false;
-                        selectedNewSpace = false;
+                        Deactivate();
                         Destroy(newTarget);
-                        selectedUnit.path.SetActive(false);
-                        selectedUnit.instancedMat.SetFloat(Thickness, 0);
                         return;
                     }
 
                     if (pathMovement.path.Count > selectedUnit.movement + 1)
                     {
-                        grabbed = false;
-                        selectedNewSpace = false;
-                        selectedUnit.path.SetActive(false);
-                        selectedUnit.instancedMat.SetFloat(Thickness, 0);
+                        Deactivate();
                         Destroy(newTarget);
                         return;
                     }
                     
                     MoveToEnemyWithPath(pathMovement);
+                    
                     ui.SetActive(false);
                     button.SetActive(true);
-
-                    grabbed = false;
-                    selectedNewSpace = false;
+                    
+                    Deactivate();
                     Destroy(newTarget);
-                    selectedUnit.instancedMat.SetFloat(Thickness, 0);
                 }
                 else if (hitData.transform.gameObject.CompareTag("Ally") && selectedUnit.unitName == "Juliet")
                 {
@@ -214,10 +193,7 @@ namespace PathFinding
 
                     if (enemyUnit.unitName == "Juliet")
                     {
-                        grabbed = false;
-                        selectedNewSpace = false;
-                        selectedUnit.path.SetActive(false);
-                        selectedUnit.instancedMat.SetFloat(Thickness, 0);
+                        Deactivate();
                         return;
                     }
 
@@ -225,54 +201,43 @@ namespace PathFinding
                     Vector3 gridPosition = map.WorldToCell(mousePosition);
                         
                     var newTarget = Instantiate(target, gridPosition, quaternion.identity);
-                    selectedNewSpace = true;
+                    _selectedNewSpace = true;
                     Vector3Int tilePosition = map.WorldToCell(mousePosition);
                         
                     if (map.GetTile(tilePosition) == null)
                     {
-                        grabbed = false;
-                        selectedNewSpace = false;
-                        selectedUnit.path.SetActive(false);
-                        selectedUnit.instancedMat.SetFloat(Thickness, 0);
+                        Deactivate();
                         Destroy(newTarget);
                         return;
                     }
                         
                     Vector3Int unitGridPos = map.WorldToCell(selectedUnit.transform.position);
                     Vector3Int targetGridPos = map.WorldToCell(newTarget.transform.position);
-
                     _lastPosition = unitGridPos;
                         
                     pathMovement.FindPath(unitGridPos, targetGridPos);
                         
                     if (pathMovement.path == null)
                     {
-                        grabbed = false;
-                        selectedNewSpace = false;
+                        Deactivate();
                         Destroy(newTarget);
-                        selectedUnit.path.SetActive(false);
-                        selectedUnit.instancedMat.SetFloat(Thickness, 0);
                         return;
                     }
                     
                     if (pathMovement.path.Count > selectedUnit.movement + 1)
                     {
-                        grabbed = false;
-                        selectedNewSpace = false;
-                        selectedUnit.path.SetActive(false);
-                        selectedUnit.instancedMat.SetFloat(Thickness, 0);
+                        Deactivate();
                         Destroy(newTarget);
                         return;
                     }
                     
                     MoveToEnemyWithPath(pathMovement);
+                    
                     ui.SetActive(false);
                     button2.SetActive(true);
-
-                    grabbed = false;
-                    selectedNewSpace = false;
+                    
+                    Deactivate();
                     Destroy(newTarget);
-                    selectedUnit.instancedMat.SetFloat(Thickness, 0);
                 }
                 else if(hitData.transform.gameObject.CompareTag("Enemy") && selectedUnit.className == "Sniper")
                 {
@@ -284,15 +249,12 @@ namespace PathFinding
                     Vector3 gridPosition = map.WorldToCell(mousePosition);
                         
                     var newTarget = Instantiate(target, gridPosition, quaternion.identity);
-                    selectedNewSpace = true;
+                    _selectedNewSpace = true;
                     Vector3Int tilePosition = map.WorldToCell(mousePosition);
                     
                     if (map.GetTile(tilePosition) == null)
                     {
-                        grabbed = false;
-                        selectedNewSpace = false;
-                        selectedUnit.path.SetActive(false);
-                        selectedUnit.instancedMat.SetFloat(Thickness, 0);
+                        Deactivate();
                         Destroy(newTarget);
                         return;
                     }
@@ -305,50 +267,39 @@ namespace PathFinding
                     
                     if (pathMovement.path == null)
                     {
-                        grabbed = false;
-                        selectedNewSpace = false;
+                        Deactivate();
                         Destroy(newTarget);
-                        selectedUnit.path.SetActive(false);
-                        selectedUnit.instancedMat.SetFloat(Thickness, 0);
                         return;
                     }
 
                     if (pathMovement.path.Count > selectedUnit.movement + 1)
                     {
-                        grabbed = false;
-                        selectedNewSpace = false;
-                        selectedUnit.path.SetActive(false);
-                        selectedUnit.instancedMat.SetFloat(Thickness, 0);
+                        Deactivate();
                         Destroy(newTarget);
                         return;
                     }
                     
                     MoveToEnemyWithPathSniper(pathMovement);
+                    
                     ui.SetActive(false);
                     button.SetActive(true);
-
-                    grabbed = false;
-                    selectedNewSpace = false;
+                    
+                    Deactivate();
                     Destroy(newTarget);
-                    selectedUnit.instancedMat.SetFloat(Thickness, 0);
                 }
                 else
                 {
-                    grabbed = false;
-                    selectedUnit.path.SetActive(false);
-                    selectedUnit.instancedMat.SetFloat(Thickness, 0);
+                    Deactivate();
                 }
             }
             else
             {
-                grabbed = false;
+                _grabbed = false;
             }
         }
 
         private void MoveWithPath(Pathfinding2D unitPath)
         {
-            selectedUnit.path.SetActive(false);
-
             var maxCount = unitPath.path.Count;
 
             var path = new Vector3[maxCount];
@@ -364,7 +315,6 @@ namespace PathFinding
 
         private void MoveToEnemyWithPath(Pathfinding2D unitPath)
         {
-            selectedUnit.path.SetActive(false);
             var maxCount = unitPath.path.Count - 1;
             
             var path = new Vector3[maxCount];
@@ -380,7 +330,6 @@ namespace PathFinding
         
         private void MoveToEnemyWithPathSniper(Pathfinding2D unitPath)
         {
-            selectedUnit.path.SetActive(false);
             var maxCount = unitPath.path.Count - 2;
             
             var path = new Vector3[maxCount];
@@ -411,9 +360,7 @@ namespace PathFinding
             
             selectedUnit.hasMoved = false;
             
-            grabbed = false;
-            selectedUnit.path.SetActive(false);
-            selectedUnit.instancedMat.SetFloat(Thickness, 0);
+            Deactivate();
             button.SetActive(false);
             button2.SetActive(false);
         }
@@ -422,8 +369,8 @@ namespace PathFinding
         {
             selectedUnit.path.SetActive(false);
             selectedUnit.instancedMat.SetFloat(Thickness, 0);
-            grabbed = false;
-            selectedNewSpace = false;
+            _grabbed = false;
+            _selectedNewSpace = false;
         }
     }
 }

@@ -33,7 +33,6 @@ namespace TurnSystem
 
         private void Start()
         {
-            // !! Initialize interface. !!
             SetState(new BeginBattleState(this));
         }
 

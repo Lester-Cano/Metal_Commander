@@ -1004,6 +1004,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5befacfb8afddc4448167112d5756f8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  space: {fileID: 212247445}
   allyTeam: []
   enemyTeam: []
   mapSystem: {fileID: 234949889}
@@ -2891,7 +2892,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2.580017, y: 0}
+  m_AnchoredPosition: {x: 2.5800781, y: 0}
   m_SizeDelta: {x: -900.00006, y: -506.0498}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &242401898
@@ -7676,13 +7677,11 @@ MonoBehaviour:
   target: {fileID: 3873878253777374194, guid: 5724b02fc8cde4743930571be3f82f5d, type: 3}
   map: {fileID: 224155703}
   combatManager: {fileID: 855822823}
-  _grabbed: 0
-  _selectedNewSpace: 0
   turnSystem: {fileID: 212247447}
   source: {fileID: 1425673255}
   button: {fileID: 1268935626}
   button2: {fileID: 1333356997}
-  UI: {fileID: 946839700}
+  ui: {fileID: 946839700}
 --- !u!1 &805358650
 GameObject:
   m_ObjectHideFlags: 0
@@ -12543,7 +12542,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 53.3, y: -69.5}
+  m_AnchoredPosition: {x: 53.30005, y: -69.5}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1368083951

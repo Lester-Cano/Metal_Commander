@@ -11,8 +11,6 @@ namespace TurnSystem.States
 
         public override IEnumerator Start()
         {
-            // !! Set "tittle level" text. !!
-        
             TurnSystem.mapSystem.SpawnUnit();
             TurnSystem.mapSystem.SpawnEnemies();
             

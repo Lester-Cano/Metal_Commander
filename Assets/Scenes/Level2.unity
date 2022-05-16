@@ -22424,13 +22424,11 @@ MonoBehaviour:
   target: {fileID: 3873878253777374194, guid: 5724b02fc8cde4743930571be3f82f5d, type: 3}
   map: {fileID: 587820089}
   combatManager: {fileID: 1388676209}
-  _grabbed: 0
-  _selectedNewSpace: 0
   turnSystem: {fileID: 733197543}
   source: {fileID: 1308292746}
-  button: {fileID: 1849976183}
-  button2: {fileID: 1766437663}
-  UI: {fileID: 946354334}
+  button: {fileID: 1718863189}
+  button2: {fileID: 1490696470}
+  ui: {fileID: 946354334}
 --- !u!114 &1220260833
 MonoBehaviour:
   m_ObjectHideFlags: 0
