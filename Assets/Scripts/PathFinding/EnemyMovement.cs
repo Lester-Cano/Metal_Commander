@@ -181,31 +181,53 @@ namespace PathFinding
             }
             else if (currentEnemy.className == "Mage")
             {
-                var maxCount = unitPath.path.Count - 2;
-                var path = new Vector3[maxCount];
-                for (var i = 0; i < path.Length; i++)
+                if (enemyMovement.path.Count > 2)
                 {
-                    path[i] = unitPath.path[i].worldPosition - new Vector3(0.5f, 0.5f, 0);
-                }
-            
-                var camPath = new Vector3[path.Length];
-                for (var i = 0; i < path.Length; i++)
-                {
-                    camPath[i] = path[i] + new Vector3(0, 0, -10);
-                }
-
-                turnSystem.mainCamera.transform.DOMove(currentEnemy.transform.position + new Vector3(0, 0, -10), 1);
-                yield return new WaitForSeconds(1.1f);
-            
-                currentEnemy.transform.DOPath(path, 1, PathType.Linear, PathMode.TopDown2D);
-                turnSystem.mainCamera.transform.DOPath(camPath, 1, PathType.Linear, PathMode.TopDown2D);
-
-                if (currentEnemy.hitPoints > 0 && currentPlayer.hitPoints > 0)
-                {
-                    EnemyCombat();
+                    var hitAlly = Physics2D.Raycast(enemyMovement.path[enemyMovement.path.Count - 3].worldPosition, Vector2.zero, 0);
+                    if (hitAlly)
+                    {
+                        var newCol = unitObstacle.obstacleTilemap.WorldToCell(enemyMovement.path[enemyMovement.path.Count - 3].worldPosition);
+                        unitObstacle.obstacleTilemap.SetTile(newCol, unitObstacle.tile);
+                        enemyMovement.UpdateGrid();
+                    }
+                
+                    enemyMovement.FindPath(currentEnemy.transform.position, currentTarget.transform.position);
+                    unitPath = enemyMovement;
                 }
                 
-                currentEnemy.foundRival = false;
+                if (enemyMovement.path.Count <= 2)
+                {
+                    yield break;
+                }
+                
+                if (unitPath.path.Count - 1 <= currentEnemy.movement && enemyMovement.path.Count > 2)
+                {
+                    var maxCount = unitPath.path.Count - 2;
+                    var path = new Vector3[maxCount];
+                    for (var i = 0; i < path.Length; i++)
+                    {
+                        path[i] = unitPath.path[i].worldPosition - new Vector3(0.5f, 0.5f, 0);
+                    }
+            
+                    var camPath = new Vector3[path.Length];
+                    for (var i = 0; i < path.Length; i++)
+                    {
+                        camPath[i] = path[i] + new Vector3(0, 0, -10);
+                    }
+
+                    turnSystem.mainCamera.transform.DOMove(currentEnemy.transform.position + new Vector3(0, 0, -10), 1);
+                    yield return new WaitForSeconds(1.1f);
+            
+                    currentEnemy.transform.DOPath(path, 1, PathType.Linear, PathMode.TopDown2D);
+                    turnSystem.mainCamera.transform.DOPath(camPath, 1, PathType.Linear, PathMode.TopDown2D);
+
+                    if (currentEnemy.hitPoints > 0 && currentPlayer.hitPoints > 0)
+                    {
+                        EnemyCombat();
+                    }
+                
+                    currentEnemy.foundRival = false;
+                }
             }
         }
         
@@ -258,31 +280,53 @@ namespace PathFinding
             }
             else if (unitPath.path.Count - 1 <= currentEnemy.movement && currentEnemy.className == "Mage")
             {
-                var maxCount = unitPath.path.Count - 2;
-                var path = new Vector3[maxCount];
-                for (var i = 0; i < path.Length; i++)
+                if (enemyMovement.path.Count > 2)
                 {
-                    path[i] = unitPath.path[i].worldPosition - new Vector3(0.5f, 0.5f, 0);
-                }
-
-                var camPath = new Vector3[path.Length];
-                for (var i = 0; i < path.Length; i++)
-                {
-                    camPath[i] = path[i] + new Vector3(0, 0, -10);
-                }
-
-                turnSystem.mainCamera.transform.DOMove(currentEnemy.transform.position + new Vector3(0, 0, -10), 0.8f);
-                yield return new WaitForSeconds(1.1f);
+                    var hitAlly = Physics2D.Raycast(enemyMovement.path[enemyMovement.path.Count - 3].worldPosition, Vector2.zero, 0);
+                    if (hitAlly)
+                    {
+                        var newCol = unitObstacle.obstacleTilemap.WorldToCell(enemyMovement.path[enemyMovement.path.Count - 3].worldPosition);
+                        unitObstacle.obstacleTilemap.SetTile(newCol, unitObstacle.tile);
+                        enemyMovement.UpdateGrid();
+                    }
                 
-                currentEnemy.transform.DOPath(path, 1, PathType.Linear, PathMode.TopDown2D);
-                turnSystem.mainCamera.transform.DOPath(camPath, 1, PathType.Linear, PathMode.TopDown2D);
-
-                if (currentEnemy.hitPoints > 0 && currentPlayer.hitPoints > 0)
-                {
-                    EnemyCombat();
+                    enemyMovement.FindPath(currentEnemy.transform.position, currentTarget.transform.position);
+                    unitPath = enemyMovement;
                 }
                 
-                currentEnemy.foundRival = false;
+                if (enemyMovement.path.Count <= 2)
+                {
+                    yield break;
+                }
+
+                if (unitPath.path.Count - 1 <= currentEnemy.movement && enemyMovement.path.Count > 2)
+                {
+                    var maxCount = unitPath.path.Count - 2;
+                    var path = new Vector3[maxCount];
+                    for (var i = 0; i < path.Length; i++)
+                    {
+                        path[i] = unitPath.path[i].worldPosition - new Vector3(0.5f, 0.5f, 0);
+                    }
+
+                    var camPath = new Vector3[path.Length];
+                    for (var i = 0; i < path.Length; i++)
+                    {
+                        camPath[i] = path[i] + new Vector3(0, 0, -10);
+                    }
+
+                    turnSystem.mainCamera.transform.DOMove(currentEnemy.transform.position + new Vector3(0, 0, -10), 0.8f);
+                    yield return new WaitForSeconds(1.1f);
+                
+                    currentEnemy.transform.DOPath(path, 1, PathType.Linear, PathMode.TopDown2D);
+                    turnSystem.mainCamera.transform.DOPath(camPath, 1, PathType.Linear, PathMode.TopDown2D);
+
+                    if (currentEnemy.hitPoints > 0 && currentPlayer.hitPoints > 0)
+                    {
+                        EnemyCombat();
+                    }
+                
+                    currentEnemy.foundRival = false;
+                }
             }
             else
             {

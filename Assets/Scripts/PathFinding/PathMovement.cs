@@ -336,6 +336,40 @@ namespace PathFinding
                         return;
                     }
                     
+                    if (pathMovement.path.Count > 2)
+                    {
+                        var hitAlly = Physics2D.Raycast(pathMovement.path[pathMovement.path.Count - 3].worldPosition, Vector2.zero, 0);
+                        if (hitAlly)
+                        {
+                            var newCol = unitObstacle.obstacleTilemap.WorldToCell(pathMovement.path[pathMovement.path.Count - 3].worldPosition);
+                            unitObstacle.obstacleTilemap.SetTile(newCol, unitObstacle.tile);
+                            pathMovement.UpdateGrid();
+                        }
+                    }
+
+                    if (pathMovement.path.Count <= 2)
+                    {
+                        Deactivate();
+                        Destroy(newTarget);
+                        return;
+                    }
+                    
+                    pathMovement.FindPath(unitGridPos, targetGridPos);
+                    
+                    if (pathMovement.path == null)
+                    {
+                        Deactivate();
+                        Destroy(newTarget);
+                        return;
+                    }
+
+                    if (pathMovement.path.Count > selectedUnit.movement + 1)
+                    {
+                        Deactivate();
+                        Destroy(newTarget);
+                        return;
+                    }
+                    
                     MoveToEnemyWithPathSniper(pathMovement);
                     
                     ui.SetActive(false);
