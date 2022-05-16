@@ -1,5 +1,6 @@
 using System.Collections;
 using DG.Tweening;
+using PathFinding;
 using UnityEditor;
 using UnityEngine;
 
@@ -16,6 +17,9 @@ namespace CombatSystem
         private Quaternion _unit2PrevRot;
 
         [SerializeField] private ButtonBehaviour fader;
+
+        [SerializeField] private UnitObstacle unitObstacle;
+        [SerializeField] private Pathfinding2D movSystem;
 
         public IEnumerator MoveToCombat(Unit unit, Unit unit2)
         {
@@ -105,6 +109,10 @@ namespace CombatSystem
             unit2.transform.position = _unit2PrevPos;
             
             unit2.transform.rotation = _unit2PrevRot;
+
+            movSystem = unit.GetComponent<Pathfinding2D>();
+            unitObstacle.ClearObstacleMap();
+            movSystem.UpdateGrid();
 
             mainCamera.transform.position = _prevPos;
             mainCamera.orthographicSize = 3.5f;

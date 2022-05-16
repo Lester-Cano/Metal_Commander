@@ -41,7 +41,7 @@ public class Unit : MonoBehaviour
     
     //Other
 
-    [HideInInspector] [SerializeField] public bool foundRival;
+    [HideInInspector] [SerializeField] public bool foundRival = false;
     
     //Enemy IA
 

@@ -6,7 +6,7 @@ namespace TurnSystem.States
 {
     public class PlayerTurnState : State
     {
-        public PlayerTurnState(global::TurnSystem.TurnSystem turnSystem) : base(turnSystem)
+        public PlayerTurnState(TurnSystem turnSystem) : base(turnSystem)
         {
         }
 
@@ -23,8 +23,6 @@ namespace TurnSystem.States
             {
                 TurnSystem.allyTeam[j].hasAttacked = false;
             }
-            
-            // !! Set "Player Turn" text. !!
 
             TurnSystem.titleSystem.SetTitle(TurnSystem.playerTitle);
             TurnSystem.playerUI.SetActive(true);
@@ -35,20 +33,13 @@ namespace TurnSystem.States
             
             TurnSystem.titleSystem.RemoveTitle(TurnSystem.playerTitle);
 
-            bool cameraSet = false;
-
             foreach (var unit in TurnSystem.allyTeam)
             {
                 if (unit.hitPoints > 0)
                 {
-                    TurnSystem.mainCamera.transform.DOMove(new Vector3(0, 0, -10) + unit.transform.position, 0.5f, false);
-                    //TurnSystem.cameraController.ReBound();
-                    
-                    cameraSet = true;
+                    TurnSystem.mainCamera.transform.DOMove(new Vector3(0, 0, -10) + unit.transform.position, 0.5f);
                 }
             }
-
-            cameraSet = false;
         }
 
         public override IEnumerator CheckState()

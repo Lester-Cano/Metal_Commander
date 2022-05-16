@@ -9,9 +9,9 @@ public class UnitObstacle : MonoBehaviour
     [SerializeField] private TurnSystem.TurnSystem turnSystem;
     [SerializeField] public List<Unit> units;
     [SerializeField] public Tilemap obstacleTilemap;
-    [SerializeField] private Tile tile;
+    [SerializeField] public Tile tile;
 
-    public void UpdateObstacleMap()
+    public void UpdateObstacleMapForAllies()
     {
         if (units != null)
         {
@@ -21,22 +21,75 @@ public class UnitObstacle : MonoBehaviour
                 var intPosition = Vector3Int.FloorToInt(position);
                 obstacleTilemap.SetTile(intPosition, null);
             }
+
             units.Clear();
         }
+        
         foreach (var t in turnSystem.enemyTeam)
-        {          
-            units?.Add(t);
-        }
-        foreach (var t in turnSystem.allyTeam)
-        {          
-            units?.Add(t);
+        {
+            if (t.hitPoints > 0)
+            {
+                units?.Add(t);
+            }
         }
 
-        foreach (var t in units)
+
+        if (units != null)
         {
-            var position = t.transform.position;
-            var intPosition = Vector3Int.FloorToInt(position);
-            obstacleTilemap.SetTile(intPosition, tile);
+            foreach (var t in units)
+            {
+                var position = t.transform.position;
+                var intPosition = Vector3Int.FloorToInt(position);
+                obstacleTilemap.SetTile(intPosition, tile);
+            }
+        }
+    }
+    
+    public void UpdateObstacleMapForEnemies()
+    {
+        if (units != null)
+        {
+            foreach (var t in units)
+            {
+                var position = t.transform.position;
+                var intPosition = Vector3Int.FloorToInt(position);
+                obstacleTilemap.SetTile(intPosition, null);
+            }
+            
+            units.Clear();
+        }
+        
+        foreach (var t in turnSystem.allyTeam)
+        {
+            if (t.hitPoints > 0)
+            {
+                units?.Add(t);
+            }
+        }
+
+        if (units != null)
+        {
+            foreach (var t in units)
+            {
+                var position = t.transform.position;
+                var intPosition = Vector3Int.FloorToInt(position);
+                obstacleTilemap.SetTile(intPosition, tile);
+            }
+        }
+    }
+
+    public void ClearObstacleMap()
+    {
+        if (units != null)
+        {
+            foreach (var t in units)
+            {
+                var position = t.transform.position;
+                var intPosition = Vector3Int.FloorToInt(position);
+                obstacleTilemap.SetTile(intPosition, null);
+            }
+            
+            units.Clear();
         }
     }
 }
