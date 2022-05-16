@@ -101,9 +101,9 @@ namespace CombatSystem
 
         private IEnumerator BackToOverWorld(Unit unit, Unit unit2)
         {
-            yield return new WaitForSeconds(1);
-            
             fader.FadeOutCombat();
+            
+            yield return new WaitForSeconds(1);
 
             unit.transform.position = _unit1PrevPos;
             unit2.transform.position = _unit2PrevPos;

@@ -9,6 +9,7 @@ TagManager:
   - GridOwner
   - Mov
   - UI
+  - NotSelectable
   layers:
   - Default
   - TransparentFX
