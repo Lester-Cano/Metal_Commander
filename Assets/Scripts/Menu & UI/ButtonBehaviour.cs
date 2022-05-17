@@ -1,63 +1,61 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Net.Mime;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
-public class ButtonBehaviour : MonoBehaviour
+namespace Menu___UI
 {
-    [SerializeField] private TurnSystem.TurnSystem _turnSystem;
-    [SerializeField] private Animator animator;
-    [SerializeField] private string sceneToLoad;
-
-    public void LoadScene(string name)
+    public class ButtonBehaviour : MonoBehaviour
     {
-        SceneManager.LoadScene(name);
-    }
+        [SerializeField] private TurnSystem.TurnSystem _turnSystem;
+        [SerializeField] private Animator animator;
+        [SerializeField] private string sceneToLoad;
 
-    public void OnFadeComplete()
-    {
-        SceneManager.LoadScene(sceneToLoad);
-    }
-
-    public void QuitGame()
-    {
-        Application.Quit();
-    }
-
-    public void ShowEnemyRange()
-    {
-        foreach (var r in _turnSystem.enemyTeam)
+        public void LoadScene(string name)
         {
-            r.range.SetActive(true);
+            SceneManager.LoadScene(name);
         }
-    }
-    
-    public void HideEnemyRange()
-    {
-        foreach (var r in _turnSystem.enemyTeam)
+
+        public void OnFadeComplete()
         {
-            r.range.SetActive(false);
+            SceneManager.LoadScene(sceneToLoad);
         }
-    }
 
-    public void FadeToLevel(string sceneName)
-    {
-        sceneToLoad = sceneName;
-        animator.SetTrigger("FadeOut");
-    }
+        public void QuitGame()
+        {
+            Application.Quit();
+        }
 
-    public void FadeToCombat()
-    {
-        animator.ResetTrigger("FadeToCombat");
-        animator.SetTrigger("FadeToCombat");
-    }
+        public void ShowEnemyRange()
+        {
+            foreach (var r in _turnSystem.enemyTeam)
+            {
+                r.range.SetActive(true);
+            }
+        }
     
-    public void FadeOutCombat()
-    {
-        animator.ResetTrigger("FadeToCombat");
-        animator.SetTrigger("FadeToCombat");
+        public void HideEnemyRange()
+        {
+            foreach (var r in _turnSystem.enemyTeam)
+            {
+                r.range.SetActive(false);
+            }
+        }
+
+        public void FadeToLevel(string sceneName)
+        {
+            sceneToLoad = sceneName;
+            animator.SetTrigger("FadeOut");
+        }
+
+        public void FadeToCombat()
+        {
+            animator.ResetTrigger("FadeToCombat");
+            animator.SetTrigger("FadeToCombat");
+        }
+    
+        public void FadeOutCombat()
+        {
+            animator.ResetTrigger("FadeToCombat");
+            animator.SetTrigger("FadeToCombat");
+        }
     }
 }
