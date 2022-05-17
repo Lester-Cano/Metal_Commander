@@ -32077,6 +32077,7 @@ MonoBehaviour:
   fader: {fileID: 1921314140}
   unitObstacle: {fileID: 104606757}
   movSystem: {fileID: 0}
+  turnSystem: {fileID: 733197543}
 --- !u!1 &1401806115
 GameObject:
   m_ObjectHideFlags: 0
