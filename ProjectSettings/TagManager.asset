@@ -10,6 +10,8 @@ TagManager:
   - Mov
   - UI
   - NotSelectable
+  - Panel
+  - HealthBar
   layers:
   - Default
   - TransparentFX

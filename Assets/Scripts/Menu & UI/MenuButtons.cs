@@ -1,42 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using DG.Tweening;
+using UnityEngine;
 
-public class MenuButtons : MonoBehaviour
+namespace Menu___UI
 {
-    [SerializeField] private GameObject camera;
-    [SerializeField] private Transform settingsP, mainMenuP, playMenuP, newGameP, selectLvlP;
+    public class MenuButtons : MonoBehaviour
+    {
+        [SerializeField] private Camera mainCamera;
+        [SerializeField] private GameObject settingsP, mainMenuP, selectLvlP;
     
-    private void Start() 
-    {
-        DOTween.Init();
-    }
+        private void Start() 
+        {
+            DOTween.Init();
+        }
 
-    public void OnPlayButton() 
-    {
-        camera.transform.DOMove(playMenuP.position, 0.5f);
-    }
-    public void OnSettingsButton() 
-    {
-        camera.transform.DOMove(settingsP.position, 0.5f);
-    }
-    public void OnMainBack() 
-    {
-        camera.transform.DOMove(mainMenuP.position, 0.5f);
-    }
-    
-    public void OnLevelSelector() 
-    {
-        camera.transform.DOMove(selectLvlP.position, 0.5f);
-    }
-    public void OnNewGameButton()
-    {
-        camera.transform.DOMove(newGameP.position, 0.5f);
-    }
-
-    public void OnLevelSelectBack() 
-    {
-        camera.transform.DOMove( playMenuP.position, 0.5f);
+        public void OnPlayButton() 
+        {
+            selectLvlP.gameObject.SetActive(true);
+            mainCamera.transform.DOMove(selectLvlP.gameObject.transform.position, 0.5f);
+        }
+        public void OnSettingsButton() 
+        {
+            settingsP.gameObject.SetActive(true);
+            mainCamera.transform.DOMove(settingsP.gameObject.transform.position, 0.5f);
+        }
+        public void OnMainBack() 
+        {
+            mainCamera.transform.DOMove(mainMenuP.gameObject.transform.position, 0.5f);
+        }
     }
 }

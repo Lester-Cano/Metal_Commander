@@ -1,5 +1,6 @@
 using System.Collections;
 using DG.Tweening;
+using Menu___UI;
 using PathFinding;
 using UnityEditor;
 using UnityEngine;
@@ -21,6 +22,8 @@ namespace CombatSystem
         [SerializeField] private UnitObstacle unitObstacle;
         [SerializeField] private Pathfinding2D movSystem;
         [SerializeField] private TurnSystem.TurnSystem turnSystem;
+
+        [SerializeField] private HealthBarBehaviour unitHb1, unitHb2;
 
         public IEnumerator MoveToCombat(Unit unit, Unit unit2)
         {
@@ -53,6 +56,12 @@ namespace CombatSystem
             unit2.transform.position = new Vector3(0, 0, -10) + combatSpace.position2.position;
 
             unit2.transform.rotation = combatSpace.position2.rotation;
+
+            unitHb1 = unit.GetComponentInChildren<HealthBarBehaviour>();
+            unitHb2 = unit2.GetComponentInChildren<HealthBarBehaviour>();
+            
+            unitHb1.gameObject.SetActive(false);
+            unitHb2.gameObject.SetActive(false);
 
             if (unit.unitSide == "Enemy" || unit2.unitSide == "Enemy")
             {
@@ -115,6 +124,9 @@ namespace CombatSystem
             unit2.transform.position = _unit2PrevPos;
             
             unit2.transform.rotation = _unit2PrevRot;
+            
+            unitHb1.gameObject.SetActive(true);
+            unitHb2.gameObject.SetActive(true);
 
             movSystem = unit.GetComponent<Pathfinding2D>();
             unitObstacle.ClearObstacleMap();
@@ -122,9 +134,13 @@ namespace CombatSystem
 
             mainCamera.transform.position = _prevPos;
             mainCamera.orthographicSize = 3.5f;
-            canvas.SetActive(true);
             combatStation.SetActive(false);
             button.SetActive(false);
+
+            if (unit.unitSide == "Ally")
+            {
+                canvas.SetActive(true);
+            }
         }
     }
 }
