@@ -20,6 +20,7 @@ namespace CombatSystem
 
         [SerializeField] private UnitObstacle unitObstacle;
         [SerializeField] private Pathfinding2D movSystem;
+        [SerializeField] private TurnSystem.TurnSystem turnSystem;
 
         public IEnumerator MoveToCombat(Unit unit, Unit unit2)
         {
@@ -31,6 +32,11 @@ namespace CombatSystem
             mainCamera.orthographicSize = 1.5f;
             canvas.SetActive(false);
             combatStation.SetActive(true);
+            
+            foreach (var t in turnSystem.allyTeam)
+            {
+                t.tag = "Ally";
+            }
             
             SetScene(unit, unit2);
         }
@@ -102,7 +108,7 @@ namespace CombatSystem
         private IEnumerator BackToOverWorld(Unit unit, Unit unit2)
         {
             fader.FadeOutCombat();
-            
+
             yield return new WaitForSeconds(1);
 
             unit.transform.position = _unit1PrevPos;
