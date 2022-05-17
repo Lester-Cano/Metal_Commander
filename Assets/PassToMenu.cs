@@ -2,27 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PassToMenu : MonoBehaviour
 {
-
     float timer = 0;
+    [SerializeField] TMP_Text contador;
 
-    void Start()
+
+
+    private void Update()
     {
-        
+        if (Input.GetMouseButton(0))
+        {
+            timer += Time.deltaTime;
+            contador.text = (5 - Mathf.Round(timer)).ToString();
+            contador.gameObject.SetActive(true);
+        }
+        else if(Input.GetMouseButtonUp(0))
+        {
+            timer = 0;
+            contador.text = (5).ToString();
+            contador.gameObject.SetActive(false);
+        }
+
+        if (timer >=5)
+        {
+            InitialCinematicEnd();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        timer += Time.deltaTime;
 
-        Debug.Log(timer);
-
-        if (timer >= 18 || Input.GetMouseButtonDown(0))
-        {
-            SceneManager.LoadScene("Main Menu");
-        }
+    public void InitialCinematicEnd() {
+        SceneManager.LoadScene(1);
     }
 }

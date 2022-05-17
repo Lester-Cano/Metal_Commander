@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Cinematica inicial.unity
-    guid: 067f61dfeada27749b0e2428cacf0320
+    path: Assets/Scenes/Cinematic Narrative.unity
+    guid: 763df8bcea97f634a88a98f8966fa48b
   - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: 4feb4f6a3644efb4f9298917836f332c
