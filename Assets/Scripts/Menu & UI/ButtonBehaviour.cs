@@ -43,19 +43,21 @@ public class ButtonBehaviour : MonoBehaviour
         }
     }
 
-    public void FadeToLevel(string name)
+    public void FadeToLevel(string sceneName)
     {
-        sceneToLoad = name;
+        sceneToLoad = sceneName;
         animator.SetTrigger("FadeOut");
     }
 
     public void FadeToCombat()
     {
+        animator.ResetTrigger("FadeToCombat");
         animator.SetTrigger("FadeToCombat");
     }
     
     public void FadeOutCombat()
     {
-        animator.SetTrigger("FadeOutCombat");
+        animator.ResetTrigger("FadeToCombat");
+        animator.SetTrigger("FadeToCombat");
     }
 }

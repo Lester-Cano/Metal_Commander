@@ -205,10 +205,16 @@ namespace PathFinding
                     }
 
                     MoveToEnemyWithPath(pathMovement);
-                    
+
+                    foreach (var t in turnSystem.allyTeam)
+                    {
+                        t.tag = "NotSelectable";
+                    }
                     ui.SetActive(false);
                     button.SetActive(true);
                     
+                    
+
                     Deactivate();
                     Destroy(newTarget);
                 }
@@ -290,6 +296,10 @@ namespace PathFinding
                     
                     MoveToEnemyWithPath(pathMovement);
                     
+                    foreach (var t in turnSystem.allyTeam)
+                    {
+                        t.tag = "NotSelectable";
+                    }
                     ui.SetActive(false);
                     button2.SetActive(true);
                     
@@ -372,6 +382,10 @@ namespace PathFinding
                     
                     MoveToEnemyWithPathSniper(pathMovement);
                     
+                    foreach (var t in turnSystem.allyTeam)
+                    {
+                        t.tag = "NotSelectable";
+                    }
                     ui.SetActive(false);
                     button.SetActive(true);
                     
@@ -452,6 +466,10 @@ namespace PathFinding
             selectedUnit.hasMoved = false;
             
             Deactivate();
+            foreach (var t in turnSystem.allyTeam)
+            {
+                t.tag = "Ally";
+            }
             button.SetActive(false);
             button2.SetActive(false);
         }
