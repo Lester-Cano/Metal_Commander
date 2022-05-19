@@ -2335,7 +2335,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &227932104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12973,7 +12973,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1362851832684904592, guid: 5836a3c81a7ce514d8ed3b1581f3617a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1362851832684904594, guid: 5836a3c81a7ce514d8ed3b1581f3617a, type: 3}
       propertyPath: arrow
@@ -30714,7 +30714,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &3710636489344143698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30754,7 +30754,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &3710636489344143700
 Canvas:
   m_ObjectHideFlags: 0
